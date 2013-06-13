@@ -2,6 +2,6 @@
 
 <p>Hello Splashy</p>
 
-<p>Hello Splashy Pants</p>
+<p class="ted-rot">Hello Splashy Pants</p>
 
 <?php include 'footer.php'; ?>
