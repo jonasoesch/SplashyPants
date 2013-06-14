@@ -11,21 +11,23 @@ color: #000000;
  
 
  #event{
-    text-align:center;
+  
     width: 50%;
-    height: 60%;
+    height: 35em;
     float:left;
-   vertical-align: middle;
+      text-align:center;
  }
  
   #video{
     text-align:left;
     width: 50%;
-    height: 60%;
+     height: 35em;
     float:right;
     
  }
- 
+ .center{
+     text-align:center;
+ }
  .speakerImage{
      margin:5%;
      float:left;
