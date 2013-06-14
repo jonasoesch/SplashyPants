@@ -6,5 +6,7 @@
       <link href="css/grid.css" rel="stylesheet" />
       <link href="css/normalize.css" rel="stylesheet" />
       <link href="css/typography.css" rel="stylesheet" />
+      <link href="css/design.css" rel="stylesheet" />
+
     </head>
     <body>
