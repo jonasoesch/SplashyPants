@@ -10,4 +10,19 @@ color: #000000;
  }
  
 
+ #event{
+    position:absolute; 
+    top:50%;
+    text-align:center;
+    width: 50%;
+    height: 60%;
+    float:left;
+    
+ }
  
+  #video{
+    width: 50%;
+    height: 60%;
+    float:right;
+    
+ }
