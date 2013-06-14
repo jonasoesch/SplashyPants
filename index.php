@@ -7,8 +7,18 @@
 =======
 <h1>Bonjour mes chers</h1>
 <h2>Comment allez-vous?</h2>
->>>>>>> 9c6c98fbf1a162f382cdd0a6bf24d29ce7e1253f
-
+<?php
+//access to $tedx_manager;
+require_once('../tedx-config.php');
+ 
+// Try to log
+$message = $tedx_manager->login( 'Penelope', 'anitakevinlove' ); // Visitor
+//$message = $tedx_manager->login( 'Penelope', '1' ); // Wrong Password
+//$message = $tedx_manager->login( 'admin', 'admin' ); // Admin
+ 
+// Display message
+echo '<strong>'.$message->getMessage().'</strong><br />';
+?>
 <p>J'ai essayé de créer une base typographique. Sentez vous libre de changer <code>typography.less</code> comme vous voulez. Il faudra alors re-génerer <code>typography.css</code> avec <a href="http://wearekiss.com/simpless">Simpless</a> ou <a href="http://incident57.com/less/">Less.app</a> </p>
 
 <ul
