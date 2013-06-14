@@ -15,7 +15,7 @@ color: #000000;
     width: 50%;
     height: 60%;
     float:left;
-   vertical-align: middle;
+    vertical-align: middle;
  }
  
   #video{
@@ -56,8 +56,8 @@ bottom: 10px;
 .trucGrisBas {
 background-color: rgb(237,237,237);
 height: 16px;
-position: relative;
-bottom: 0px;
+position: fixed;
+bottom: 200px;
 
  }
 
