@@ -121,13 +121,6 @@
 @media screen and (min-width: 992px) {
   .container {
     max-width: 940px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1170px;
-  }
   [class*="span"] {
     padding-right: 15px;
     padding-left: 15px;

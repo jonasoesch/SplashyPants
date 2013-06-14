@@ -1,0 +1,185 @@
+// Text
+@fontFamily:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontSize:        16px;
+@lineHeight:      24px;
+
+
+// Colors
+@black:         #222;
+@red:           #ff2b06;
+@redLight:      #fd7058;
+@grey:          #999;
+@white:          #fff;
+
+
+// Mixins
+.border-radius (@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.inset-shadow(@x, @y, @blur, @color) {
+    -webkit-box-shadow: inset @x @y @blur @color;
+       -moz-box-shadow: inset @x @y @blur @color;
+            box-shadow: inset @x @y @blur @color;
+}
+
+body {
+background-color: @white;
+color: @black;
+font-family: @fontFamily;
+font-size: @fontSize;
+line-height: @lineHeight;
+}
+
+::selection {
+   background-color: @redLight;
+   color: @white;
+}
+
+
+/* ----------- Titles ------------ */
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: bold; 
+  line-height: inherit;
+}
+
+h1{
+  font-size: @fontSize * 2.2;
+}
+h2 {
+  font-size: @fontSize * 1.8; 
+}
+
+h3 {
+  font-size: @fontSize * 1.5; 
+}
+
+h4 {
+  font-size: @fontSize * 1.3;
+}
+
+h5 {
+  font-size: @fontSize * 1.1; 
+}
+
+h6 {
+  font-size: @fontSize * 1;
+}
+
+
+/* -------- Elements ---------- */
+
+small {
+  font-size: 85%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+ 
+a { 
+ color: @red;
+ 
+   &:hover,
+   &:focus {
+    color: @redLight; 
+     border-bottom: 1px solid @redLight;
+     padding-bottom: 2px;
+     text-decoration: none;
+   }
+}
+
+
+/* --------- Forms --------- */
+form {
+  margin: 0 0 20px;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: @lineHeight;
+
+  font-size: @fontSize * 1.3;
+  font-weight: bold;
+  line-height: @lineHeight; 
+}
+
+label {
+  display: block;
+  margin-bottom: @lineHeight / 3;
+}
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+{
+  display: inline-block;
+  height: @lineHeight;
+  padding: 4px 6px;
+  margin-bottom: @lineHeight / 2;
+  line-height: @lineHeight;
+  .border-radius(4px);
+  vertical-align: middle;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+{
+  border: 1px solid @grey;
+  
+  .inset-shadow(0, 1px, 1px, lighten(@grey, 60%));
+  
+  -webkit-transition: border linear .2s, box-shadow linear .2s;
+     -moz-transition: border linear .2s, box-shadow linear .2s;
+       -o-transition: border linear .2s, box-shadow linear .2s;
+          transition: border linear .2s, box-shadow linear .2s;
+  
+    &:focus {
+        border-color: @grey;
+        outline: 0;
+        outline: thin dotted \9;
+        /* IE6-9 */
+
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+              -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+                   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+
+    }
+}
+
+textarea {
+  height: @lineHeight * 3;
+}
