@@ -1,64 +1,43 @@
 <?php include 'header.php'; ?>
+<?php include 'menu.php';?>
 
-<<<<<<< HEAD
-<div class="container">
-<div class="row">
-<p class="span4">Hello Splashy</p>
-=======
-<h1>Bonjour mes chers</h1>
-<h2>Comment allez-vous?</h2>
-<?php
-//access to $tedx_manager;
-require_once('../tedx-config.php');
- 
-// Try to log
-$message = $tedx_manager->login( 'Penelope', 'anitakevinlove' ); // Visitor
-//$message = $tedx_manager->login( 'Penelope', '1' ); // Wrong Password
-//$message = $tedx_manager->login( 'admin', 'admin' ); // Admin
- 
-// Display message
-echo '<strong>'.$message->getMessage().'</strong><br />';
-?>
-<p>J'ai essayé de créer une base typographique. Sentez vous libre de changer <code>typography.less</code> comme vous voulez. Il faudra alors re-génerer <code>typography.css</code> avec <a href="http://wearekiss.com/simpless">Simpless</a> ou <a href="http://incident57.com/less/">Less.app</a> </p>
+            <div id="event">
+                <div class="row">
+                    <h3> Discovering Magic Justo 02.8.2013</h3>
+                    <h6> with Jerome da Clat et Christophe Merkle</h6>
+                </div>
+                <div class="row">
 
-<ul
-  <li>List item 1</li>
-  <li>List item 2</li>
-  <li>List item 3</li>
-</ul>
+                    <a class="span6 offset5" href="moreInfo">more info</a>
 
-<h2>Aliquam lorem ante</h2>
-<h3>Sed in viverra quis</h3>
-<p>dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.</p>
+                </div>
+            </div>
+            
+            <div id="video">
+                <div class="row">
+                    <img src="images/manu-jindal-434px.jpg" class="speakerImage"/>
+                    <p class="speakerText"> Manu Jindal: <br /> The sky is NOT the limit: live the change <br /> 28.06.2012 <br /> Disruption </p>
+                </div>
+                <div class="row">
 
-<h3>Sed fringilla mauris sit amet nibh</h3>
-<p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, <strong>mollis</strong> sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.</p>
-
-<form action="" method="post">
-  <fieldset>
-    <legend>Noms</legend>
-    <label>Prenom :</label>
-    <input type="text" name="prenom" value="" />
-    <label>Nom :</label>
-    <input type="text" name="nom" value="" />
-  </fieldset>
-  <label>Description</label>
-  <textarea name="description"></textarea>
-  <label>Gender</label>
-  Male <input type="radio" class="radio" value="male" name="gender" />
-  Female <input type="radio" class="radio" value="female" name="gender" />
-
-  <label>Tout ok?</label>
-  <input type="checkbox" class="checkbox" value="ok" name="ok" />
-  <fieldset>
-  <legend>Buttons</legend>
-    <input type="submit" name="" value="Submit" />
-    <button name="button">Button</button>
-  </fieldset>
-</form>
-
-</div>
-
-</div>
+                    <img src="images/katrin-muff-434px.jpg" class="speakerImage"/>
+                    <p class="speakerText">Katrin Muff <br /> 50plus20: Rethinking management education for the world <br />28.06.2012 <br /> Positive Disruption</p>
+                </div>
+                <div class="row">
+                    <img src="images/pierre-calleja-434px.jpg" class="speakerImage"/>
+                    <p class="speakerText">Pierre Calleja <br /> The street lamp that absorbs CO2 <br /> 28.06.2012 <br /> Positive Disruption</p>
+                </div>
+            </div>
+            <div class="row">
+                <p class="center">
+                <a href="facebook"><img src="images/facebook.png" /></a>
+                <a href="twitter"><img src="images/twitter.png" /></a>
+                <a href="youtube"><img src="images/youtube.png" /></a>
+                <a href="flickr"><img src="images/flickr.png" /></a>
+                <a href="linkedin"><img src="images/linkedin.png" /></a>
+                <a href="newsletter"><img src="images/newsletter.png" /></a>
+                </p>
+            </div>
 
 <?php include 'footer.php'; ?>
+
