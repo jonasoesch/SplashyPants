@@ -1,5 +1,5 @@
       <div class="row">
-        <p class="center">
+        <p class="textFooter">
           TEDxZurich is a non-profit initiative (Swiss Verein). All content licensed under a CC BY-NC-SA 3.0 license. This independent TEDx event is operated under license from TED.
         </p>
       </div>

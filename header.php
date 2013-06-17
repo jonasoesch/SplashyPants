@@ -10,9 +10,8 @@
 
     </head>
     <body>
-    	<div class="container"> 
-	    <div class="trucGris"></div>
-<a href="index2.php"><img src="images/TEDxlausanne.gif" /></a>
+    	<div class="container">
+<a href="index.php"><img src="images/TEDxlausanne.gif" /></a>
 
 <nav class="row">
 	<ul>
