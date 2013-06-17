@@ -9,7 +9,7 @@
 
                  </div>
             
-                <div id="video" class="span6">
+                <div id="video" class="span6">    
                 		<figure class="row">
                     	<img src="images/manu-jindal-434px.jpg" class="speakerImage span6"/>
                     	<p class="speakerText span6">Manu Jindal: The sky is NOT the limit: live the change <br /> 28.06.2012 <br /> Disruption </p>
