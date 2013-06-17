@@ -9,7 +9,7 @@ ini_set('display_errors', 'On');
 <h2>Comment allez-vous?</h2>
 <?php
 //access to $tedx_manager;
-require_once('../tedxEventManager/tedx-config.php');
+require_once('../tedx-config.php');
  
 // Try to log
 $message = $tedx_manager->login( 'Penelope', 'anitakevinlove' ); // Visitor
