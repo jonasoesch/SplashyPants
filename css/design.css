@@ -22,7 +22,19 @@ color: #000000;
 .menu{
 	margin-bottom: 20px;
 }
-  
+
+.profil{
+	
+max-height:150px;
+width: auto;
+
+	
+}
+
+.slot{
+	height: 200px;
+	border: 2px solid #000000;
+}
  
  .center{
      text-align:center;

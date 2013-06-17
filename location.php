@@ -1,0 +1,1 @@
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ch/maps?ie=UTF8&amp;t=m&amp;ll=46.793478,6.681061&amp;spn=0.164534,0.291824&amp;z=11&amp;output=embed"></iframe><br />
