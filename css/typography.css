@@ -143,10 +143,41 @@ input[type="color"]:focus {
   outline: thin dotted \9;
   /* IE6-9 */
 
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fd7058;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fd7058;
 }
 textarea {
   height: 72px;
+}
+button,
+.button,
+input[type="submit"] {
+  background: #ff2b06;
+  border: 1px solid #222222;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 1px 1px #fd7058;
+  box-shadow: inset 0 0 1px 1px #fd7058;
+  color: #ffffff;
+  padding: 8px 0 9px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fd7058;
+  width: 150px;
+}
+button:hover,
+.button:hover,
+input[type="submit"]:hover {
+  background: #fd7058;
+  -webkit-box-shadow: inset 0 0 1px 1px #fd7058;
+  box-shadow: inset 0 0 1px 1px #fd7058;
+  color: #ffffff;
+  cursor: pointer;
+}
+button:active,
+.button:active,
+input[type="submit"]:active {
+  background: #d0d0d0;
+  -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+  box-shadow: inset 0 0 1px 1px #e3e3e3;
+  color: #000;
 }
