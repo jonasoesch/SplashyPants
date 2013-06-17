@@ -83,10 +83,22 @@ color: #000000;
 }
 
 .profile-event,
-.event-slot 
+.event-slot
 {
-	margin-top: 30px;
+	margin-top: 20px;
 	border-top:  8px solid #EDEDED;
+}
+
+.event-slot,
+.profile-event .row {
+			padding-top: 20px;
+}
+
+.profile-event [class*="span"],
+.event-slot [class*="span"]
+{
+	margin-top: 0;
+	line-height: 24px;
 }
 
 .profile-img,
