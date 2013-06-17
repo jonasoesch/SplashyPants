@@ -21,8 +21,11 @@
 	  	</div>
 	  	
 	  	<div class="row">
-	  		<p class="span6 address">La plage<br />1844 Villeneuve - CH</p>
-	  		<p class="span6 birthday">13.5.1990</p>
+	  		<p class="span6 address">La plage<br />
+	  														1844 Villeneuve<br />
+	  														CH
+	  		</p>
+	  		<p class="span6 birthday">May 13, 1990</p>
 	  	</div>
 	  	
 	 </div>

@@ -8,7 +8,7 @@
     <li class="span1"><a>About </a></li>
     <li class="span2"><a>Contact Us </a></li>
     <div class="span2 offset5">
-      <a href="login"/>login</a> | <a href="register"/>register</a>
+      <a href="login"/>login</a> | <a href="profile-form.php"/>register</a>
     </div>
   </ul>
 </nav>

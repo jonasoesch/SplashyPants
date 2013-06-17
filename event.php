@@ -18,7 +18,7 @@
 
 
 <div class="row event-slot">
-		<h3 class="span2">Slut One</h3>
+		<h3 class="span4">Slut One</h3>
 		<figure class="span2">
 			<img class="profil portrait" src="images/merkle.jpg"/>
 			<p>
@@ -42,7 +42,7 @@
 </div>
 
 <div class="row event-slot">
-		<h3 class="span2">Slut two</h3>
+		<h3 class="span4">Slut two</h3>
 		<figure class="span2">
 			<img class="profil portrait" src="images/merkle2.jpg"/>
 			<p>
