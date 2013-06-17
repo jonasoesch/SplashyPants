@@ -38,6 +38,10 @@ h6 {
   font-size: 16px;
 }
 /* -------- Elements ---------- */
+p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 small {
   font-size: 85%;
 }
@@ -60,6 +64,10 @@ a:focus {
 /* --------- Forms --------- */
 form {
   margin: 0 0 20px;
+}
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 legend {
   display: block;
