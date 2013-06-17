@@ -22,7 +22,7 @@
                 <li class="span1"><a href="partner.php">Partner </a></li>
                 <li class="span2"><a href="contact.php">Contact Us </a></li>
                 <div class="span2 offset3" style="align:right;">
-                    <a href="login.php"/>login</a> | <a href="register.php"/>register</a>
+                    <a href="login.php"/>login</a> | <a href="profile-form.php"/>register</a>
                 </div>
     </ul>
 </nav>
