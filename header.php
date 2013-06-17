@@ -13,7 +13,7 @@
     	<div class="container">
 <a href="index.php"><img src="images/TEDxlausanne.gif" /></a>
 
-<nav class="row">
+<nav class="menu row">
 	<ul>
                 <li class="span1"><a href="event.php">Event </a></li>
                 <li class="span1"><a href="video.php">Videos </a></li>

@@ -15,23 +15,14 @@ color: #000000;
 
  }
  
-/*
- #event{
+.event{
   
-    width: 50%;
-    height: 35em;
-    float:left;
-    vertical-align: middle;
-      text-align:center;
  }
  
-  #video{
-    text-align:left;
-    width: 50%;
-     height: 35em;
-    float:right;
-    
- } */
+.menu{
+	margin-bottom: 20px;
+}
+  
  
  .center{
      text-align:center;
@@ -41,6 +32,7 @@ color: #000000;
    /*  width: 40%; "*/
      display: inline-block;
      height: auto;
+     margin-bottom: 15px;
  }
  
  .speakerText{
