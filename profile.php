@@ -4,7 +4,7 @@
 
 <div class="row profile-details">
 	  <figure class="span2 offset1" >
-	  	<img src="images/profile.jpeg" alt="cristo" class="profile-img" />
+	  	<img src="images/profile.jpeg" alt="cristo" class="portrait" />
 	  </figure>
 	  
 

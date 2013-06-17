@@ -26,13 +26,6 @@ color: #000000;
 	
 }
 
-.profil{
-	
-max-height:150px;
-width: auto;
-
-	
-}
 
 .slot{
 	height: 200px;
@@ -67,4 +60,39 @@ width: auto;
 }
  
 
+.accepted, .declined {
+	font-weight: bold;
+	padding-top: 10px;
+}
 
+.accepted {
+		color: #5bb75b;
+}
+
+.declined {
+		color: red;
+}
+
+.pill {
+	display: inline-block;
+	padding: 5px 8px;
+	border-radius:  5px;
+	
+	color:  #fff;
+	background-color: #ff2b06;
+}
+
+.profile-event,
+.event-slot 
+{
+	margin-top: 30px;
+	border-top:  8px solid #EDEDED;
+}
+
+.profile-img,
+.portrait
+ {
+	border-radius: 50%;
+	border:  5px solid #EDEDED;
+	box-shadow: 0 0 4px rgba(50,50,50,0.2);
+}

@@ -15,20 +15,53 @@
                 
 </div>
 <h2>Speakers</h2>
-<h3>Slut One</h3>
 
-<div class="row">
-		<figure class="span2 offset2"><img class="profil" src="images/merkle.jpg"/><p>Christou Piscine Merkle</p><a href="profil?...">profil>></a></figure>
-		<figure class="span2 offset1"><img class="profil" src="images/justo.png"><p>Magic Justo</p><a href="profil?...">profil>></a></figure>
-		<figure class="span2 offset1"><img class="profil" src="images/hqdefault.jpg"/><p>Jerome Clot</p><a href="profil?...">profil>></a></figure>
+
+<div class="row event-slot">
+		<h3 class="span2">Slut One</h3>
+		<figure class="span2">
+			<img class="profil portrait" src="images/merkle.jpg"/>
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Christou Piscine</a>
+			</p>
+		</figure>
+		
+		<figure class="span2 offset1">
+			<img class="profil portrait" src="images/justo.png">
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
+			</p>
+		</figure>
+		
+		<figure class="span2 offset1">
+			<img class="profil portrait" src="images/hqdefault.jpg"/>
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Jerôme Clôt</a>
+			</p>
+		</figure>
 </div>
 
-<h3>Slut two</h3>
-
-<div class="row">
-		<figure class="span2 offset2"><img class="profil" src="images/merkle2.jpg"/><p>Christou Piscine Merkle</p><a href="profil?...">profil>></a></figure>
-		<figure class="span2 offset1"><img class="profil" src="images/justo2.jpg"><p>Magic Justo</p><a href="profil?...">profil>></a></figure>
-		<figure class="span2 offset1"><img class="profil" src="images/clot.png"/><p>Jerome Da Clat</p><a href="profil?...">profil>></a></figure>
+<div class="row event-slot">
+		<h3 class="span2">Slut two</h3>
+		<figure class="span2">
+			<img class="profil portrait" src="images/merkle2.jpg"/>
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Christophe Piscine</a>
+			</p>
+		</figure>
+		
+		<figure class="span2 offset1">
+			<img class="profil portrait" src="images/justo2.jpg">
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
+			</p>
+		</figure>
+		<figure class="span2 offset1">
+			<img class="profil portrait" src="images/clot.png"/>
+			<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Jerôme Clôt</a>
+			</p>
+		</figure>
 </div>
 
 
