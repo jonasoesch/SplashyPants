@@ -57,6 +57,7 @@ color: #000000;
 .footer {
 	background-color: #EDEDED;
 	margin-top:  40px;
+	padding: 20px 10px;
 }
 
 .social {
@@ -122,4 +123,5 @@ color: #000000;
 	border-radius: 50%;
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
+	max-width: 150px;
 }

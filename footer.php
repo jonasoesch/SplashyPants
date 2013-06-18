@@ -1,5 +1,5 @@
             <div class="row footer">
-                <p class="social span3 offset5">
+                <p class="social span4 offset5">
 	                <a href="facebook"><img src="images/facebook.png" /></a>
 	                <a href="twitter"><img src="images/twitter.png" /></a>
 	                <a href="youtube"><img src="images/youtube.png" /></a>
