@@ -39,14 +39,19 @@
 	  	
 			      </div>
 
-                 </div>
+                 </div> 
             
-                <div class="span5 map">
+                <div class="span5">
                 	<?php include 'location.php'; ?>
                 	<div class="row">
 			                 <p class="span5">La plage<br>1844 Villeneuve - CH</p>
 			                 
-			             </div>	
+			        </div>
+			        <div class="row">
+			        <form action="register.php" method="post">
+			        <input type="Submit" name="submit" value="Participate" class="span2"/>
+			        </form>
+			        </div>
                 </div>
                 
                 
