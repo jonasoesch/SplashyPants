@@ -2,32 +2,36 @@
 <div class="row">
             	<div class="span6">
                     	<h3 class="span11 offset1"> Discovering Magic Justo</h3>
-                    	<h4 class="span11 offset1">02.8.2013</h4>
-                 <h6 class="span11 offset1"> with Jerome da Clat et Christophe Piscine Merkle</h6>
-                    	
-                 <a class="span6 offset6" href="moreInfo">more info</a>
+                    	<h4 class="span11 offset1">02.8.2013</h4>                    	
                  <div class="offset1 span8 contact profile-table">
 			
 	                 <div class="row">
-		                 <p class="span6">17:00</p>
-		                 <p class="span6">Registration</p>
+		                 <p class="span3">17:00</p>
+		                 <p class="span9">Registration</p>
 		             </div>
 		             <div class="row">
-		                 <p class="span6">17:30</p>
-		                 <p class="span6">The Event</p>
+		                 <p class="span3">17:30</p>
+		                 <p class="span9">The Event</p>
 		             </div>
 		             <div class="row">
-		                 
-		                 <p class="span6 offset6">Welcome and introduction</p>
+		                 <p class="span9 offset3">Welcome and introduction</p>
 		             </div>
-		             <div class="row">
-		                 
-		                 <p class="span6 offset6">Live presentations</p>
+		             <div class="row"> 
+		                 <p class="span9 offset3">Live presentations</p>
+		             </div>
+		             <div class="row"> 
+		                 <p class="span9 offset3">Katrin Muff ¦ Management education for the world</p>
+		             </div>
+		             <div class="row"> 
+		                 <p class="span9 offset3">Manu Jindal ¦ The sky is NOT the limit: live the change</p>
+		             </div>
+		             <div class="row"> 
+		                 <p class="span9 offset3">Katrin Muff: Management education for the world</p>
 		             </div>
 		             
 		             <div class="row">
-		                 <p class="span6">19:30</p>
-		                 <p class="span6">Apéro</p>
+		                 <p class="span3">19:30</p>
+		                 <p class="span9">Apéro</p>
 		             </div>
 	  	
 		                 
