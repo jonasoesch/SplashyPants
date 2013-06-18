@@ -57,6 +57,7 @@ color: #000000;
 .footer {
 	background-color: #EDEDED;
 	margin-top:  40px;
+	padding: 20px 10px;
 }
 
 .social {
@@ -124,8 +125,12 @@ textarea{
 	border-radius: 50%;
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
+<<<<<<< HEAD
 }
 
 select{
     height: 80%;
+=======
+	max-width: 150px;
+>>>>>>> 25d76e313aaaf66e68a1911f855bc0bfb327206f
 }
