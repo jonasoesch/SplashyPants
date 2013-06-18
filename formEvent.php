@@ -55,12 +55,6 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
             
                 <div class="span5">
                 	<?php include 'formLocation.php'; ?>
-
-			        <div class="row">
-			        <form action="register.php" method="post">
-			        <input type="Submit" name="submit" value="Participate" class="span2"/>
-			        </form>
-			        </div>
                 </div>
                 
                 

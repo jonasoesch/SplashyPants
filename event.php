@@ -61,7 +61,11 @@
 
 
 <div class="row event-slot">
-		<h3 class="span4">Slut One</h3>
+		<div class="span4">
+			<h3>Slut one</h3>
+			<p>15:00 - 17:00</p>
+			<p>28.06.2013</p>
+		</div>
 		<figure class="span2">
 			<img class="profil portrait" src="images/merkle.jpg"/>
 			<p>
@@ -85,7 +89,12 @@
 </div>
 
 <div class="row event-slot">
-		<h3 class="span4">Slut two</h3>
+		
+		<div class="span4">
+			<h3>Slut two</h3>
+			<p>17:00 - 19:00</p>
+			<p>28.06.2013</p>
+		</div>
 		<figure class="span2">
 			<img src="images/merkle2.jpg"/>
 			<p>
