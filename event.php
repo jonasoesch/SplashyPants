@@ -1,10 +1,19 @@
 <?php include 'header.php'; ?>
 <div class="row">
-            	<div class="span6">
-                    	<h3 class="span11 offset1"> Discovering Magic Justo</h3>
-                    	<h4 class="span11 offset1">02.8.2013</h4>                    	
-                 <div class="offset1 span8 contact profile-table">
-			
+            	<div class="span7">
+                    	
+                    	                    	
+                 <div class="span11">
+                 	<div class="row">
+                 		<h3 class="span12 eventTitle"> Discovering Magic Justo</h3>
+                    	<p class="span12">02.8.2013</p>
+                 	</div>
+	                 <div class="row">
+		                 <h4 class="span11">Programme</h4>
+		             </div>
+		             <div class="row">
+		                 <p class="span12">Our inspired team, in collaboration with TEDxLausanne, is pleased to announce TEDxLausanneChange 2013. This event, themed “positive disruption”, will feature a live stream of the main TEDxChange program in Seattle, Washington and three presentations by dynamic local speakers. Join us for an event that will challenge preconceived ideas, spark discussion, engage leaders and shed light on new perspectives.</p>
+		             </div>
 	                 <div class="row">
 		                 <p class="span3">17:00</p>
 		                 <p class="span9">Registration</p>
@@ -19,15 +28,7 @@
 		             <div class="row"> 
 		                 <p class="span9 offset3">Live presentations</p>
 		             </div>
-		             <div class="row"> 
-		                 <p class="span9 offset3">Katrin Muff ¦ Management education for the world</p>
-		             </div>
-		             <div class="row"> 
-		                 <p class="span9 offset3">Manu Jindal ¦ The sky is NOT the limit: live the change</p>
-		             </div>
-		             <div class="row"> 
-		                 <p class="span9 offset3">Katrin Muff: Management education for the world</p>
-		             </div>
+
 		             
 		             <div class="row">
 		                 <p class="span3">19:30</p>
@@ -40,10 +41,10 @@
 
                  </div>
             
-                <div class="span6">
+                <div class="span5 map">
                 	<?php include 'location.php'; ?>
                 	<div class="row">
-			                 <p class="span6">La plage<br>1844 Villeneuve - CH</p>
+			                 <p class="span5">La plage<br>1844 Villeneuve - CH</p>
 			                 
 			             </div>	
                 </div>

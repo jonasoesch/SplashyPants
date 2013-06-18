@@ -43,6 +43,14 @@ color: #000000;
  margin:0;
  list-style-type:none;
  }
+ 
+.eventTitle{
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 0px;
+	line-height: 24px:
+}
+
 
 
 
