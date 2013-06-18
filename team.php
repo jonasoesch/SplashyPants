@@ -5,7 +5,7 @@
    <img class="span6 offset3" src="images/group.jpg" />
  
 </div>
-
+<div class="row event-slot">
 <div class="row">
           <br />
 	  <figure class="span2" >
@@ -20,6 +20,8 @@
                             <a href="http://www.9gag.com">Jerome.Pimp@heig-vd.ch</a></p>	  			  
 		  	  <br />
 </div>
+</div>
+<div class="row event-slot">
 <div class="row">
           <br />
 	  <figure class="span2" >
@@ -34,6 +36,8 @@
                             <a href="http://www.9gag.com">MagicBishop.Christou@heig-vd.ch</a></p>	  			  
 		  	  <br />
 </div>
+</div>
+    <div class="row event-slot">
 <div class="row">
           <br />
 	  <figure class="span2" >
@@ -48,5 +52,25 @@
 	  		<a href="http://www.9gag.com">muammar.justoaffe@admin.ch</a></p>	  			  
 		  	  <br />
 </div>
-
+    </div>
+   <div class="row event-slot">
+<div class="row">
+          <br />
+          <div class="row">
+          <h2 class="span2"> cleaners </h2> </div>
+          <div class="row">
+              <br />
+	  <figure class="span2" >
+	  	<img src="images/justo2.jpg" alt="justo" class="portrait" />
+	  </figure>
+          <figure class="span2" >
+	  	<img src="images/justo2.jpg" alt="justo" class="portrait" />
+	  </figure>
+	  
+          <figure class="span2" >
+	  	<img src="images/justo2.jpg" alt="justo" class="portrait" />
+	  </figure>	  	
+</div>
+      
+    </div>
 <?php include 'footer.php'; ?>

@@ -18,6 +18,7 @@
   <input type="text" name="country" value="country" size="20" maxlength="25" /> <br />
         <br /> 
 <input type="Submit" name="submit" value="Register" /> 
+</form>
        </div>
 </div>
 <?php include 'footer.php'; ?>
