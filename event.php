@@ -87,7 +87,7 @@
 <div class="row event-slot">
 		<h3 class="span4">Slut two</h3>
 		<figure class="span2">
-			<img class="profil portrait" src="images/merkle2.jpg"/>
+			<img src="images/merkle2.jpg"/>
 			<p>
 				<a href="/tedxEventManager/SplashyPants/profile.php">Christophe Piscine</a>
 			</p>
@@ -102,7 +102,7 @@
 		<figure class="span2 offset1">
 			<img class="profil portrait" src="images/clot.png"/>
 			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Jerôme Clôt</a>
+				<a href="/tedxEventManager/SplashyPants/profile.php">Jerome Clot</a>
 			</p>
 		</figure>
 </div>
