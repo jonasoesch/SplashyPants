@@ -1,6 +1,4 @@
-<?php 
-	
-?>
+
 
 
 <form method="post" action="formLocation.php">
