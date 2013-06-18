@@ -107,5 +107,7 @@
 		</figure>
 </div>
 
+<?php include 'eventFooter.html'; ?>
+
 
 <?php include 'footer.php'; ?>
