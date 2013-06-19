@@ -1,5 +1,8 @@
 <?php include 'header.php'; ?>
 <div class="row">
+	<h1 class="row">Partners</h1>
+</div>
+<div class="row">
           <br />
 	  <figure class="span2" >
 	  	<a href="http://www.imd.org/"><img src="images/Logo_IMD2.jpg" alt="logo_IMD2" title="IMD Business School" /></a>
