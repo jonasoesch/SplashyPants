@@ -1,25 +1,29 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-06-19 01:52:08
+<?php /* Smarty version Smarty-3.1.13, created on 2013-06-19 12:12:47
          compiled from "templates/home.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:109623350151c0f2a84f57d1-44811829%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:198375097151c0e12487a107-74038903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '44473f1c7779fd2764925cf1eff848b4714c81c4' => 
     array (
       0 => 'templates/home.tpl',
-      1 => 1371560271,
+      1 => 1371636722,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '109623350151c0f2a84f57d1-44811829',
+  'nocache_hash' => '198375097151c0e12487a107-74038903',
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51c0f2a85377c2_70131152',
+  'unifunc' => 'content_51c0e1248c92f0_04982719',
+  'variables' => 
+  array (
+    'baseURL' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51c0f2a85377c2_70131152')) {function content_51c0f2a85377c2_70131152($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_51c0e1248c92f0_04982719')) {function content_51c0e1248c92f0_04982719($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 			
 			<div class="row">
@@ -34,17 +38,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             
                 <div id="video" class="span6">    
                 		<figure class="row">
-                    	<img src="images/manu-jindal-434px.jpg" class="speakerImage span6"/>
+                    	<img src="<?php echo $_smarty_tpl->tpl_vars['baseURL']->value;?>
+/images/manu-jindal-434px.jpg" class="speakerImage span6"/>
                     	<p class="speakerText span6">Manu Jindal: The sky is NOT the limit: live the change <br /> 28.06.2012 <br /> Disruption </p>
                 		</figure>
                     
                 		<figure class="row">
-	                    <img src="images/katrin-muff-434px.jpg" class="speakerImage span6"/>
+	                    <img src="<?php echo $_smarty_tpl->tpl_vars['baseURL']->value;?>
+/images/katrin-muff-434px.jpg" class="speakerImage span6"/>
 	                    <p class="speakerText  span6">Katrin Muff: Rethinking management education for the world <br />28.06.2012 <br /> Positive Disruption</p>
                 		</figure>
                     
                 		<figure class="row">
-                    	<img src="images/pierre-calleja-434px.jpg" class="speakerImage span6"/>
+                    	<img src="<?php echo $_smarty_tpl->tpl_vars['baseURL']->value;?>
+/images/pierre-calleja-434px.jpg" class="speakerImage span6"/>
                     	<p class="speakerText  span6">Pierre Calleja: The street lamp that absorbs CO2 <br /> 28.06.2012 <br /> Positive Disruption</p>
                 		</figure>
                 </div>
