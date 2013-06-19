@@ -7,7 +7,7 @@
     <form method="post" action="check.php">
         <div class="span4" >
 
-            <select class="span6"   size="4" name="wannabeParticipants"> 
+            <select class="span6"   size="10" name="wannabeParticipants"> 
                 <option VALUE="0"> Kanye West</option>
                 <option VALUE="1"> Diddy</option>
                 <option VALUE="2"> OL'Dirty Bastard</option> 
