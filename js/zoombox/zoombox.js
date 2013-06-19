@@ -459,7 +459,7 @@ function setContent(){
         if(options.autoplay==true){
             id = id + 'autoplay=1&';
         }
-        content='<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/'+id+'wmode=Opaque" frameborder="0" allowfullscreen></iframe>';
+        content='<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/'+id+'autoplay=1&rel=0 wmode=Opaque" frameborder="0" allowfullscreen></iframe>';
     }else if(filtreKoreus.test(url)){
         url=url.split('.html');
         url=url[0];

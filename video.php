@@ -5,49 +5,49 @@ VIDEO
     
     <div class="span3">
         <div class="thumbVideo">
-            <a href="http://www.youtube.com/watch?v=C6TRnLoYdtA" class="zoombox"><img src="images/Thumbnails/FabriceLeclerc.png" width="225"/></a>   
+            <a href="http://www.youtube.com/watch?v=1QnblHvyoM8&list" class="zoombox"><img src="images/Thumbnails/FabriceLeclerc.png" width="225"/></a>   
        </div>
-       <p>Innovation for life : Fabrice Leclerc</p>       
+       <p>Innovation for life</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="http://www.youtube.com/watch?v=1QnblHvyoM8&list" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
+            <a href="https://www.youtube.com/watch?v=uwe0pjeGqtI" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
        </div>
-       <p>Titre</p>       
+       <p>Beyond focussing</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>  
-       </div>
-       <p>Titre</p>       
-    </div>
-    <div class="span3">
-        <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>   
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
        </div>
        <p>Titre</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>   
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>   
        </div>
        <p>Titre</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>  
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>   
        </div>
        <p>Titre</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>   
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
        </div>
        <p>Titre</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/clot.png" width="225"/></a>  
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>   
+       </div>
+       <p>Titre</p>       
+    </div>
+    <div class="span3">
+        <div class="thumbVideo">
+            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
        </div>
        <p>Titre</p>       
     </div>
