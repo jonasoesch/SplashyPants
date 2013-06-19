@@ -7,12 +7,14 @@ class Template {
 	private static $smarty;
 	
 	
-	public static function setup() {
+	private static function setup() {
 		$smarty = new Smarty();
 		$smarty->setTemplateDir('templates');
 		$smarty->setCompileDir('templates/templates_c');
 		$smarty->setCacheDir('templates/cache');
 		$smarty->setConfigDir('templates/configs');
+		
+		// ---------- Global Assigns ----------
 		$smarty->assign('baseURL', 'http://localhost:8888/tedxEventManager/SplashyPants');
 		$smarty->assign('debug', 'Nothing to debug');
 		
@@ -20,9 +22,16 @@ class Template {
 	}
 
 
-	public static function render($template) {
+	public static function render($template, $args=array()) {
 		self::setup();
+		self::assignArgs($args);
 		self::$smarty->display($template);
+	}
+	
+	private static function assignArgs($args) {
+		foreach($args as $key=>$value) {
+			self::$smarty->assign($key, $value);
+		}
 	}
 }
 

@@ -1,20 +1,16 @@
 <?php
 
-include '../tedx-config.php';
+// ---------- Setup ----------
+
+require_once('../tedx-config.php');
+
+
 // ---------- Errors ----------------
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-
-
-// ---------- Setup ----------
-$baseURL = "/tedXEventManager/SplashyPants/";
-$uri = str_replace($baseURL, "", $_SERVER["REQUEST_URI"]);
-
-
-
-require(SPLASHY_DIR.'/lib/router.php');
-require(SPLASHY_DIR.'/controllers/Home.php');
+require_once(SPLASHY_DIR.'/lib/router.php');
+require_once(SPLASHY_DIR.'/controllers/Home.php');
 
 $r = new Router();
 
@@ -32,13 +28,6 @@ $r->map("login/do",
 				
 $r->map("persons/:id",
 				"Home::showPerson");
-
-
-
-
-
-
-
 
 
 
