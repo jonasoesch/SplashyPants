@@ -19,38 +19,51 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 <div class="row">
             	<div class="span7">
                     	
-                    	                    	
+                <form method="post" action=""> 	                    	
                  <div class="span11">
                  	<div class="row">
 	       	 			<p class="span6 eventTitle">
-							<input type="text" name="titre" placeholder="Title" id="rue"/>
+							<input type="text" name="title" placeholder="Title" id="rue"/>
 						</p>
                  	</div>
                  	
 	                 <div class="row">
-	       	 			<p class="span6 eventDate">
+	       	 			<p class="span6">
 	  						<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
 	  						<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
 	  						<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
 	  					</p>
 		             </div>
 		             <div class="row">
+		                 <p class="span3"><input type="text" name="titre" placeholder="17:00" id="rue" size="5"/></p>
+		                 <!--<p class="span8"><input type="text" name="titre" placeholder="Description" id="rue"/></p>-->
+		                 <!-- <p class="span1" id="leschamps_2"><a href="javascript:create_champ(2)">+</a></p> -->
+		             </div>
+		             <div class="row">
+	       	 			<p class="span6">
+	  						<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
+	  						<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
+	  						<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
+	  					</p>
+		             </div>
+		             <div class="row">
+		                 <p class="span3"><input type="text" name="titre" placeholder="21:00" id="rue" size="5"/></p>
+		                 <!--<p class="span8"><input type="text" name="titre" placeholder="Description" id="rue"/></p>-->
+		                 <!-- <p class="span1" id="leschamps_2"><a href="javascript:create_champ(2)">+</a></p> -->
+		             </div>
+		             <div class="row">
 		             	<p class="span6">
 		             		<TEXTAREA name="titre" placeholder="Enter a description" id="rue" cols="70"></TEXTAREA>
 		                </p>
 		             </div>
-	                 <div class="row">
-		                 <p class="span3"><input type="text" name="titre" placeholder="17:00" id="rue" size="5"/></p>
-		                 <p class="span8"><input type="text" name="titre" placeholder="Description" id="rue"/></p>
-		                 <!-- <p class="span1" id="leschamps_2"><a href="javascript:create_champ(2)">+</a></p> -->
+		             <div class="row"> 
+		             	<p class="span6"> 
+		               <input type="Submit" name="submit" value="Validate" />  
+		               </p> 
 		             </div>
-		             
-
-	  	
-		                 
 	  	
 			      </div>
-
+			    </form>
                  </div> 
             
                <div class="span5">
