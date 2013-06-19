@@ -11,6 +11,7 @@ ini_set('display_errors', 'On');
 
 require_once(SPLASHY_DIR.'/lib/router.php');
 require_once(SPLASHY_DIR.'/controllers/Home.php');
+require_once(SPLASHY_DIR.'/controllers/Event.php');
 
 $r = new Router();
 
@@ -30,6 +31,9 @@ $r->map("logout",
 
 $r->map("persons/:id",
 				"Home::showPerson");
+				
+$r->map("event/:id",
+				"Event::show");
 
 
 
