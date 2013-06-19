@@ -23,7 +23,6 @@ class Home extends ViewController {
 
 	public function showPerson($id) {
 		Template::render('home.tpl', array(
-			'debug' => 'Hello Debug',
 			'id' => $id
 		));
 	}

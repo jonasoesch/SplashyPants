@@ -1,5 +1,8 @@
 {include "_header.tpl"}
-			
+
+{if isset($id)}
+	<h3 class="row">PERSON: {$id}</h1>
+{/if}			
 			<div class="row">
             	<div class="event span6">
                     	<h3 class="span11 offset1"> Discovering Magic Justo</h3>
@@ -9,6 +12,7 @@
                     		<a class="span6 offset6" href="moreInfo">more info</a>
 
                  </div>
+                 
             
                 <div id="video" class="span6">    
                 		<figure class="row">
