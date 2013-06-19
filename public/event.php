@@ -42,9 +42,12 @@
                  </div> 
             
                 <div class="span5">
-                	<?php include 'location.php'; ?>
+                
+                	<?php 
+                	include 'location.php'; 
+                	?>
                 	<div class="row">
-			                 <p class="span5">La plage<br>1844 Villeneuve - CH</p>
+			                 <p class="span5">Av. des sports 10<br>1400 Yverdon-les-bains - CH</p>
 			                 
 			        </div>
 			        <div class="row">
