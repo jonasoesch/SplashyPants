@@ -5,7 +5,7 @@ VIDEO
     
     <div class="span3">
         <div class="thumbVideo">
-            <a href="http://www.youtube.com/watch?v=1QnblHvyoM8&list" class="zoombox"><img src="images/Thumbnails/FabriceLeclerc.png" width="225"/></a>   
+            <a href="http://www.youtube.com/watch?v=1QnblHvyoM8" class="zoombox"><img src="images/Thumbnails/FabriceLeclerc.png" width="225"/></a>   
        </div>
        <p>Innovation for life</p>       
     </div>
