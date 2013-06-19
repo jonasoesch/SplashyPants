@@ -15,6 +15,7 @@ color: #000000;
  }
  
  
+ 
 .menu{
 	margin-top: 20px;
 	margin-bottom: 60px;
@@ -125,12 +126,6 @@ textarea{
 	border-radius: 50%;
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
-<<<<<<< HEAD
+
 }
 
-select{
-    height: 80%;
-=======
-	max-width: 150px;
->>>>>>> 25d76e313aaaf66e68a1911f855bc0bfb327206f
-}
