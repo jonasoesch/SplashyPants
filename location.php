@@ -1,1 +1,1 @@
-<iframe width="350" height="312" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=6.5592,46.7337,6.7053,46.8219&amp;layer=transportmap&amp;marker=46.77961,6.63557" style="border: 1px solid black"></iframe>
+<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="map.php"></iframe>

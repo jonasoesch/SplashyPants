@@ -53,9 +53,9 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 
                  </div> 
             
-                <div class="span5">
+               <div class="span5">
                 	<?php include 'formLocation.php'; ?>
-                </div>
+                </div> 
                 
                 
                 
@@ -64,54 +64,28 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 
 
 <div class="row event-slot">
-		<h3 class="span4">Slut One</h3>
-		<figure class="span2">
-			<img class="profil portrait" src="images/merkle.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Christou Piscine</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/justo.png">
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/hqdefault.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Jerôme Clôt</a>
-			</p>
-		</figure>
-</div>
+	<div class="span4">
+		<h3>Slot One</h3>
+		<p class="eventSlot">
+	  		<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
+	  		<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
+	  		<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
+	  	</p>
+	  	<p class="eventSlot">
+	  		<input type="text" name="dob_year" placeholder="<?php echo "hh"; ?>" size="2" maxlength="2" /> :
+	  		<input type="text" name="dob_monat" placeholder="<?php echo "mm"; ?>"  size="2" maxlength="2" /> 
+	  	</p>
+	  	<p class="eventSlot">
+	  		<input type="text" name="dob_year" placeholder="<?php echo "hh"; ?>" size="2" maxlength="2" /> :
+	  		<input type="text" name="dob_monat" placeholder="<?php echo "mm"; ?>"  size="2" maxlength="2" /> 
+	  	</p>
+	</div>
+	<p class="span2"><a href src="">add speaker</a></p>
 
-<div class="row event-slot">
-		<h3 class="span4">Slut two</h3>
-		<figure class="span2">
-			<img src="images/merkle2.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Christophe Piscine</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/justo2.jpg">
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
-			</p>
-		</figure>
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/clot.png"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Jerome Clot</a>
-			</p>
-		</figure>
 </div>
 
 
-<?php include 'eventFooter.html'; ?>
+<!-- <?php include 'eventFooter.html'; ?>-->
 
 
 <?php include 'footer.php'; ?>

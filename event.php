@@ -61,9 +61,9 @@
 
 
 <div class="row event-slot">
-		<div class="span4">
-			<h3>Slut one</h3>
-			<p>15:00 - 17:00</p>
+			<div class="span4">
+			<h3>Slut two</h3>
+			<p>17:00 - 19:00</p>
 			<p>28.06.2013</p>
 		</div>
 		<figure class="span2">
