@@ -1,5 +1,4 @@
 <?php include 'header.php'; ?>
-
 <div id="row">
     <h2 class="span12"> something about love </h2> 
 
@@ -49,7 +48,7 @@
     <p class="span6 offset3"><a href=""> see participatiors list</a> <p>
 
 </div>
-
 </div>
+
 <?php include 'footer.php'; ?>
  
