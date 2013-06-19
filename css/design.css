@@ -129,4 +129,6 @@ textarea{
 	max-width: 180px;
 
 }
-
+select{
+    height:20em;
+}
