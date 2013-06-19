@@ -7,6 +7,7 @@
       <link href="css/normalize.css" rel="stylesheet" />
       <link href="css/typography.css" rel="stylesheet" />
       <link href="css/design.css" rel="stylesheet" />
+      <link href="js/zoombox/zoombox.css" rel="stylesheet" />
 
     </head>
     <body>

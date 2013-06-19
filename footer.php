@@ -14,7 +14,13 @@
 
     </div> <!-- end of container -->   
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+    <script src="js/zoombox/zoombox.js"></script>
+    <script>
+        if($(".zoombox").length > 0){
+            $(".zoombox").zoombox();
+        }
+    </script>
    </body>
 </html>
