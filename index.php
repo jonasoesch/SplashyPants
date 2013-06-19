@@ -15,7 +15,6 @@ $uri = str_replace($baseURL, "", $_SERVER["REQUEST_URI"]);
 
 require(SPLASHY_DIR.'/lib/router.php');
 require(SPLASHY_DIR.'/controllers/Home.php');
-
 $r = new Router();
 
 

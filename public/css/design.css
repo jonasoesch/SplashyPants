@@ -137,3 +137,12 @@ a img{
 		background-color: #ffffff;
 	
 }
+
+
+videoIcon::after{
+    z-index: 9999;
+    content: "";
+    background-image: url(public/images/Thumbnails/useful/PlayYouTube.png);
+    position: absolute;
+    
+}
