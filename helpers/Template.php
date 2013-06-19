@@ -15,12 +15,22 @@ class Template {
 		$smarty->setCompileDir('templates/templates_c');
 		$smarty->setCacheDir('templates/cache');
 		$smarty->setConfigDir('templates/configs');
-		
+
+		function pop_flash_message($params, $template) {
+		    $msg = "";
+		    if (isset($_SESSION['flash'])) {
+		        $msg = $_SESSION['flash'];
+		        $_SESSION['flash'] = "";
+		    }
+		    return $msg;
+		}
+		$smarty->registerPlugin("function", "pop_flash_message", "pop_flash_message");
+			
 		// ---------- Global Assigns ----------
 		$smarty->assign('baseURL', 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants');
 		$smarty->assign('tedx', $tedx_manager);
-		$smarty->assign('debug', 'Nothing to debug');
 		
+	
 		self::$smarty = $smarty;
 	}
 
@@ -45,9 +55,10 @@ class Template {
 	public static function getBaseURL() {
 		return 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants/';
 	}
+	
+	public static function flash($message) {
+		$_SESSION['flash'] = $message;
+	}
 }
-
-
-
 
 ?>
