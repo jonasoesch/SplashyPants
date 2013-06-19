@@ -15,7 +15,7 @@ class Template {
 		$smarty->setConfigDir('templates/configs');
 		
 		// ---------- Global Assigns ----------
-		$smarty->assign('baseURL', 'http://localhost:8888/tedxEventManager/SplashyPants');
+		$smarty->assign('baseURL', 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants');
 		$smarty->assign('debug', 'Nothing to debug');
 		
 		self::$smarty = $smarty;
@@ -34,6 +34,7 @@ class Template {
 		}
 	}
 }
+
 
 
 
