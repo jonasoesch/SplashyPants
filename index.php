@@ -35,6 +35,9 @@ $r->map("persons/:id",
 $r->map("event/:id",
 				"Event::show");
 
+$r->map("about",
+        "About::ted");
+
 
 
 
