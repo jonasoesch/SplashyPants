@@ -1,7 +1,7 @@
 <?php
 
-require SPLASHY_DIR."/helpers/ViewController.php";
-require SPLASHY_DIR."/helpers/Template.php";
+require_once(SPLASHY_DIR."/helpers/ViewController.php");
+require_once(SPLASHY_DIR."/helpers/Template.php");
 
 class Home extends ViewController {
   
@@ -18,12 +18,28 @@ class Home extends ViewController {
   
   // "login/do"
   public function loginDo() {
-  	Template::render('home.tpl');
+  	global $tedx_manager;
+  	
+  	$message = $tedx_manager->login( $_POST['username'], $_POST['password'] );
+  	
+  	if($message->getStatus()) {
+  		Template::redirect('');
+  	} else {
+  		Template::redirect('login');
+  	}
+  }
+  
+  
+  public function logout() {
+  	global $tedx_manager;
+  	$message = $tedx_manager->logout();
+  	Template::redirect('');
   }
 
 	public function showPerson($id) {
-		var_dump($_REQUEST);
-		echo $id;
+		Template::render('home.tpl', array(
+			'id' => $id
+		));
 	}
 }
 

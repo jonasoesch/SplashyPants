@@ -23,7 +23,10 @@
                 <li class="span1"><a href="partner.php">Partner </a></li>
                 <li class="span2"><a href="contact.php">Contact Us </a></li>
                 <div class="span2 offset3" style="align:right;">
-                    <a href="{$baseURL}/login"/>login</a> | <a href="profile-form.php"/>register</a>
+                    {if !$tedx->isLogged()}<a href="{$baseURL}/login"/>login</a>{/if} 
+                    {if $tedx->isLogged()}<a href="{$baseURL}/logout"/>logout</a>{/if}
+                    | 
+                    <a href="profile-form.php"/>register</a>
                 </div>
     </ul>
 </nav>

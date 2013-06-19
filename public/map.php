@@ -13,6 +13,14 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <?php
+$street=$_GET['street'];
+$code=$_GET['code'];
+$city=$_GET['city'];
+$country=$_GET['country'];
+$adress= $street." ".$code." ".$city." ".$country;
+
+?>
     <script>
 	   var geocoder;
 var map;
@@ -29,9 +37,11 @@ function initialize() {
 }
 
 
+
+
 function codeAddress() {
   //var address = document.getElementById('address').value;
-  var address= "aux grand-champs 7 1400 cheseaux-noreaz"
+  var address= "<?php echo $adress; ?>";
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
@@ -55,5 +65,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input type="button" value="Geocode" onclick="codeAddress()">
     </div>-->
     <div id="map-canvas"></div>
+
   </body>
 </html>

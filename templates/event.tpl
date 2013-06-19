@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+{include '_header.tpl'}
 <div class="row">
             	<div class="span7">
                     	
@@ -44,7 +44,7 @@
                 <div class="span5">
                 
                 	<?php 
-                	include 'location.php'; 
+                	include 'public/location.php'; 
                 	?>
                 	<div class="row">
 			                 <p class="span5">Av. des sports 10<br>1400 Yverdon-les-bains - CH</p>
@@ -119,7 +119,7 @@
 		</figure>
 </div>
 
-<?php include 'eventFooter.html'; ?>
+<?php include 'public/eventFooter.html'; ?>
 
 
-<?php include 'footer.php'; ?>
+<?php include '_footer.tpl'; ?>
