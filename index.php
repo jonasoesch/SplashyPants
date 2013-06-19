@@ -13,6 +13,7 @@ ini_set('display_errors', 'On');
 require_once(SPLASHY_DIR.'/lib/router.php');
 require_once(SPLASHY_DIR.'/controllers/Home.php');
 require_once(SPLASHY_DIR.'/controllers/Event.php');
+require_once(SPLASHY_DIR.'/controllers/About.php');
 
 
 $r = new Router();

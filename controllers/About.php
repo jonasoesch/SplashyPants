@@ -11,11 +11,15 @@ class About extends ViewController {
    	Template::render('home.tpl');
   }
   
-  // "login"
-  public function ted() {
-  	Template::render('about.tpl');
+  // "TEDx"
+  public function tedx() {
+  	Template::render('aboutTEDx.tpl');
   }
   
+   // "TED"
+  public function ted() {
+    Template::render('aboutTED.tpl');
+  }
   
   
   
