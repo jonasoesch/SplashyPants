@@ -1,13 +1,13 @@
 <?php include 'header.php'; ?>
 <link href="css/profile.css" rel="stylesheet" />
 <div class="row">
-	<p><a href="">Curators and hosts</a></p>
-	<p><a href="">Design team</a></p>
-	<p><a href="">External communications team</a></p>
-	<p><a href="">Fundraising & finance team</a></p>
-	<p><a href="">Hospitality & events team</a></p>
-	<p><a href="">Speakers selection team</a></p>
-	<p><a href="">Quality & sustainability team</a></p>
+	<p class="span4 offset1"><a href="">Curators and hosts</a></p>
+	<p class="span4 offset1"><a href="">Design team</a></p>
+	<p class="span4 offset1"><a href="">External communications team</a></p>
+	<p class="span4 offset1"><a href="">Fundraising & finance team</a></p>
+	<p class="span4 offset1"><a href="">Hospitality & events team</a></p>
+	<p class="span4 offset1"><a href="">Speakers selection team</a></p>
+	<p class="span4 offset1"><a href="">Quality & sustainability team</a></p>
 </div>
 
 
