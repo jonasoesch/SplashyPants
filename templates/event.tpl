@@ -5,14 +5,14 @@
                     	                    	
                  <div class="span11">
                  	<div class="row">
-                 		<h3 class="span12 eventTitle">{$eventTitle}</h3>
-                    	<p class="span12">{$eventStart}</p>
+                 		<h3 class="span12 eventTitle">{$event->getMainTopic()}</h3>
+                    	<p class="span12">{$event->getStartingDate()}</p>
                  	</div>
 	                 <div class="row">
 		                 <h4 class="span11">Programme</h4>
 		             </div>
 		             <div class="row">
-		                 <p class="span12">{$description}</p>
+		                 <p class="span12">{$event->getDescription()}</p>
 		             </div>
 	                 <div class="row">
 		                 <p class="span3">17:00</p>
@@ -50,10 +50,10 @@ $city="yverdon";
 $country="suisse";
 
 ?>
-<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{$baseURL}/public/map.php?street={$street}&code={$code}&city={$city}&country={$country}"></iframe>
+<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{$baseURL}/public/map.php?street={$location->getAddress()}&city={$location->getCity()}&country={$location->getCountry()}"></iframe>
 
                 	<div class="row">
-			                 <p class="span5">Av. des sports 10<br>1400 Yverdon-les-bains - CH</p>
+			                 <p class="span5">{$location->getAddress()}<br />{$location->getCity()}<br />{$location->getCountry()}</p>
 			                 
 			        </div>
 			        <div class="row">
