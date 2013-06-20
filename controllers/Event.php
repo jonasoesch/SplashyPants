@@ -27,6 +27,11 @@ class Event extends ViewController {
 			'id' => $id
 		));
 	}
+	
+	  // "login/do"
+  public function event() {
+  	Template::render('event.tpl');
+  }
 }
 
 ?>
