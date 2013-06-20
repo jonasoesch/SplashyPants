@@ -43,14 +43,13 @@ $r->map("event/:id",
 $r->map("about",
         "AboutView::tedxLausanne");
 
-<<<<<<< HEAD
+
 $r->map("partners",
         "PartnersView::partners");
-=======
+
 $r->map("video",
         "VideoView::video");
 
->>>>>>> 4a15945feaa4921f1645a3471681ae0a3a342850
 
 
 
