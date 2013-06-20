@@ -16,11 +16,11 @@
     			{pop_flash_message}
     		</div>
     	{/if}
-<a href="index.php"><img src="{$baseURL}/public/images/TEDxlausanne.gif" /></a>
+<a href="{$baseURL}"><img src="{$baseURL}/public/images/TEDxlausanne.gif" /></a>
 
 <nav class="menu row">
 	<ul>
-                <li class="span1"><a href="event.php">Event </a></li>
+                <li class="span1"><a href="{$baseURL}/event/show">Event </a></li>
                 <li class="span1"><a href="video.php">Videos </a></li>
                 <li class="span1"><a href="about.php">About </a></li>
                 <li class="span1"><a href="team.php">Team </a></li>

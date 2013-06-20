@@ -3,7 +3,7 @@
 require_once SPLASHY_DIR."/helpers/ViewController.php";
 require_once SPLASHY_DIR."/helpers/Template.php";
 
-class Event extends ViewController {
+class EventView extends ViewController {
   
   
   // ""
@@ -27,6 +27,11 @@ class Event extends ViewController {
 			'id' => $id
 		));
 	}
+	
+	  // "login/do"
+  public function event() {
+  	Template::render('event.tpl');
+  }
 }
 
 ?>
