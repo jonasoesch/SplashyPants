@@ -7,6 +7,7 @@
       <link href="{$baseURL}/public/css/normalize.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/typography.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/design.css" rel="stylesheet" />
+      <link href="{$baseURL}/public/js/zoombox/zoombox.css" rel="stylesheet" /> 
 
     </head>
     <body>
