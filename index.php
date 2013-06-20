@@ -64,8 +64,7 @@ $r->get("video",
 
 /* ---------- Person ---------- */
 
-$r->get("team",
-        "TeamView::team");
+$r->get("team","TeamView::team");
 
 
 $r->get("register",

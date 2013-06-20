@@ -8,10 +8,9 @@ class PersonView extends ViewController {
     public function showProfile($id) {
         global $tedx_manager;
         $aPersonMessage = $tedx_manager->getPerson($id);
-        
+
         // Message
         if (!$aPersonMessage->getStatus())
-          
             echo 'Could not find person! ' . $aPersonMessage->getMessage();
 
 
@@ -20,11 +19,8 @@ class PersonView extends ViewController {
             'person' => $aPersonMessage->getContent()
         ));
     }
+
     
-    
-    public function register() {
-    	Template::render('register.tpl');
-    }
 
 }
 

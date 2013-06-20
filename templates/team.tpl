@@ -10,7 +10,7 @@
 	<p class="span4 offset1"><a href="">Quality & sustainability team</a></p>
 </div>
 
-
+ {foreach from=$organizers item=organizer}
 
 	<div class="row event-slot">
 
@@ -19,14 +19,14 @@
 	  	</figure>
 	  	
 	  	<h1 class="span9 offset1">
-                    <span class="prenom">{$person->getFirstName()}</span>
-	  	  <span class="nom">{$person->getName()}</span>
+                    <span class="prenom">{$organizer->getFirstName()}</span>
+	  	  <span class="nom">{$organizer->getName()}</span>
 	  	  <span class="role">(Bitches coordinator)</span>
 	  	</h1>
 	  	<p class="span9 offset1 ">role<br />
-		<a href="mailto:{$person->getEmail()}">{$person->getEmail()}</a></p>
+		<a href="mailto:{$organizer->getEmail()}">{$person->getEmail()}</a></p>
      </div>
 
-
+                        {/foreach}
       
 {include "_footer.tpl"}
