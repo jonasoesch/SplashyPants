@@ -39,7 +39,7 @@ $r->map("event/:id",
 				"EventView::show");
 
 $r->map("about",
-        "AboutView::ted");
+        "AboutView::tedxLausanne");
 
 
 
