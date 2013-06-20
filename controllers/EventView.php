@@ -28,13 +28,52 @@ class EventView extends ViewController {
 		if( $messageGetEvent->getStatus()){
 							
 			$anEvent = $messageGetEvent->getContent($id);
+			
 			$locationName = $anEvent->getLocationName();
+			
 			$messageGetLocation = $tedx_manager->getLocation($locationName);
+			//faire test
+			
 			$aLocation = $messageGetLocation->getContent();
 			
 			$messageGetSlotsFromEvent = $tedx_manager->getSlotsFromEvent($anEvent);
+			//faire test
 			
-		}
+			$someSlot = $messageGetSlotsFromEvent->getContent();
+			
+						
+			
+			$slotsWithSpeakers = array();
+			
+			$i=0;
+			
+			foreach($someSlot as $aSlot){
+				$slotsWithSpeakers[$i]['slotData']=$aSlot;
+				$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($aSlot);
+				if ($messageGetPlacesBySlot->getStatus()){
+					$places = $messageGetPlacesBySlot->getContent();
+					
+									
+						foreach($places as $place){
+				
+							$messageGetSpeakerByPlace = $tedx_manager->getSpeakerByPlace($place);
+							//faire if
+							$speaker = $messageGetSpeakerByPlace->getContent();
+							
+							$slotsWithSpeakers[$i][$place->getNo()]=$speaker;
+					
+					
+						}// foreach
+				
+				}//if status	
+				
+			
+				$i++;
+			}// foreach
+			echo "<pre>";
+			var_dump($slotsWithSpeakers);
+			echo"</pre>";
+		}//if
 		
 		else{}
 		
@@ -42,6 +81,7 @@ class EventView extends ViewController {
 		Template::render('event.tpl', array(
 			'event' => $anEvent,
 			'location' => $aLocation,
+			'slots' => $someSlot,
 			'code' => '1077',
 			'city' => 'Servion',
 			'country' => 'Suisse'
