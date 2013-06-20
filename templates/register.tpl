@@ -1,7 +1,7 @@
 {include "_header.tpl"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
 
-<form action="register.php" method="post"> 
+<form action="register" method="post"> 
 <div class="row profile-details">
 	  <figure class="span2 offset1" >
 	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
@@ -36,21 +36,27 @@
 	  			<input type="text" name="country" placeholder="Country" size="20" maxlength="25" />
 	  		</p>
 	  		<p class="span6 birthday">
-	  			<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  
-	  			<input type="text" name="dob_monat" placeholder="MM"  size="2" maxlength="2" /> 
 	  			<input type="text" name="dob_day" placeholder="DD" size="2" maxlength="2" />
+	  			<input type="text" name="dob_month" placeholder="MM"  size="2" maxlength="2" /> 
+	  			<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  
 	  		</p>
 	  	</div>
 	  	
 	 
 	 <div class="row">
+		 <p class="span6">
+		 	<input type="text" name="username" placeholder="Username" />
+		 </p>
 	 	<p class="span6">
 	 		<input type="password" name="password" placeholder="Password" />
 	 	</p>
-	 	<p class="span6">
-	 		<input type="submit" class="offset2" />
-	 	</p>
 	 </div>
+	 <div class="row">
+	 		<p class="span6 offset6">
+	 			<input type="submit" />
+	 		</p>
+	 </div>
+
 	 	 </div>
 </div>
 
