@@ -73,6 +73,11 @@ $r->get("register",
 
 
 
+
+/* ---------- Admin ---------- */
+$r->get("events",
+				"EventView::listEvents");
+
 $r->run();
 
 ?>

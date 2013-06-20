@@ -48,9 +48,19 @@ class EventView extends ViewController {
 		));
 	}
 	
-	  // "login/do"
+
   public function event() {
   	Template::render('event.tpl');
+  }
+  
+  
+  public function listEvents() {
+  	global $tedx_manager;
+  	
+  	$events = $tedx_manager->getEvents()->getContent();
+  	Template::render('events.tpl', array(
+  		'events' => $events
+  	));
   }
 }
 
