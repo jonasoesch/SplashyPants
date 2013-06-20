@@ -3,7 +3,7 @@
 require_once SPLASHY_DIR."/helpers/ViewController.php";
 require_once SPLASHY_DIR."/helpers/Template.php";
 
-class Event extends ViewController {
+class EventView extends ViewController {
   
   
   // ""

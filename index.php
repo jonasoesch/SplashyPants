@@ -11,9 +11,9 @@ ini_set('display_errors', 'On');
 
 
 require_once(SPLASHY_DIR.'/lib/router.php');
-require_once(SPLASHY_DIR.'/controllers/Home.php');
-require_once(SPLASHY_DIR.'/controllers/Event.php');
-require_once(SPLASHY_DIR.'/controllers/About.php');
+require_once(SPLASHY_DIR.'/controllers/HomeView.php');
+require_once(SPLASHY_DIR.'/controllers/EventView.php');
+require_once(SPLASHY_DIR.'/controllers/AboutView.php');
 
 
 $r = new Router();
@@ -21,25 +21,25 @@ $r = new Router();
 
 /* ---------- Routes ---------- */
 
-$r->map("",	"Home::index");
+$r->map("",	"HomeView::index");
 
 $r->map("login",	
-        "Home::login");
+        "HomeView::login");
 				
 $r->map("login/do",	
-        "Home::loginDo");
+        "HomeView::loginDo");
 
 $r->map("logout",
-        "Home::logout");
+        "HomeView::logout");
 
 $r->map("persons/:id",
-				"Home::showPerson");
+				"HomeView::showPerson");
 				
 $r->map("event/:id",
-				"Event::show");
+				"EventView::show");
 
 $r->map("about",
-        "About::ted");
+        "AboutView::ted");
 
 
 
