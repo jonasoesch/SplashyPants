@@ -10,9 +10,8 @@ class PersonView extends ViewController {
         $aPersonMessage = $tedx_manager->getPerson($id);
         
         // Message
-        if ($aPersonMessage->getStatus())
-            echo 'Congrats! ' . $aPersonMessage->getMessage();
-        else
+        if (!$aPersonMessage->getStatus())
+          
             echo 'Could not find person! ' . $aPersonMessage->getMessage();
 
 
