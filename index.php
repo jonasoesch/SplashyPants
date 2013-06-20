@@ -24,37 +24,37 @@ $r = new Router();
 
 /* ---------- Routes ---------- */
 
-$r->map("",	"HomeView::index");
+$r->get("",	"HomeView::index");
 
-$r->map("login",	
+$r->get("login",	
         "HomeView::login");
 				
-$r->map("login/do",	
+$r->post("login",	
         "HomeView::loginDo");
 
-$r->map("logout",
+$r->get("logout",
         "HomeView::logout");
 
-$r->map("persons/:id",
+$r->get("persons/:id",
 				"HomeView::showPerson");
 				
-$r->map("event/:id",
+$r->get("event/:id",
 				"EventView::show");
 
-$r->map("about",
+$r->get("about",
         "AboutView::tedxLausanne");
 
 
-$r->map("partners",
+$r->get("partners",
         "PartnersView::partners");
 
-$r->map("video",
+$r->get("video",
         "VideoView::video");
 
-$r->map("team",
+$r->get("team",
         "TeamView::team");
 
-$r->map("contact",
+$r->get("contact",
         "ContactView::contact");
 
 
