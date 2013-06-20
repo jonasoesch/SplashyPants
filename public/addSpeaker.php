@@ -17,12 +17,12 @@ include 'header.php';
                 <input type="text" name="email" placeholder="E-mail" size="20" maxlength="25" /> 
                 <input type="text" name="phone_number" placeholder="Phone Number" size="20" maxlength="12" /><br />
 
-                <textarea name="description" rows="20" cols="45" placeholder="Descripttion"></textarea><br />
+                <textarea name="description" rows="20" cols="45" placeholder="Description"></textarea><br />
 
                 <input type="text" name="address" placeholder="address" size="20" maxlength="25" /> <input type="text" name="zipcode" placeholder="zipcode" size="6" maxlength="5" />  <br />
                 <input type="text" name="city" placeholder="city" size="20" maxlength="25" /> <input type="text" name="country" placeholder="country" size="20" maxlength="25" /> <br />
                 <div class="offset7">
-                    <input type="submit" value="Add">
+                    <input type="submit" value="add">
                 </div>
 
             </div>
@@ -35,8 +35,8 @@ include 'header.php';
     <?php
     
     global $tedx_manager;
-    if ($_POST['add']) {
-        "yeah";
+    if (isset($_GET['add'])) {
+        echo "<p>yeah</p>";
         $args = array(
         'name' => $_POST['lastname'], // String
         'firstName' => $_POST['name'], // String
