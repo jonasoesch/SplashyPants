@@ -14,6 +14,7 @@ require_once(SPLASHY_DIR.'/lib/router.php');
 require_once(SPLASHY_DIR.'/controllers/HomeView.php');
 require_once(SPLASHY_DIR.'/controllers/EventView.php');
 require_once(SPLASHY_DIR.'/controllers/AboutView.php');
+require_once(SPLASHY_DIR.'/controllers/VideoView.php');
 
 
 $r = new Router();
@@ -40,6 +41,9 @@ $r->map("event/:id",
 
 $r->map("about",
         "AboutView::ted");
+
+$r->map("video",
+        "VideoView::video");
 
 
 
