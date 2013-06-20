@@ -22,12 +22,16 @@ class EventView extends ViewController {
   }
 
 	public function show($id) {
+		global $tedx_manager;
+				
+		$anEvent = $tedx_manager->getEvent($id);
+		$locationName=$anEvent->getContent()->getLocationName();
+		$aLocation = $tedx_manager->getLocation($locationName);
+		$aSlot = $tedx_manager->getSlotsFromEvent($anEvent);		
+		
 		Template::render('event.tpl', array(
-			'eventTitle' => 'Schnaby il rigole pas',
-			'eventStart' => '28.06.2013',
-			'eventEnd' => '28.06.2013',
-			'description' => 'Our inspired team, in collaboration with TEDxLausanne, is pleased to announce TEDxLausanneChange 2013. This event, themed “positive disruption”, will feature a live stream of the main TEDxChange program in Seattle, Washington and three presentations by dynamic local speakers. Join us for an event that will challenge preconceived ideas, spark discussion, engage leaders and shed light on new perspectives.',
-			'street' => 'Ch. du Moleson',
+			'event' => $anEvent->getContent(),
+			'location' => $aLocation->getContent(),
 			'code' => '1077',
 			'city' => 'Servion',
 			'country' => 'Suisse'
