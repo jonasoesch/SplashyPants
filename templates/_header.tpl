@@ -13,7 +13,7 @@
     <body>
     	<div class="container">
     	{if isset($smarty.session.flash) && $smarty.session.flash != ''}
-    		<div class="row info">
+    		<div class="row flash-message">
     			{pop_flash_message}
     		</div>
     	{/if}

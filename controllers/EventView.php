@@ -5,21 +5,6 @@ require_once SPLASHY_DIR."/helpers/Template.php";
 
 class EventView extends ViewController {
   
-  
-  // ""
-  public function index() {
-   	Template::render('home.tpl');
-  }
-  
-  // "login"
-  public function login() {
-  	Template::render('login.tpl');
-  }
-  
-  // "login/do"
-  public function loginDo() {
-  	Template::render('home.tpl');
-  }
 
 	public function show($id) {
 		global $tedx_manager;
