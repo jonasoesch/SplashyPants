@@ -128,4 +128,4 @@ $country="suisse";
 <?php include 'public/eventFooter.html'; ?>
 
 
-<?php include '_footer.tpl'; ?>
+{include "_footer.tpl"}

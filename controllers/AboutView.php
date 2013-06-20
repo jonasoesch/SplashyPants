@@ -11,6 +11,11 @@ class AboutView extends ViewController {
    	Template::render('home.tpl');
   }
   
+   // "TEDxLausanne"
+  public function tedxLausanne() {
+    Template::render('aboutTEDxLausanne.tpl');
+  }
+
   // "TEDx"
   public function tedx() {
   	Template::render('aboutTEDx.tpl');
