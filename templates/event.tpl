@@ -69,35 +69,6 @@ $country="suisse";
 <h2>Speakers</h2>
 
 
-<div class="row event-slot">
-			<div class="span4">
-			<h3>Slot one</h3>
-			<p>17:00 - 19:00</p>
-			<p>28.06.2013</p>
-		</div>
-		<figure class="span2">
-			<img class="profil portrait" src="images/merkle.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Christou Piscine</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/justo.png">
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/hqdefault.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Jerôme Clôt</a>
-			</p>
-		</figure>
-</div>
-
-
  {foreach from=$slotsWithSpeakers item=slotData}
  	<div class="row event-slot">
  		{foreach from=$slotData key=key item=data}
@@ -105,14 +76,13 @@ $country="suisse";
  				<div class="span4">
 	 				<h3><h3>Slot {$data->getNo()}</h3></h3>
 	 				<p>{$data->getHappeningDate()}</p>
-				<p>28.06.2013</p>
 		</div>
 
  		{else}
  			<figure class="span2">
 				<img class="profil portrait" src="images/merkle2.jpg"/>
 				<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">{$data->getFirstName()} $data->getName()}</a>
+				<a href="/tedxEventManager/SplashyPants/profile.php">{$data->getFirstName()} {$data->getName()}</a>
 				</p>
 			</figure>
  			
