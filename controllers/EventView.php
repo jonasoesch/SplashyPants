@@ -23,15 +23,25 @@ class EventView extends ViewController {
 
 	public function show($id) {
 		global $tedx_manager;
-				
-		$anEvent = $tedx_manager->getEvent($id);
-		$locationName=$anEvent->getContent()->getLocationName();
-		$aLocation = $tedx_manager->getLocation($locationName);
-		$aSlot = $tedx_manager->getSlotsFromEvent($anEvent);		
+		
+		$messageGetEvent = $tedx_manager->getEvent($id);
+		if( $messageGetEvent->getStatus()){
+							
+			$anEvent = $messageGetEvent->getContent($id);
+			$locationName = $anEvent->getLocationName();
+			$messageGetLocation = $tedx_manager->getLocation($locationName);
+			$aLocation = $messageGetLocation->getContent();
+			
+			$messageGetSlotsFromEvent = $tedx_manager->getSlotsFromEvent($anEvent);
+			
+		}
+		
+		else{}
+		
 		
 		Template::render('event.tpl', array(
-			'event' => $anEvent->getContent(),
-			'location' => $aLocation->getContent(),
+			'event' => $anEvent,
+			'location' => $aLocation,
 			'code' => '1077',
 			'city' => 'Servion',
 			'country' => 'Suisse'
