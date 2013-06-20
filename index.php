@@ -17,6 +17,7 @@ require_once(SPLASHY_DIR.'/controllers/AboutView.php');
 require_once(SPLASHY_DIR.'/controllers/PartnersView.php');
 require_once(SPLASHY_DIR.'/controllers/VideoView.php');
 require_once(SPLASHY_DIR.'/controllers/TeamView.php');
+require_once(SPLASHY_DIR.'/controllers/PersonView.php');
 
 $r = new Router();
 
@@ -34,8 +35,8 @@ $r->map("login/do",
 $r->map("logout",
         "HomeView::logout");
 
-$r->map("persons/:id",
-				"HomeView::showPerson");
+$r->map("person/:id",
+				"PersonView::showProfile");
 				
 $r->map("event/:id",
 				"EventView::show");
