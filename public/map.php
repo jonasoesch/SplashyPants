@@ -8,7 +8,7 @@
       html, body, #map-canvas {
         margin: 0;
         padding: 0;
-        height: 100%;
+        height: 90%;
         width:100%;
       }
     </style>

@@ -5,14 +5,14 @@
                     	                    	
                  <div class="span11">
                  	<div class="row">
-                 		<h3 class="span12 eventTitle"> Discovering Magic Justo</h3>
-                    	<p class="span12">02.8.2013</p>
+                 		<h3 class="span12 eventTitle">{$eventTitle}</h3>
+                    	<p class="span12">{$eventStart}</p>
                  	</div>
 	                 <div class="row">
 		                 <h4 class="span11">Programme</h4>
 		             </div>
 		             <div class="row">
-		                 <p class="span12">Our inspired team, in collaboration with TEDxLausanne, is pleased to announce TEDxLausanneChange 2013. This event, themed “positive disruption”, will feature a live stream of the main TEDxChange program in Seattle, Washington and three presentations by dynamic local speakers. Join us for an event that will challenge preconceived ideas, spark discussion, engage leaders and shed light on new perspectives.</p>
+		                 <p class="span12">{$description}</p>
 		             </div>
 	                 <div class="row">
 		                 <p class="span3">17:00</p>
@@ -50,7 +50,7 @@ $city="yverdon";
 $country="suisse";
 
 ?>
-<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="public/map.php<?php echo "street=".$street."&code=".$code."&city=".$city."&country=".$country;?>"></iframe>
+<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{$baseURL}/public/map.php?street={$street}&code={$code}&city={$city}&country={$country}"></iframe>
 
                 	<div class="row">
 			                 <p class="span5">Av. des sports 10<br>1400 Yverdon-les-bains - CH</p>
