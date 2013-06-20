@@ -33,16 +33,11 @@ class HomeView extends ViewController {
   
   // "logout"
   public function logout() {
+
   	global $tedx_manager;
   	$message = $tedx_manager->logout();
   	Template::redirect('');
   }
-
-	public function showPerson($id) {
-		Template::render('home.tpl', array(
-			'id' => $id
-		));
-	}
 }
 
 ?>

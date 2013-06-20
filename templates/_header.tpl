@@ -7,6 +7,7 @@
       <link href="{$baseURL}/public/css/normalize.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/typography.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/design.css" rel="stylesheet" />
+      <link href="{$baseURL}/public/js/zoombox/zoombox.css" rel="stylesheet" /> 
 
     </head>
     <body>
@@ -25,10 +26,10 @@
                 <li class="span1"><a href="{$baseURL}/about">About </a></li>
                 <li class="span1"><a href="{$baseURL}/team">Team </a></li>
                 <li class="span1"><a href="{$baseURL}/partners">Partner </a></li>
-                <li class="span2"><a href="contact.php">Contact Us </a></li>
+                <li class="span2"><a href="{$baseURL}/contact">Contact Us </a></li>
                 <div class="span2 offset3" style="align:right;">
                     {if !$tedx->isLogged()}
-                    	<a href="{$baseURL}/login"/>login</a> | <a href="profile-form.php"/>register</a>
+                    	<a href="{$baseURL}/login"/>login</a> | <a href="{$baseURL}/register"/>register</a>
                     {/if} 
                     {if $tedx->isLogged()}
                     	<a href="{$baseURL}/logout"/>logout</a> | <a href="profile-form.php"/>admin</a>

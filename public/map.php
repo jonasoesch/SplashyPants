@@ -8,17 +8,17 @@
       html, body, #map-canvas {
         margin: 0;
         padding: 0;
-        height: 90%;
+        height: 100%;
         width:100%;
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <?php
 $street=$_GET['street'];
-$code=$_GET['code'];
+//$code=$_GET['code'];
 $city=$_GET['city'];
 $country=$_GET['country'];
-$adress= $street." ".$code." ".$city." ".$country;
+$adress= $street." ".$city." ".$country;
 
 ?>
     <script>

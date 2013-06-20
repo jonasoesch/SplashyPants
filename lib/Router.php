@@ -69,7 +69,20 @@ class Router {
 		
 		$this->routes[$rule] = new Route($rule, $this->request_uri, $target, $conditions);
 	}
-
+	
+	public function get($rule, $target = array(), $conditions = array()) {
+		if($_SERVER['REQUEST_METHOD'] === 'GET') {
+			$this->map($rule, $target, $conditions);
+		}
+	}
+	
+	
+	public function post($rule, $target = array(), $conditions = array()) {
+		if($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->map($rule, $target, $conditions);
+		}
+	}
+	
 	public function default_routes() {
 		$this->map(':controller');
 		$this->map(':controller/:action');
