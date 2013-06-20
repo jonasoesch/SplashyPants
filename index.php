@@ -17,6 +17,7 @@ require_once(SPLASHY_DIR.'/controllers/AboutView.php');
 require_once(SPLASHY_DIR.'/controllers/PartnersView.php');
 require_once(SPLASHY_DIR.'/controllers/VideoView.php');
 require_once(SPLASHY_DIR.'/controllers/TeamView.php');
+require_once(SPLASHY_DIR.'/controllers/RegisterView.php');
 
 $r = new Router();
 
@@ -52,6 +53,9 @@ $r->map("video",
 
 $r->map("team",
         "TeamView::team");
+
+$r->map("register",
+        "RegisterView::register");
 
 
 
