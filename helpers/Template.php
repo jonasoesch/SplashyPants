@@ -44,6 +44,9 @@ class Template {
 	public static function redirect($url) {
 		header("Location: ".self::getBaseURL().$url); /* Redirect browser */
 		exit();
+
+    // Some possibilities to pass variables -> use  $_SESSION['param'];
+    // {$smarty.session.param}
 	}
 	
 	private static function assignArgs($args) {

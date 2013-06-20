@@ -11,6 +11,7 @@ class HomeView extends ViewController {
    	Template::render('home.tpl');
   }
   
+  
   // "login"
   public function login() {
   	Template::render('login.tpl');
@@ -38,6 +39,34 @@ class HomeView extends ViewController {
   	$message = $tedx_manager->logout();
   	Template::redirect('');
   }
+  
+  
+ // "TEDxLausanne"
+  public function tedxLausanne() {
+    Template::render('aboutTEDxLausanne.tpl');
+  }
+
+  // "TEDx"
+  public function tedx() {
+  	Template::render('aboutTEDx.tpl');
+  }
+  
+   // "TED"
+  public function ted() {
+    Template::render('aboutTED.tpl');
+  }
+  
+  
+  // "contact"
+  public function contact() {
+  	Template::render('contact.tpl');
+  }
+  
+  // "partners"
+  public function partners() {
+    Template::render('partners.tpl');
+  }
+  
 }
 
 ?>
