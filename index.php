@@ -13,9 +13,9 @@ ini_set('display_errors', 'On');
 require_once(SPLASHY_DIR.'/lib/router.php');
 require_once(SPLASHY_DIR.'/controllers/HomeView.php');
 require_once(SPLASHY_DIR.'/controllers/EventView.php');
+require_once(SPLASHY_DIR.'/controllers/PersonView.php');
 require_once(SPLASHY_DIR.'/controllers/VideoView.php');
 require_once(SPLASHY_DIR.'/controllers/TeamView.php');
-require_once(SPLASHY_DIR.'/controllers/RegisterView.php');
 
 $r = new Router();
 
@@ -69,7 +69,7 @@ $r->get("team",
 
 
 $r->get("register",
-        "RegisterView::register");
+        "PersonView::register");
 
 
 

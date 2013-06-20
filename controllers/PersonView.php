@@ -21,6 +21,11 @@ class PersonView extends ViewController {
             'person' => $aPersonMessage->getContent()
         ));
     }
+    
+    
+    public function register() {
+    	Template::render('register.tpl');
+    }
 
 }
 
