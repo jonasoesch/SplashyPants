@@ -43,9 +43,15 @@
             
                 <div class="span5">
                 
-                	<?php 
-                	include 'public/location.php'; 
-                	?>
+                	<?php
+$street="av des sports 10";
+$code="1400";
+$city="yverdon";
+$country="suisse";
+
+?>
+<iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="public/map.php<?php echo "street=".$street."&code=".$code."&city=".$city."&country=".$country;?>"></iframe>
+
                 	<div class="row">
 			                 <p class="span5">Av. des sports 10<br>1400 Yverdon-les-bains - CH</p>
 			                 
