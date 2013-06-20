@@ -1,5 +1,5 @@
 {include "_header.tpl"}
-<link href="css/profile.css" rel="stylesheet" />
+<link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
 
 <form action="register.php" method="post"> 
 <div class="row profile-details">
