@@ -46,7 +46,7 @@ class EventView extends ViewController {
 							$speaker = $messageGetSpeakerByPlace->getContent();
 							
 							$slotsWithSpeakers[$i][$place->getNo()]=$speaker;
-					
+							
 					
 						}// foreach
 				
@@ -55,9 +55,7 @@ class EventView extends ViewController {
 			
 				$i++;
 			}// foreach
-			echo "<pre>";
-			var_dump($slotsWithSpeakers);
-			echo"</pre>";
+
 		}//if
 		
 		else{}
@@ -66,26 +64,16 @@ class EventView extends ViewController {
 		Template::render('event.tpl', array(
 			'event' => $anEvent,
 			'location' => $aLocation,
-			'slots' => $someSlot,
+			'slotsWithSpeakers' => $slotsWithSpeakers,
 			'code' => '1077',
 			'city' => 'Servion',
 			'country' => 'Suisse'
 		));
 	}
 	
-
+	  // "login/do"
   public function event() {
   	Template::render('event.tpl');
-  }
-  
-  
-  public function listEvents() {
-  	global $tedx_manager;
-  	
-  	$events = $tedx_manager->getEvents()->getContent();
-  	Template::render('events.tpl', array(
-  		'events' => $events
-  	));
   }
 }
 

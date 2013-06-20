@@ -97,10 +97,26 @@ $country="suisse";
 		</figure>
 </div>
 
+<ul>
+ {foreach from=$slotsWithSpeakers item=slotData}
+ 	<li>
+ 		{foreach from=$slotData key=key item=data}
+ 		{if $key == 'slotData'}
+ 		 		<h3>Slot {$data->getNo()}</h3>
+ 		 		<p>{$data->getHappeningDate()}</p>
+ 		{else}
+ 				<p>{$data->getFirstName()}</p>
+ 				<p>{$data->getName()}</p>
+ 		{/if}
+ 	{/foreach}
+ 	</li>
+ {/foreach}
+</ul>
+
 <div class="row event-slot">
 		
 		<div class="span4">
-			<h3>Slot two</h3>
+			<h3></h3>
 			<p>17:00 - 19:00</p>
 			<p>28.06.2013</p>
 		</div>
