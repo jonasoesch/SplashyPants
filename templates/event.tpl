@@ -97,49 +97,30 @@ $country="suisse";
 		</figure>
 </div>
 
-<ul>
+
  {foreach from=$slotsWithSpeakers item=slotData}
- 	<li>
+ 	<div class="row event-slot">
  		{foreach from=$slotData key=key item=data}
  		{if $key == 'slotData'}
- 		 		<h3>Slot {$data->getNo()}</h3>
- 		 		<p>{$data->getHappeningDate()}</p>
+ 				<div class="span4">
+	 				<h3><h3>Slot {$data->getNo()}</h3></h3>
+	 				<p>{$data->getHappeningDate()}</p>
+				<p>28.06.2013</p>
+		</div>
+
  		{else}
- 				<p>{$data->getFirstName()}</p>
- 				<p>{$data->getName()}</p>
+ 			<figure class="span2">
+				<img class="profil portrait" src="images/merkle2.jpg"/>
+				<p>
+				<a href="/tedxEventManager/SplashyPants/profile.php">{$data->getFirstName()} $data->getName()}</a>
+				</p>
+			</figure>
+ 			
  		{/if}
  	{/foreach}
- 	</li>
+ 	</div>
  {/foreach}
-</ul>
 
-<div class="row event-slot">
-		
-		<div class="span4">
-			<h3></h3>
-			<p>17:00 - 19:00</p>
-			<p>28.06.2013</p>
-		</div>
-		<figure class="span2">
-			<img class="profil portrait" src="images/merkle2.jpg"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Christophe Piscine</a>
-			</p>
-		</figure>
-		
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/justo2.jpg">
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Magic Justo</a>
-			</p>
-		</figure>
-		<figure class="span2 offset1">
-			<img class="profil portrait" src="images/clot.png"/>
-			<p>
-				<a href="/tedxEventManager/SplashyPants/profile.php">Jerome Clot</a>
-			</p>
-		</figure>
-</div>
 
 <?php include 'public/eventFooter.html'; ?>
 
