@@ -80,7 +80,7 @@ $country="suisse";
 
  		{else}
  			<figure class="span2">
-				<img class="profil portrait" src="public/images/speaker/{$data->getNo()}.jpg" />
+				<img class="profil portrait" src="../public/images/speaker/{$data->getNo()}.jpg" />
 				<p>
 				<a href="/tedxEventManager/SplashyPants/person/{$data->getNo()}">{$data->getFirstName()} {$data->getName()}</a>
 				</p>
