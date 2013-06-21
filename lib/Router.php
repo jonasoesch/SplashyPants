@@ -31,7 +31,7 @@ class Router {
 	public function __construct() {
 		$request = $this->get_request();
 
-		$this->request_uri = $request;
+		$this->request_uri = isset(SPLASHY_URL) ? str_replace(SPLASHY_URL, "", $request) : $request;
 		$this->routes = array();
 	}
 
