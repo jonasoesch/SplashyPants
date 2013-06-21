@@ -11,6 +11,11 @@ class HomeView extends ViewController {
    	Template::render('home.tpl');
   }
   
+  public function hey($event, $contact) {
+  	var_dump($event);
+  	var_dump($contact);
+  }
+  
   
   // "login"
   public function login() {
