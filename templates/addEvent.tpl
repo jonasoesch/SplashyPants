@@ -13,8 +13,7 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 
 }
 </script>
-<?php include 'header.php'; ?>
-
+{include '_header.tpl'}
 <form>
 <div class="row">
             	<div class="span7">
@@ -101,4 +100,4 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 <!-- <?php include 'eventFooter.html'; ?>-->
 
 
-<?php include 'footer.php'; ?>
+{include "_footer.tpl"}
