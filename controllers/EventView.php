@@ -7,6 +7,7 @@ class EventView extends ViewController {
   
  
 	public function show($id) {
+		
 		global $tedx_manager;
 		$messageGetEvent = $tedx_manager->getEvent($id);
 		
@@ -107,20 +108,128 @@ class EventView extends ViewController {
 	public function add() {
 		global $tedx_manager;
 		
-			$someLocations = $tedx_manager->getLocations();
+			$messageGetLocations = $tedx_manager->getLocations();
 						
 			//message
-			if( $someLocations->getStatus()){
-			
-				$someLocations = $someLocations->getContent();
+			if( $messageGetLocations->getStatus()){
 				
+				$someLocations = $messageGetLocations->getContent();
 			}
+			
+			else{
+				
+			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
+
+			}
+			
+			$searchArgs = array(
+			'personType' => 'speaker');
+						// exec the search
+			$messageSearchPersons = $tedx_manager->searchPersons($searchArgs);
+
+			// test answer
+			if($messageSearchPersons ->getStatus()){
+			$someSpeakers = $messageSearchPersons->getContent();
+			}
+			else{
+			echo 'No Speaker matched your criterias';
+			}
+			
 			
 		
 		Template::render('addEvent.tpl',array(
-			'location' => $someLocation));
+			'locations' => $someLocations,
+			'speakers' => $someSpeakers));
 	}
 
+	public function submitEvent() {
+			global $tedx_manager;
+			
+			$argsCreateEvent = array(
+			'mainTopic'     => $_POST['mainTopic'],
+			'startingDate'  => $_POST['event_dob_year']."-".$_POST['event_dob_month']."-".$_POST['event_dob_day'],
+		    'endingDate'    => $_POST['event_doe_year']."-".$_POST['event_doe_month']."-".$_POST['event_doe_day'],
+		    'startingTime'  => $_POST['event_hob'],
+		    'endingTime'    => $_POST['event_hoe'],
+		    'description'   => $_POST['description'],
+		    'locationName'  => $_POST['locationName2']  // ligne à enlever si pas de Location !
+			);
+			
+			// 1..* arrays pour création des Slots
+			// Note: pas de référence à l'Event !(Event.No indéterminé)
+			$slot1 = array (
+			    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
+			    'startingTime'  => $_POST['slot_hob'],
+			    'endingTime'    => $_POST['slot_hoe'],
+			);
+			$slot2 = array (
+			    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
+			    'startingTime'  => $_POST['slot_hob'],
+			    'endingTime'    => $_POST['slot_hoe'],
+			);
+			// Un array de Slots
+			$argsSlots = array($slot1, $slot2);
+			 
+			// L'array final pour la fonction addEvent
+			$megaArgsAddEvent = array (
+			    'event'   => $argsCreateEvent,
+			    'slots'   => $argsSlots
+			);
+			 
+			// Création de l'Event !
+			$messageAddEvent = $tedx_manager->addEvent($megaArgsAddEvent);
+			
+			echo "<pre>";
+			var_dump($messageAddEvent->getContent());
+			echo "</pre>";
+			$idEvent=$messageAddEvent->getContent()[0]->getNo();
+    	
+    	//Template::flash($messageAddEvent->getMessage());
+    	
+    	if($messageAddEvent->getStatus()) {
+    		//$idEvent->getNo();
+    		Template::redirect("event/$idEvent");
+    	} else {
+    		//Template::redirect('addEvent');
+    	}
+    }
+    
+    	public function slot() {
+		global $tedx_manager;
+		
+			$messageGetLocations = $tedx_manager->getLocations();
+						
+			//message
+			if( $messageGetLocations->getStatus()){
+				
+				$someLocations = $messageGetLocations->getContent();
+			}
+			
+			else{
+				
+			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
+
+			}
+			
+			$searchArgs = array(
+			'personType' => 'speaker');
+						// exec the search
+			$messageSearchPersons = $tedx_manager->searchPersons($searchArgs);
+
+			// test answer
+			if($messageSearchPersons ->getStatus()){
+			$someSpeakers = $messageSearchPersons->getContent();
+			}
+			else{
+			echo 'No Speaker matched your criterias';
+			}
+			
+			
+		
+		Template::render('addSlot.tpl',array(
+			'locations' => $someLocations,
+			'speakers' => $someSpeakers));
+	}
 
 }//class
 

@@ -59,9 +59,11 @@ $r->get("event/:id",
 $r->get("addEvent",
 				"EventView::add");
 				
-$r->post("addEvent/add",
-				"EventView::SubmitAdd");
+$r->post("addEvent",
+				"EventView::submitEvent");
 
+$r->get("addSlot",
+				"EventView::slot");
 
 /* ---------- Videos ---------- */
 $r->get("video",
