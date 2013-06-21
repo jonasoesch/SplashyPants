@@ -22,9 +22,10 @@
                     <span class="prenom">{$organizer->getFirstName()}</span>
 	  	  <span class="nom">{$organizer->getName()}</span>
 	  	  <span class="role">(Bitches coordinator)</span>
+               
 	  	</h1>
-	  	<p class="span9 offset1 ">role<br />
-		<a href="mailto:{$organizer->getEmail()}">{$person->getEmail()}</a></p>
+	  	<p class="span9 offset1 ">{$organizer->getDescription()}</p><br />
+		<p class="span9 offset1 "><a href="mailto:{$organizer->getEmail()}">{$organizer->getEmail()}</a></p>
      </div>
 
                         {/foreach}
