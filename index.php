@@ -55,6 +55,12 @@ $r->get("logout",
         
 $r->get("event/:id",
 				"EventView::show");
+				
+$r->get("addEvent",
+				"EventView::add");
+				
+$r->post("addEvent/add",
+				"EventView::SubmitAdd");
 
 
 /* ---------- Videos ---------- */
@@ -85,6 +91,9 @@ $r->get("person/:id/edit",
         
 $r->post("person/:id/edit",
         "PersonView::editProfilSubmit");
+
+$r->get("event/:id/addParticipant",
+        "PersonView::showParticipant");
 
 
 

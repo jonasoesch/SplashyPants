@@ -1,10 +1,10 @@
 {include "_header.tpl"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
-<pre>{if isset($person)}{var_dump($person)}{/if}</pre>
+
 <form 
 	{if isset($personId)} action="{$baseURL}/person/{$personId}/edit"
 		{else} action="{$baseURL}/register"{/if}
-method="post"> 
+		method="post">
 <div class="row profile-details">
 	  <figure class="span2 offset1" >
 	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
