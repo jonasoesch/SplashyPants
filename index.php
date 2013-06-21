@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 
-require_once(SPLASHY_DIR.'/lib/router.php');
+require_once(SPLASHY_DIR.'/lib/Router.php');
 require_once(SPLASHY_DIR.'/controllers/HomeView.php');
 require_once(SPLASHY_DIR.'/controllers/EventView.php');
 require_once(SPLASHY_DIR.'/controllers/PersonView.php');
@@ -79,6 +79,12 @@ $r->post("register",
 
 $r->get("person/:id",
         "PersonView::show");
+        
+$r->get("person/:id/edit",
+        "PersonView::editProfil");
+        
+$r->post("person/:id/edit",
+        "PersonView::editProfilSubmit");
 
 
 

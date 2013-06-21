@@ -25,6 +25,7 @@ class Template {
 		    return $msg;
 		}
 		$smarty->registerPlugin("function", "pop_flash_message", "pop_flash_message");
+
 			
 		// ---------- Global Assigns ----------
 		$smarty->assign('baseURL', 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants');
@@ -67,6 +68,7 @@ class Template {
 		echo "<pre>";
 		var_dump($var);
 		echo "</pre>";
+		die();
 	}
 }
 
