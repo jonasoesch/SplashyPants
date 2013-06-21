@@ -161,3 +161,7 @@ videoIcon::after{
 	color:  #fff;
 	border-radius: 10px;
 }
+
+.lienProfile{
+	text-align:center;
+    display:block;}
