@@ -64,11 +64,12 @@ class PersonView extends ViewController {
     	}
     }
 
-    public function showParticipant($idEvent){
+    public function showParticipant($id){
         global $tedx_manager;
         //récupération du messageGetEvent en vue de récupérer l'objet anEvent pour l'utilisation dans la fonction getRegistrationsByEvents()
-        $messageGetEvent = $tedx_manager->getEvent($idEvent);
+        $messageGetEvent = $tedx_manager->getEvent($id);
         //test si l'event existe
+        
         if($messageGetEvent->getStatus()){
             //récupération de l'objet anEvent
             $anEvent = $messageGetEvent->getContent();
@@ -77,10 +78,17 @@ class PersonView extends ViewController {
             $messageGetRegistrationsByEvent = $tedx_manager->getRegistrationsByEvent($anEvent);
             //test s'il existe ou non des registrations
             if($messageGetRegistrationsByEvent->getStatus()){
+
+                //array RegistrationParticipantwithMotivations
+                $registrationsParticipantsWithMotivations = array();
+
+
+
                 //récupération des registrations
-                $registrations = $messageGetRegistrationsByEvent();
+                $registrations = $messageGetRegistrationsByEvent->getContent();
                 //pour chaque registration, récupération du participant et de ses motivations en lien avec l'event
                 foreach ($registrations as $aRegistration) {
+
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
                     
                     $args = array(
@@ -92,25 +100,45 @@ class PersonView extends ViewController {
                     if($messageGetMotivationsByParticipantForEvent->getStatus()){
                         //récupération du contenu de la motivation
                         $motivations = $messageGetMotivationsByParticipantForEvent->getContent();
+
+                        
                     }else{
-                        Template::flash('Could not find motivations ' . $messageGetMotivationsByParticipantForEvent->getMessage());
-                    }
-                }
+                        //pas de motivation pour la registration en question
+                        $motivations = array();
+                    }//else
+
+                     //mettre de côt la registration
+                    $registrationsParticipantswithMotivations[] = array(
+                        'registration' => $aRegistration,
+                        'participant' => $aParticipant,
+                        'motivations' => $motivations
+                        );
+
+
+                }//foreach
+                //renvoi des variable qu'on a besoin
+                Template::render('addParticipant.tpl', array(
+                            'event' => $anEvent,
+                            'registrationsParticipantsWithMotivations' => $registrationsParticipantsWithMotivations
+                            ));
             }else{
                 Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
-            }
+            }//else
         }else{
             Template::flash('Could not find event ' . $messageGetEvent->getMessage());
-        }
+            //Template::redirect('');
+        }//else
+
+
         
-        Template::redirect('');
+        
 
        
 
 
-    }
+    }//function
 
 
-}
+}//class
 
 ?>

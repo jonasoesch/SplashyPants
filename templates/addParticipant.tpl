@@ -6,10 +6,11 @@
     <form method="post" action="check.php">
         <div class="span4" >
             <select class="span10" size="3" name="wannabeParticipants"> 
-                <option VALUE="0"> Kanye West</option>
-                <option VALUE="1"> Diddy</option>
-                <option VALUE="2"> OL'Dirty Bastard</option> 
-                <option VALUE="3"> Rastaman</option> 
+                {foreach from=$registrationsParticipantsWithMotivations item=aRegistrationData}
+                <!--  déclaration d'une variable participant pour se faciliter la vie-->
+                {assign var="participant" value=$aRegistrationData['participant']}
+                <option VALUE="{$participant->getPersonNo()}"> {$participant->getFirtsName()} {$participant->getName()}</option>
+                {/foreach}
             </select>
         </div>
         <div class="span8">
