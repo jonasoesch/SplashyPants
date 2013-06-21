@@ -7,6 +7,7 @@ color: #000000;
 .container {
 	border-top: 16px solid #EDEDED;
 	padding: 30px 0px;
+	position: relative;
 }
  
 .ted-rot { 
@@ -146,3 +147,21 @@ videoIcon::after{
     position: absolute;
     
 }
+
+.flash-message {
+	position: absolute;
+	top:  -20px;
+	left:  10px;
+	display: none;
+	width: 100%;
+	background-color: #ff2b06;
+	font-weight: bold;
+	padding: 10px 0;
+	text-align: center;
+	color:  #fff;
+	border-radius: 10px;
+}
+
+.lienProfile{
+	text-align:center;
+    display:block;}

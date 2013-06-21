@@ -24,19 +24,19 @@ class HomeView extends ViewController {
   	$message = $tedx_manager->login( $_POST['username'], $_POST['password'] );
   	
   	if($message->getStatus()) {
-  		Template::flash("Login success!!!");
+  		Template::flash("Login successful");
   		Template::redirect('');
   	} else {
-  		Template::flash("Login fail!!!");
+  		Template::flash("Wrong password or username");
   		Template::redirect('login');
   	}
   }
   
   // "logout"
   public function logout() {
-
   	global $tedx_manager;
   	$message = $tedx_manager->logout();
+  	Template::flash("logout");
   	Template::redirect('');
   }
   

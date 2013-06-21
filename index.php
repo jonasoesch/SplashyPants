@@ -67,10 +67,24 @@ $r->get("video",
 $r->get("team","TeamView::team");
 
 
+$r->get("persons",
+        "PersonView::showAll");
+
 $r->get("register",
         "PersonView::register");
+        
+$r->post("register",
+        "PersonView::registerSubmit");
+
+$r->get("person/:id",
+        "PersonView::show");
 
 
+
+
+/* ---------- Admin ---------- */
+$r->get("events",
+				"EventView::listEvents");
 
 $r->run();
 
