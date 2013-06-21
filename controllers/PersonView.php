@@ -129,6 +129,7 @@ class PersonView extends ViewController {
 
     public function showParticipant($id){
         global $tedx_manager;
+        $tedx_manager->login('admin','admin');
         //récupération du messageGetEvent en vue de récupérer l'objet anEvent pour l'utilisation dans la fonction getRegistrationsByEvents()
         $messageGetEvent = $tedx_manager->getEvent($id);
         //test si l'event existe
@@ -140,15 +141,16 @@ class PersonView extends ViewController {
             //appel de la fonction pour obtenir les registration de l'event
             $messageGetRegistrationsByEvent = $tedx_manager->getRegistrationsByEvent($anEvent);
             //test s'il existe ou non des registrations
+
             if($messageGetRegistrationsByEvent->getStatus()){
 
                 //array RegistrationParticipantwithMotivations
                 $registrationsParticipantsWithMotivations = array();
 
 
-
                 //récupération des registrations
                 $registrations = $messageGetRegistrationsByEvent->getContent();
+
                 //pour chaque registration, récupération du participant et de ses motivations en lien avec l'event
                 foreach ($registrations as $aRegistration) {
 
@@ -159,6 +161,7 @@ class PersonView extends ViewController {
                             'event'  => $anEvent
                             );
                     $messageGetMotivationsByParticipantForEvent = $tedx_manager->getMotivationsByParticipantForEvent($args);
+                    
                     //test s'il existe des motivations pour le participant et pour l'event
                     if($messageGetMotivationsByParticipantForEvent->getStatus()){
                         //récupération du contenu de la motivation
@@ -176,13 +179,13 @@ class PersonView extends ViewController {
                         'participant' => $aParticipant,
                         'motivations' => $motivations
                         );
-
+                    
 
                 }//foreach
                 //renvoi des variable qu'on a besoin
                 Template::render('addParticipant.tpl', array(
                             'event' => $anEvent,
-                            'registrationsParticipantsWithMotivations' => $registrationsParticipantsWithMotivations
+                            'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations
                             ));
             }else{
                 Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
