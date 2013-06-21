@@ -80,6 +80,9 @@ $r->post("register",
 $r->get("person/:id",
         "PersonView::show");
 
+$r->get("event/:id/addParticipant",
+        "PersonView::showParticipant");
+
 
 
 

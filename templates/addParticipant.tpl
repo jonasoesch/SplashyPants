@@ -1,6 +1,6 @@
 {include "_header.tpl"}
 <div id="row">
-    <h1 class="span12"> something about love </h1> 
+     <h1 class="span12"> {$event->getMainTopic()}</h1> 
 </div>
 <div id="row">
     <form method="post" action="check.php">
