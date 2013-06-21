@@ -76,7 +76,7 @@ textarea{
 }
 
 /* ------- Reusable bits ---------- */
-.accepted, .declined {
+.accepted, .rejected, .sent, .pending {
 	font-weight: bold;
 	padding-top: 10px;
 }
@@ -85,10 +85,17 @@ textarea{
 		color: #5bb75b;
 }
 
-.declined {
-		color: red;
+.rejected {
+		color: #FF1800;
 }
 
+.pending {
+		color: #FF8B00;
+}
+
+.sent {
+		color: #FFDA00;
+}
 .pill {
 	display: inline-block;
 	padding: 5px 8px;

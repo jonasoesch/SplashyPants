@@ -173,11 +173,31 @@ class PersonView extends ViewController {
                         $motivations = array();
                     }//else
 
+                    
+                    //Keywords (array d'args)
+                     $args = array(
+                            'person' => $aParticipant,
+                            'event'  => $anEvent
+                            );
+                    $messageGetKeywordsByPersonForEvent = $tedx_manager->getKeywordsByPersonForEvent($args);
+                    
+                    //test s'il existe des keywords pour le participant et pour l'event
+                    if($messageGetKeywordsByPersonForEvent->getStatus()){
+                        //récupération du contenu des keywords
+                        $keywords = $messageGetKeywordsByPersonForEvent->getContent();
+
+                        
+                    }else{
+                        //pas de keywords pour la registration en question
+                        $keywords = array();
+                    }//else
+
                      //mettre de côt la registration
                     $registrationsParticipantswithMotivations[] = array(
                         'registration' => $aRegistration,
                         'participant' => $aParticipant,
-                        'motivations' => $motivations
+                        'motivations' => $motivations,
+                        'keywords' => $keywords
                         );
                     
 
