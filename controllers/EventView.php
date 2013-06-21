@@ -182,7 +182,8 @@ class EventView extends ViewController {
 			echo "<pre>";
 			var_dump($messageAddEvent->getContent());
 			echo "</pre>";
-			$idEvent=$messageAddEvent->getContent()[0]->getNo();
+			$idEvents = $messageAddEvent->getContent();
+			$idEvent = $idEvents[0]->getNo();
     	
     	//Template::flash($messageAddEvent->getMessage());
     	
