@@ -49,8 +49,16 @@ class EventView extends ViewController {
 								//faire if
 								$speaker = $messageGetSpeakerByPlace->getContent();
 								
-								$slotsWithSpeakers[$i][$place->getNo()]=$speaker;
-							
+								if ($messageGetSpeakerByPlace->getStatus()){
+								
+									$slotsWithSpeakers[$i][$place->getNo()]=$speaker;
+									
+								}
+								
+								else{
+								
+									echo 'Could not find speaker ' . $messageGetSpeakerByPlace->getMessage();	
+								}
 							}// foreach place
 				
 						}//if status	
