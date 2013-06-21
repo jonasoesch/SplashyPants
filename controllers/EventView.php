@@ -57,8 +57,9 @@ class EventView extends ViewController {
 								
 								else{
 								
-									echo 'Could not find speaker ' . $messageGetSpeakerByPlace->getMessage();	
+									Template::flash('Could not find speaker ' . $messageGetSpeakerByPlace->getMessage());	
 								}
+								
 							}// foreach place
 				
 						}//if status	
@@ -70,7 +71,7 @@ class EventView extends ViewController {
 				
 				else{
 				
-					echo 'Could not find slots ' . $messageGetSlotsFromEvent->getMessage();
+					Template::flash('Could not find slots ' . $messageGetSlotsFromEvent->getMessage());
 
 				}//else messageGetSlotsFromEvent
 					
@@ -79,7 +80,7 @@ class EventView extends ViewController {
 			
 			else{
 			
-				echo 'Could not find the associated location! ' . $messageGetLocation->getMessage();
+				Template::flash('Could not find the associated location! ' . $messageGetLocation->getMessage());
 
 			}//else
 
@@ -87,10 +88,8 @@ class EventView extends ViewController {
 		
 		else{
 	
-		echo 'Could not find this event! ' . $messageGetEvent->getMessage();
-		
-		 Template::render("events.tpl", array(
-                    ));
+			Template::flash('Could not find this event! ' . $messageGetEvent->getMessage());
+			Template::redirect("");
 			
 		}//else
 		
@@ -105,10 +104,7 @@ class EventView extends ViewController {
 		));
 	}
 	
-	  // "login/do"
-	public function event() {
-	Template::render('event.tpl');
-  }
+
 }
 
 ?>
