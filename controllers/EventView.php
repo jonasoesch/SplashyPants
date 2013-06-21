@@ -104,7 +104,25 @@ class EventView extends ViewController {
 		));
 	}
 	
+	public function add() {
+		global $tedx_manager;
+		
+			$someLocations = $tedx_manager->getLocations();
+						
+			//message
+			if( $someLocations->getStatus()){
+			
+				$someLocations = $someLocations->getContent();
+				
+			}
+			
+		
+		Template::render('addEvent.tpl',array(
+			'location' => $someLocation));
+	}
 
-}
+
+}//class
+
 
 ?>

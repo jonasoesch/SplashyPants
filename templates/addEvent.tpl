@@ -22,15 +22,17 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
                  <div class="span11">
                  	<div class="row">
 	       	 			<p class="span6 eventTitle">
-							<input type="text" name="title" placeholder="Title" id="rue"/>
+							<input type="text" name="title" placeholder="Title" id="rue" size="70"/>
 						</p>
                  	</div>
-                 	
+                 	<div class="row">
+                 		<p class="span12">Starting Date</p>
+                 	</div>
 	                 <div class="row">
 	       	 			<p class="span6">
-	  						<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
-	  						<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
-	  						<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
+	  						<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  /
+	  						<input type="text" name="dob_monat" placeholder="MM"  size="2" maxlength="2" /> /
+	  						<input type="text" name="dob_day" placeholder="DD" size="2" maxlength="2" />
 	  					</p>
 		             </div>
 		             <div class="row">
@@ -39,10 +41,13 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
 		                 <!-- <p class="span1" id="leschamps_2"><a href="javascript:create_champ(2)">+</a></p> -->
 		             </div>
 		             <div class="row">
+                 		<p class="span12">Ending Date</p>
+                 	</div>
+		             <div class="row">
 	       	 			<p class="span6">
-	  						<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
-	  						<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
-	  						<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
+	  						<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  /
+	  						<input type="text" name="dob_monat" placeholder="MM"  size="2" maxlength="2" /> /
+	  						<input type="text" name="dob_day" placeholder="DD" size="2" maxlength="2" />
 	  					</p>
 		             </div>
 		             <div class="row">
@@ -66,35 +71,74 @@ document.getElementById('leschamps_'+i).innerHTML = champ1+champ2+champ3;
                  </div> 
             
                <div class="span5">
-                	<?php include 'formLocation.php'; ?>
-                </div> 
+               		<div class="row">
+	                	<p class="address" span="12">
+	                		<input type="text" name="name" placeholder="Name" size="35" maxlength="25" /><br />
+				  			<input type="text" name="address" placeholder="Address" size="35" maxlength="25" /><br />
+				  			<input type="text" name="zipcode" placeholder="Zipcode" size="5" maxlength="5" />
+				  			<input type="text" name="city" placeholder="City" size="22" maxlength="25" /> <br />
+				  			<input type="text" name="country" placeholder="Country" size="20" maxlength="25" />
+		  				</p>        
+		  			</div>
+		  			<div class="row">
+		  				<p span="12">Existing Location</p>
+		  					<select>
+							  <option value="volvo">Volvo</option>
+							  <option value="saab">Saab</option>
+							  <option value="opel">Opel</option>
+							  <option value="audi">Audi</option>
+							 </select>
+		  			</div>
+	  			</div> 
                 
                 
                 
 </div>
+
 <h2>Speakers</h2>
 
 
-<div class="row event-slot">
-	<div class="span4">
-		<h3>Slot One</h3>
-		<p class="eventSlot">
-	  		<input type="text" name="dob_year" placeholder="<?php echo "YYYY"; ?>" size="4" maxlength="4" />  /
-	  		<input type="text" name="dob_monat" placeholder="<?php echo "MM"; ?>"  size="2" maxlength="2" /> /
-	  		<input type="text" name="dob_day" placeholder="<?php echo "DD"; ?>" size="2" maxlength="2" />
-	  	</p>
-	  	<p class="eventSlot">
-	  		<input type="text" name="dob_year" placeholder="<?php echo "hh"; ?>" size="2" maxlength="2" /> :
-	  		<input type="text" name="dob_monat" placeholder="<?php echo "mm"; ?>"  size="2" maxlength="2" /> 
-	  	</p>
-	  	<p class="eventSlot">
-	  		<input type="text" name="dob_year" placeholder="<?php echo "hh"; ?>" size="2" maxlength="2" /> :
-	  		<input type="text" name="dob_monat" placeholder="<?php echo "mm"; ?>"  size="2" maxlength="2" /> 
-	  	</p>
-	</div>
-	<p class="span2"><a href src="">add speaker</a></p>
+	<div class="row event-slot">
+		<div class="span6">
+			<h3>Slot One</h3>
+				<div class="row">
+	            	<p class="span12">Starting Date</p>
+	            </div>
+	            
+		        <div class="row">
+		       		<p class="span6">
+						<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  /
+						<input type="text" name="dob_monat" placeholder="MM"  size="2" maxlength="2" /> /
+						<input type="text" name="dob_day" placeholder="DD" size="2" maxlength="2" />
+		  			</p>
+		        </div>
+		        
+		        <div class="row">
+					<p class="span5">
+						<input type="text" name="titre" placeholder="17:00" id="rue" size="5"/>
+					</p>
+			    </div>
+	
+				<div class="row">
+	            	<p class="span12">Ending Date</p>
+	            </div>
+	            
+		        <div class="row">
+		       		<p class="span6">
+						<input type="text" name="dob_year" placeholder="YYYY" size="4" maxlength="4" />  /
+						<input type="text" name="dob_monat" placeholder="MM"  size="2" maxlength="2" /> /
+						<input type="text" name="dob_day" placeholder="DD" size="2" maxlength="2" />
+		  			</p>
+		        </div>
+		        
+		        <div class="row">
+					<p class="span5">
+						<input type="text" name="titre" placeholder="17:00" id="rue" size="5"/>
+					</p>
+			    </div>
+		</div>
 
-</div>
+	</div>
 
 
 <!-- <?php include 'eventFooter.html'; ?>-->
