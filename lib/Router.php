@@ -180,6 +180,7 @@ class Router {
 		<div class='error routing-error'>
 			<h1>Error $nr</h1>
 			<p>$message</p>
+			<p>$this->request_uri</p>
 		</div>";
 		exit;
 	}
