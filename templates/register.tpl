@@ -1,7 +1,7 @@
 {include "_header.tpl"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
 
-<form action="register" method="post"> 
+<form action="{$baseURL}/register" method="post"> 
 <div class="row profile-details">
 	  <figure class="span2 offset1" >
 	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
