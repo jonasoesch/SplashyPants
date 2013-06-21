@@ -28,7 +28,7 @@ class Template {
 
 			
 		// ---------- Global Assigns ----------
-		$smarty->assign('baseURL', 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants');
+		$smarty->assign('baseURL', 'http://'.$_SERVER['HTTP_HOST'].SPLASHY_URL);
 		$smarty->assign('tedx', $tedx_manager);
 		
 	
