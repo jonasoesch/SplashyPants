@@ -20,12 +20,13 @@
       </div>
       <div class="row">
         <h3 class="span4">Registration Status</h3>
-         <!--{assign var="statusRegistration" value=$registration->getStatus()}-->
-         {if $statusRegistration =="pending"}
+         {assign var="statusRegistration" value=$registration->getStatus()}
+         
+         {if $statusRegistration =="Pending"}
         <p class="span8 pending">{$registration->getStatus()}</p>
-        {elseif $statusRegistration =="sent"}
+        {elseif $statusRegistration =="Sent"}
         <p class="span8 sent">{$registration->getStatus()}</p>
-        {elseif $statusRegistration =="accepted"}
+        {elseif $statusRegistration =="Accepted"}
         <p class="span8 accepted">{$registration->getStatus()}</p>
         {else}
         <p class="span8 rejected">{$registration->getStatus()}</p>

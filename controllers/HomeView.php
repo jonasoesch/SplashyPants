@@ -45,20 +45,9 @@ class HomeView extends ViewController {
   	Template::redirect('');
   }
   
-  
- // "TEDxLausanne"
-  public function tedxLausanne() {
-    Template::render('aboutTEDxLausanne.tpl');
-  }
-
-  // "TEDx"
-  public function tedx() {
-  	Template::render('aboutTEDx.tpl');
-  }
-  
-   // "TED"
-  public function ted() {
-    Template::render('aboutTED.tpl');
+  // "about"
+  public function about() {
+    Template::render('about.tpl');
   }
   
   

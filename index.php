@@ -43,7 +43,7 @@ $r->get("partners",
         
         
 $r->get("about",
-        "HomeView::tedxLausanne");
+        "HomeView::about");
         
    
 /* ---------- Login ---------- */     
