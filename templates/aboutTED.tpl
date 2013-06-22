@@ -1,5 +1,5 @@
 <article class="row">
-		<h1 class="span12" id="ted">About TED</h1>
+		<h2 class="span12" id="ted">About TED</h2>
 			<br />
 			<p class="span12">
 		 	 <a href="http://www.ted.com/" title="TED:Ideas worth Sharing">TED</a> is a nonprofit organization devoted to “ideas worth spreading”. Started in 1984 in California as a four-day conference about Technology, Entertainment, Design, TED has broadened its scope and grown to support those world-changing ideas with multiple initiatives. At TED, the world’s leading thinkers and doers are asked to give the talk of their lives in 18 minutes. Talks are then made available for free at <a href="http://www.ted.com/" title="TED:Ideas worth Sharing">TED.com.</a> TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Benoit Mandelbrot, Philippe Starck, Ngozi Okonjo-Iweala, Isabel Allende and Gordon Brown. Two major TED events are held each year: The TED Conference takes place every spring in Long Beach, California (along with a parallel conference, TEDActive, in Palm Springs), and TEDGlobal is held each summer in Edinburgh, Scotland.

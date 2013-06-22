@@ -1,6 +1,6 @@
 
-	<article class="row event-slot">
-		<h1 class="span12" id="tedxLausanne">About TEDxLausanne</h1>
+	<article class="row">
+		<h2 class="span12" id="tedxLausanne">About TEDxLausanne</h2>
 			<br />
 			<p class="span12">
 		 	 The TEDxLausanne community seeks to extend the TED experience at a regional level, highlighting exceptional people and creative works, connecting people across disciplines, creating conversations that drive action. We explore big questions with a broad spirit of inquiry.

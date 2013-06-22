@@ -1,12 +1,15 @@
 {include "_header.tpl"}
 <section class="row">
 	<article class="row">
+		<h1 class="span12">About</h1>
 		<ul>
-			<li class="span3 offset1"><a href="#tedxLausanne">About TEDxLausanne</a></li>
-			<li class="span3 offset1"><a href="#tedx">About TEDx</a></p>
-			<li class="span3 offset1"><a href="#ted">About TED</a></p>
+			<li class="span12 offset1"><a href="#tedxLausanne">TEDxLausanne</a></li>
+			<li class="span12 offset1"><a href="#tedx">TEDx</a></li>
+			<li class="span12 offset1"><a href="#ted">TED</a></li>
 		</ul>
 	</article>
+</section>
+<section class="row event-slot">
 
 {include "aboutTEDxLausanne.tpl"}
 {include "aboutTEDx.tpl"}
