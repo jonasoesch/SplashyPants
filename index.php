@@ -101,7 +101,7 @@ $r->get("person/:id/edit",
 $r->post("person/:id/edit",
         "PersonView::editProfilSubmit");
 
-$r->get("event/:id/addParticipant",
+$r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");
 
 
