@@ -74,15 +74,13 @@ class PersonView extends ViewController {
     	Template::flash($aRegisteredVisitor->getMessage());
     	
     	if($aRegisteredVisitor->getStatus()) {
-    		Template::redirect("person/$aRegisteredVisitor->getContent()->getNo()");
+    		Template::redirect("persons");
     	} else {
-    		Template::render('register.tpl');
-    		/* Not yet implented. Waiting for IT.
+    	  // Only functions when E-Mail not valid?
     		Template::render('register.tpl', array(
     			"person" => $aRegisteredVisitor->getContent()
     			)
     		);
-    		*/
     	}
     }
 
