@@ -52,10 +52,8 @@
       </ul> 
     </p>
 
-<form method="post" action="{$baseURL}/event/{$event->getNo()}/addParticipant">
+<form method="get" action="{$baseURL}/event/{$event->getNo()}/participant/{$aParticipant->getPersonNo()}">
     <p class="row offset8"> 
-        <input type="hidden" name="rejected" value="rejected" />
-        <input type="hidden" name="validated" value="validated" />
         <input type="Submit" name="reject" value="reject" />
         <input type="Submit" name="validate" value="validate" />
     </p>
