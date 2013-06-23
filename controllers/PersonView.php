@@ -220,6 +220,7 @@ class PersonView extends ViewController {
             //error message: no event found
             Template::flash('Could not find event ' . $messageGetEvent->getMessage());
         }//else
+
     }//function
 
 
@@ -227,11 +228,11 @@ class PersonView extends ViewController {
     * validates the inscription of a participant to anEvent
     */
 
-    public function validateParticipantSubmit($id){
+    public function validateParticipantSubmit($idEvent, $idParticipant){
         global $tedx_manager;
         $tedx_manager->login('admin','admin');
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
-        $messageGetEvent = $tedx_manager->getEvent($id);
+        $messageGetEvent = $tedx_manager->getEvent($idEvent);
         //test if messageGetEven exists
         
         if($messageGetEvent->getStatus()){
@@ -252,7 +253,7 @@ class PersonView extends ViewController {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                    if($aParticipant->getPersonNo() == $id){
+                    if($aParticipant->getPersonNo() == $idParticipant){
                         $aWaitingRegistration = $tedx_manager->getRegistration(array(
                             'status' =>$aRegistration->getStatus(), 
                             'event' => $anEvent, 
@@ -283,11 +284,11 @@ class PersonView extends ViewController {
     * rejects the inscription of a participant to anEvent
     */
 
-    public function rejectParticipantSubmit($id){
+    public function rejectParticipantSubmit($idEvent, $idParticipant){
         global $tedx_manager;
         $tedx_manager->login('admin','admin');
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
-        $messageGetEvent = $tedx_manager->getEvent($id);
+        $messageGetEvent = $tedx_manager->getEvent($idEvent);
         //test if messageGetEven exists
         
         if($messageGetEvent->getStatus()){
@@ -308,7 +309,7 @@ class PersonView extends ViewController {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                    if($aParticipant->getPersonNo() == $id){
+                    if($aParticipant->getPersonNo() == $idParticipant){
                         $aWaitingRegistration = $tedx_manager->getRegistration(array(
                             'status' =>$aRegistration->getStatus(), 
                             'event' => $anEvent, 
