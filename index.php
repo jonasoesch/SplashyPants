@@ -112,6 +112,9 @@ $r->get("event/:eventId/participant/:participantId/accept",
 $r->get("event/:eventId/participant/:participantId/reject",
         "PersonView::rejectRegistration");
 
+$r->get("event/:eventId/participant/:participantId/cancel",
+        "PersonView::cancelValidationRegistration");
+
 
 /* ---------- Admin ---------- */
 $r->get("events",

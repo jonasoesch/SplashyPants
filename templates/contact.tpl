@@ -4,7 +4,7 @@
 </section>
 
 <section class="row">
-  <form class="span4 offset3">
+  <form class="span4 offset3" methode="post" action="">
   	<fieldset>
 	    <input type="text" name="name" placeholder="Name" size="50"/>
 	    <input type="email" name="email" placeholder="E-mail" size="50"/>

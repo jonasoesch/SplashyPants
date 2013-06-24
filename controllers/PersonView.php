@@ -7,7 +7,7 @@ class PersonView extends ViewController {
 
     /**
      * Shows a profile page for any kind of person
-     * 
+     * @params: $id-> person's id
      */
     public function show($id) {
         global $tedx_manager;
@@ -126,7 +126,10 @@ class PersonView extends ViewController {
 
     /*
      * accept the inscription of a participant to anEvent
-     * create a new acceptedRegistration and redirect on the validation page
+     * create a new acceptedRegistration and redirect on the validation page for anEvent
+     * @param: 
+     *          $eventId -> event's id
+     *          $participantID -> participant's id
      */
 
     public function acceptRegistration($eventId, $participantId) {
@@ -149,7 +152,7 @@ class PersonView extends ViewController {
                 //get all the registrations (array)
                 $registrations = $messageGetRegistrationsByEvent->getContent();
 
-                //for each registration, get the participant, test the id of the participant and accept the registration if it's ok
+                //for each registration, get the participant, compare the id of the participant with the participantId in param and accept the registration if it's  ok
                 foreach ($registrations as $aRegistration) {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
@@ -180,6 +183,10 @@ class PersonView extends ViewController {
 
     /*
      * rejects the inscription of a participant to anEvent
+     * create a new rejectedRegistration and redirect on the validation page for anEvent
+     * @param: 
+     *          $eventId -> event's id
+     *          $participantID -> participant's id
      */
 
     public function rejectRegistration($eventId, $participantId) {
@@ -202,7 +209,7 @@ class PersonView extends ViewController {
                 //get all the registrations (array)
                 $registrations = $messageGetRegistrationsByEvent->getContent();
 
-                //for each registration, get the participant, test the id of the participant and reject the registration if it's not ok
+                //for each registration, get the participant, compare the id of the participant with the participantId in param and reject the registration if it's  ok
                 foreach ($registrations as $aRegistration) {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
@@ -214,10 +221,64 @@ class PersonView extends ViewController {
                                     'participant' => $aParticipant));
                         $aWaitingRegistration = $messageWaitingRegistration->getContent();
                         $aRejectedRegistration = $tedx_manager->rejectRegistration($aWaitingRegistration);
-                        
                         //redirect on the same page and show a flash message "registration rejected"
-                        
                         Template::flash('The inscription of the participant number ' . $aParticipant->getNo() . ' has been rejected');
+                        Template::redirect('event/'.$eventId .'/validateParticipant');
+                    }
+                }//foreach
+            } else {
+                //error message: no registrations found
+                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+            }//else
+        } else {
+            //error message: no event found
+            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+        }//else
+    }
+
+
+    /*
+     * cancels the validation of a participant to anEvent
+     * create a new sentRegistration (status = 'sent') and redirect on the validation page for anEvent
+     * @param: 
+     *          $eventId -> event's id
+     *          $participantID -> participant's id
+     */
+
+    public function cancelValidationRegistration($eventId, $participantId) {
+        global $tedx_manager;
+
+        //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
+        $messageGetEvent = $tedx_manager->getEvent($eventId);
+        //test if messageGetEven exists
+
+        if ($messageGetEvent->getStatus()) {
+            //get the object anEvent with the specified id
+            $anEvent = $messageGetEvent->getContent();
+
+            //call to the function to get all the registrations of the anEvent
+            $messageGetRegistrationsByEvent = $tedx_manager->getRegistrationsByEvent($anEvent);
+            //test if there are some registrations or not
+
+            if ($messageGetRegistrationsByEvent->getStatus()) {
+
+                //get all the registrations (array)
+                $registrations = $messageGetRegistrationsByEvent->getContent();
+
+                //for each registration, get the participant, compare the id of the participant with the participantId in param and cancel the registration if it's  ok
+                foreach ($registrations as $aRegistration) {
+
+                    $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
+
+                    if ($aParticipant->getNo() == $participantId) {
+                        $messageWaitingRegistration = $tedx_manager->getRegistration(array(
+                                    'status' => $aRegistration->getStatus(),
+                                    'event' => $anEvent,
+                                    'participant' => $aParticipant));
+                        $aWaitingRegistration = $messageWaitingRegistration->getContent();
+                        $aCancelledRegistration = $tedx_manager->cancelRegistration($aWaitingRegistration);
+                        //redirect on the same page and show a flash message "registration cancelled"
+                        Template::flash('The validation of the participant number ' . $aParticipant->getNo() . ' has been cancelled');
                         Template::redirect('event/'.$eventId .'/validateParticipant');
                         //var_dump($aRejectedRegistration);
                     }
@@ -234,7 +295,10 @@ class PersonView extends ViewController {
 
     /*
      * Gets the participants with their motivations and keywords for an Event
-     * and shows the registrations List for an Event
+     * sort to keep only the last registration to an Event for each participant and only if the status of this last registration is different from 'pending'
+     * and shows the last registration ba participant in a list for an Event where there are no status equals to 'pending'
+     * @param:
+     *          $id -> event's id
      */
 
     public function showParticipant($id) {
@@ -268,7 +332,7 @@ class PersonView extends ViewController {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                    // Get the last registration for a participant to an event
+                    // Get the last registration for the participant to an event
                     $args = array(
                         'participant' => $aParticipant,
                         'event' => $anEvent);
@@ -276,9 +340,9 @@ class PersonView extends ViewController {
 
                     // Get the Registrations from Message
                     $theLastRegistration = $messageGetLastRegistration->getContent();
-
-                    if ($theLastRegistration->getStatus() != 'Pending') {
-
+                    //test the status of the registration because we want to keep only the status 'accepted', 'rejected', or 'sent'
+                    if ($theLastRegistration->getStatus() == 'Sent' || $theLastRegistration->getStatus() == 'Accepted' || $theLastRegistration->getStatus() == 'Rejected') {
+                        //test if the registration is the last registration of the participant to an event
                         if ($theLastRegistration->getStatus() == $aRegistration->getStatus()) {
 
 
@@ -327,7 +391,7 @@ class PersonView extends ViewController {
                         }
                     }
                 }//foreach
-                //var_dump($registrationsParticipantswithMotivations);
+                
                 //apply of the template validateParticipant.tpl and add of the var we need to use it
                 Template::render('validateParticipant.tpl', array(
                     'event' => $anEvent,

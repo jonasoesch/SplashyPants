@@ -22,10 +22,8 @@
   {assign var="keywords" value=$aRegistrationData['keywords']}
 
 <section class="profile-event">
-
-      <p class="row">Date of last change : {$registration->getRegistrationDate()}</p>
-
       <p class="row">
+        <p class="span12">Date of last change : {$registration->getRegistrationDate()}</p>
         <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()}</h3>
       </p>
 
@@ -62,7 +60,7 @@
 
     {if $statusRegistration =="Sent"}
     <h4 class="row offset8"> 
-        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a>
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a> |
         <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/accept">Accept</a>
     </h4>
     {elseif $statusRegistration =="Accepted" || $statusRegistration =="Rejected" }
@@ -73,50 +71,7 @@
     <h4 class="row offset8">No action can be done</h4>    
     {/if}
 
-    
-
-
-
-<!--
-  <section class="row">
-    <form class="offset8 span1" method="post" action="{$baseURL}/event/{$event->getNo()}/addParticipant"> 
-          <input type="hidden" name="rejected" value="rejected" />
-          <input type="Submit" name="reject" value="reject" />
-    </form>
-    <form class="offset8 span1" method="post" action="{$baseURL}/event/{$event->getNo()}/addParticipant">
-          <input type="hidden" name="validated" value="validated" />
-          <input type="Submit" name="validate" value="validate" />
-    </form>
-
-
-
-    ou
-
-
-    <form method="get" action="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}">
-    <p class="row offset8"> 
-        <input type="Submit" name="reject" value="reject" />
-        <input type="Submit" name="validate" value="validate" />
-    </p>
-</form>
-
-  ou
-
-   <!--{if $statusRegistration =="Sent"}
-    <p class="row offset8"> 
-        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()/reject}">Reject</a>
-        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()/validate}">Validate</a>
-    </p>
-    {elseif $statusRegistration =="Accepted"}
-    <p>blabla</p>
-    {else}
-    <p>blabla2</p>
-    {/if}-->
-
-
   </section>
-
-
     
 {/foreach}
 </section>
