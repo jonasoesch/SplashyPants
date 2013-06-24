@@ -8,7 +8,35 @@ class HomeView extends ViewController {
   
   // ""
   public function index() {
-   	Template::render('home.tpl');
+    global $tedx_manager;
+    //get some talks for the aside part
+    $someTalks=$tedx_manager->getTalks()->getContent();
+
+    //get the events
+    $messageGetEvents = $tedx_manager->getEvents();
+    //test if the messageGetEvents isn't empty
+    if($messageGetEvents->getStatus()){
+      $someEvents = $messageGetEvents->getContent();
+      //reference event for the test
+      $eventTest = $someEvents[0];
+      //for each event, try to catch the last event (sort by Starting date) by comparison with the reference Event
+      foreach ($someEvents as $anEvent) {
+        //comparison on the StartingDate, if the StartingDate is before the $eventTest's StartingDate, the lastEvent is $anEvent
+        if($anEvent->getStartingDate() <= $eventTest->getStartingDate()){
+          //asignment
+          $theLastEvent = $anEvent;
+        }else{
+          //the lastEvent is the reference Event ($eventTest)
+          $theLastEvent = $eventTest;
+        }        
+      }
+    }else{
+      //error message: no event found
+      Template::flash('Could not find events ' . $messageGetEvents->getMessage());
+    }
+   	Template::render('home.tpl', array(
+      'event' => $theLastEvent,
+      'someTalks' => $someTalks));
   }
   
   public function hey($event, $contact) {

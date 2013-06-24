@@ -76,6 +76,8 @@ $r->get("addSlot",
 $r->get("video",
         "VideoView::video");
 
+$r->get("videoDescription/event/:eventId/speaker/:speakerId",
+"VideoView::videoDescription");
 
 /* ---------- Person ---------- */
 
@@ -125,11 +127,14 @@ $r->post("person/:id/edit",
 $r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");
 
-$r->get("event/:eventId/participant/:participantId/validate",
-        "PersonView::validateParticipant");
+$r->get("event/:eventId/participant/:participantId/accept",
+        "PersonView::acceptRegistration");
 
 $r->get("event/:eventId/participant/:participantId/reject",
-        "PersonView::rejectParticipant");
+        "PersonView::rejectRegistration");
+
+$r->get("event/:eventId/participant/:participantId/cancel",
+        "PersonView::cancelValidationRegistration");
 
 
 /* ---------- Admin ---------- */
