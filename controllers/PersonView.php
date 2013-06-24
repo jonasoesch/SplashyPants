@@ -252,12 +252,13 @@ class PersonView extends ViewController {
                                     'status' => $aRegistration->getStatus(),
                                     'event' => $anEvent,
                                     'participant' => $aParticipant));//->getContent();
-                        var_dump($messageWaitingRegistration);
+                        
                         $aWaitingRegistration = $messageWaitingRegistration->getContent();
                         $anAcceptedRegistration = $tedx_manager->acceptRegistration($aWaitingRegistration);
                         //redirect on the same page and show a flash message "registration accepted"
-                        Template::redirect('event/validateParticipant');
-                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo() . 'has been accepted');
+                        
+                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo() . ' has been accepted');
+                        Template::redirect('event/'.$eventId .'/validateParticipant');
                     }
                 }//foreach
             } else {
@@ -303,12 +304,15 @@ class PersonView extends ViewController {
                         $messageWaitingRegistration = $tedx_manager->getRegistration(array(
                                     'status' => $aRegistration->getStatus(),
                                     'event' => $anEvent,
-                                    'participant' => $aParticipant))->getContent();
+                                    'participant' => $aParticipant));
                         $aWaitingRegistration = $messageWaitingRegistration->getContent();
-                        $aRejectedRegistration = $tedx_manager->acceptRegistration($aWaitingRegistration);
+                        $aRejectedRegistration = $tedx_manager->rejectRegistration($aWaitingRegistration);
+                        
                         //redirect on the same page and show a flash message "registration rejected"
-                        Template::redirect('event/validateParticipant');
-                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo() . 'has been rejected');
+                        
+                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo() . ' has been rejected');
+                        Template::redirect('event/'.$eventId .'/validateParticipant');
+                        //var_dump($aRejectedRegistration);
                     }
                 }//foreach
             } else {
@@ -416,7 +420,7 @@ class PersonView extends ViewController {
                         }
                     }
                 }//foreach
-                var_dump($registrationsParticipantswithMotivations);
+                //var_dump($registrationsParticipantswithMotivations);
                 //apply of the template validateParticipant.tpl and add of the var we need to use it
                 Template::render('validateParticipant.tpl', array(
                     'event' => $anEvent,
