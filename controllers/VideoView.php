@@ -10,7 +10,7 @@ class VideoView extends ViewController {
         global $tedx_manager;
         
         $someTalks=$tedx_manager->getTalks()->getContent();
-        var_dump($someTalks);
+        //var_dump($someTalks);
         Template::render('video.tpl',array (
             'someTalks' => $someTalks
             

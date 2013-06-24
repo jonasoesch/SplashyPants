@@ -1,5 +1,5 @@
 {include "_header.tpl"}
-VIDEO
+VIDEOWALL
 
 <div class="row">
 <!--{$someTalks|@var_dump}
@@ -8,7 +8,7 @@ VIDEO
  {foreach from=$someTalks item=aTalk}
     <div class="span3">
         <div class="thumbVideo">
-            <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}"><img src="{$baseURL}/public/images/Thumbnails/BenBryant.png" width="225"/></link>   
+            <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}"><img src="{$baseURL}/public/images/Thumbnails/{$aTalk->getVideoTitle()}.png" width="225"/></link>   
             <p>{$aTalk->getVideoTitle()}</p>
        </div>    
     </div>
