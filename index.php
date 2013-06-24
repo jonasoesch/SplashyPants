@@ -76,7 +76,7 @@ $r->get("addSlot",
 $r->get("video",
         "VideoView::video");
 
-$r->get("/event/:event/speaker/:speaker",
+$r->get("videoDescription/event/:eventId/speaker/:speakerId",
 "VideoView::videoDescription");
 
 /* ---------- Person ---------- */
