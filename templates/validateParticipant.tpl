@@ -1,3 +1,5 @@
+<!-- template validation -->
+
 {include "_header.tpl"}
 <link href="css/profile.css" rel="stylesheet" />
 
@@ -5,6 +7,11 @@
     <h1>Validate participant</h1>
     <h2>Event title : {$event->getMainTopic()}</h2>
     <p>Event date : {$event->getStartingDate()}</p>
+    {if $numberOfAcceptedRegistrations == 1}
+    <p>{$numberOfAcceptedRegistrations} registration has been accepted</p>
+    {else}
+    <p>{$numberOfAcceptedRegistrations} registrations have been accepted</p>
+    {/if}
 
 
 {foreach from=$registrationsParticipantsWithMotivations item=aRegistrationData}
@@ -24,14 +31,14 @@
         <h4 class="span4">Registration Status</h4>
          {assign var="statusRegistration" value=$registration->getStatus()}
          
-         {if $statusRegistration =="Pending"}
-        <p class="span8 pending">{$registration->getStatus()}</p>
+         {if $statusRegistration =="Rejected"}
+        <p class="span8 rejected">{$registration->getStatus()}</p>
         {elseif $statusRegistration =="Sent"}
         <p class="span8 sent">{$registration->getStatus()}</p>
         {elseif $statusRegistration =="Accepted"}
         <p class="span8 accepted">{$registration->getStatus()}</p>
         {else}
-        <p class="span8 rejected">{$registration->getStatus()}</p>
+        <p class="span8 rejected">The status of registration doesn't exist</p>
         {/if}
       </p>
 
@@ -50,14 +57,19 @@
           <li class="pill">{$aKeywords->getValue()}</li>
           {/foreach}
       </ul> 
-    </p>
 
-<form method="get" action="{$baseURL}/event/{$event->getNo()}/participant/{$aParticipant->getPersonNo()}">
-    <p class="row offset8"> 
-        <input type="Submit" name="reject" value="reject" />
-        <input type="Submit" name="validate" value="validate" />
-    </p>
-</form>
+    {if $statusRegistration =="Sent"}
+    <h4 class="row offset8"> 
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a>
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/validate">Validate</a>
+    </h4>
+    {else}
+    <h4 class="row offset8"> 
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Cancel</a>
+    </h4>
+    {/if}
+
+    
 
 
 
@@ -71,27 +83,39 @@
           <input type="hidden" name="validated" value="validated" />
           <input type="Submit" name="validate" value="validate" />
     </form>
-  </section>-->
 
-</section>
-    
-{/foreach}
-</section>
-<!--<div id="row">
 
-  <form method="post" action="{$baseURL}/event/{$event->getNo()}/addParticipant">
+
+    ou
+
+
+    <form method="get" action="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}">
     <p class="row offset8"> 
-        <input type="hidden" name="rejected" value="rejected" />
-        <input type="hidden" name="validated" value="validated" />
         <input type="Submit" name="reject" value="reject" />
         <input type="Submit" name="validate" value="validate" />
     </p>
 </form>
 
+  ou
 
-<p class="span6 offset3"> 22 participants have been accepted to the (event name) event</p>
-<p class="span6 offset3"><a href=""> see participatiors list</a> </p>
-</div>-->
+   <!--{if $statusRegistration =="Sent"}
+    <p class="row offset8"> 
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()/reject}">Reject</a>
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()/validate}">Validate</a>
+    </p>
+    {elseif $statusRegistration =="Accepted"}
+    <p>blabla</p>
+    {else}
+    <p>blabla2</p>
+    {/if}-->
+
+
+  </section>
+
+
+    
+{/foreach}
+</section>
 
 
 
