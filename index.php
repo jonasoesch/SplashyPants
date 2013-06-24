@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 
-require_once(SPLASHY_DIR.'/lib/router.php');
+require_once(SPLASHY_DIR.'/lib/Router.php');
 require_once(SPLASHY_DIR.'/controllers/HomeView.php');
 require_once(SPLASHY_DIR.'/controllers/EventView.php');
 require_once(SPLASHY_DIR.'/controllers/PersonView.php');
@@ -26,6 +26,13 @@ $r = new Router();
 /* ---------- Home and Static ---------- */
 $r->get("",	"HomeView::index");
 
+/*
+* Pour Mickael :-)
+* Exemple pour comment plusiers variables avec une URL
+* Va sur http://localhost:8888/tedxEventManager/SplashyPants/hey/22/ho/33
+* et regarde la methode 'hey' dans HomeView
+*/
+$r->get("hey/:event/ho/:contact", "HomeView::hey");
 
 $r->get("contact",
         "HomeView::contact");
@@ -36,7 +43,7 @@ $r->get("partners",
         
         
 $r->get("about",
-        "HomeView::tedxLausanne");
+        "HomeView::about");
         
    
 /* ---------- Login ---------- */     
@@ -55,7 +62,15 @@ $r->get("logout",
         
 $r->get("event/:id",
 				"EventView::show");
+				
+$r->get("addEvent",
+				"EventView::add");
+				
+$r->post("addEvent",
+				"EventView::submitEvent");
 
+$r->get("addSlot",
+				"EventView::slot");
 
 /* ---------- Videos ---------- */
 $r->get("video",
@@ -81,8 +96,21 @@ $r->post("register",
 
 $r->get("person/:id",
         "PersonView::show");
+        
+$r->get("person/:id/edit",
+        "PersonView::editProfil");
+        
+$r->post("person/:id/edit",
+        "PersonView::editProfilSubmit");
 
+$r->get("event/:id/validateParticipant",
+        "PersonView::showParticipant");
 
+$r->get("event/:eventId/participant/:participantId/validate",
+        "PersonView::validateParticipant");
+
+$r->get("event/:eventId/participant/:participantId/reject",
+        "PersonView::rejectParticipant");
 
 
 /* ---------- Admin ---------- */

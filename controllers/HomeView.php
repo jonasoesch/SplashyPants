@@ -11,6 +11,11 @@ class HomeView extends ViewController {
    	Template::render('home.tpl');
   }
   
+  public function hey($event, $contact) {
+  	var_dump($event);
+  	var_dump($contact);
+  }
+  
   
   // "login"
   public function login() {
@@ -40,20 +45,9 @@ class HomeView extends ViewController {
   	Template::redirect('');
   }
   
-  
- // "TEDxLausanne"
-  public function tedxLausanne() {
-    Template::render('aboutTEDxLausanne.tpl');
-  }
-
-  // "TEDx"
-  public function tedx() {
-  	Template::render('aboutTEDx.tpl');
-  }
-  
-   // "TED"
-  public function ted() {
-    Template::render('aboutTED.tpl');
+  // "about"
+  public function about() {
+    Template::render('about.tpl');
   }
   
   

@@ -17,7 +17,7 @@
     			{pop_flash_message}
     		</div>
     	{/if}
-<a href="{$baseURL}"><img src="{$baseURL}/public/images/TEDxlausanne.gif" /></a>
+<a href="{$baseURL}"><img src="{$baseURL}/public/images/TEDxlausanne.gif"/></a>
 
 <nav class="menu row">
 	<ul>

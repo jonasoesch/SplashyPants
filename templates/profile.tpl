@@ -3,15 +3,22 @@
 
 
 <div class="row profile-details">
-    <!-- 
+
 	  <figure class="span2 offset1" >
 	  	<img src="images/profile.jpeg" alt="cristo" class="portrait" />
-	  </figure>-->
+	  </figure>
 	  
 
 	  	<h1 class="offset1">
 	  	  <span class="prenom">{$person->getFirstName()}</span>
 	  	  <span class="nom">{$person->getName()}</span>
+	  	  
+	  	  
+	  	  {if $tedx->isGranted('changeProfil')->getContent()}
+	  	 	 <a href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
+	  	 	{else}
+					<a href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
+	  	  {/if}
 	  	</h1>
 	  
 	  <div class="offset1 span8 contact profile-table">

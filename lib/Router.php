@@ -31,7 +31,9 @@ class Router {
 	public function __construct() {
 		$request = $this->get_request();
 
-		$this->request_uri = $request;
+    if(SPLASHY_URL) 
+    {$this->request_uri = str_replace(SPLASHY_URL, "", $request);} 
+    else {$this->request_uri = $request; }
 		$this->routes = array();
 	}
 
@@ -180,6 +182,7 @@ class Router {
 		<div class='error routing-error'>
 			<h1>Error $nr</h1>
 			<p>$message</p>
+			<p>$this->request_uri</p>
 		</div>";
 		exit;
 	}
