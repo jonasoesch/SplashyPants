@@ -63,7 +63,7 @@
     {if $statusRegistration =="Sent"}
     <h4 class="row offset8"> 
         <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a>
-        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/validate">Validate</a>
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/accept">Accept</a>
     </h4>
     {elseif $statusRegistration =="Accepted" || $statusRegistration =="Rejected" }
     <h4 class="row offset8"> 

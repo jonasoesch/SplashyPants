@@ -106,11 +106,11 @@ $r->post("person/:id/edit",
 $r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");
 
-$r->get("event/:eventId/participant/:participantId/validate",
-        "PersonView::validateParticipant");
+$r->get("event/:eventId/participant/:participantId/accept",
+        "PersonView::acceptRegistration");
 
 $r->get("event/:eventId/participant/:participantId/reject",
-        "PersonView::rejectParticipant");
+        "PersonView::rejectRegistration");
 
 
 /* ---------- Admin ---------- */
