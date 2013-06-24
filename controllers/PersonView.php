@@ -130,7 +130,8 @@ class PersonView extends ViewController {
 
     public function showParticipant($id){
         global $tedx_manager;
-        $tedx_manager->login('admin','admin');
+        //to count the number of AcceptedRegistrations
+        $numberOfAcceptedRegistrations = 0;
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
         $messageGetEvent = $tedx_manager->getEvent($id);
         //test if messageGetEven exists
@@ -202,13 +203,16 @@ class PersonView extends ViewController {
                         'motivations' => $motivations,
                         'keywords' => $keywords
                         );
-                    
+                    if($aRegistration->getStatus()=='Accepted'){
+                        $numberOfAcceptedRegistrations++;
+                    }
 
                 }//foreach
                 //apply of the template validateParticipant.tpl and add of the var we need to use it
                 Template::render('validateParticipant.tpl', array(
                             'event' => $anEvent,
-                            'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations
+                            'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations,
+                            'numberOfAcceptedRegistrations' => $numberOfAcceptedRegistrations
                             ));
             }else{
                 //error message: no registrations found
@@ -226,11 +230,11 @@ class PersonView extends ViewController {
     * validates the inscription of a participant to anEvent
     */
 
-    public function validateParticipantSubmit($idEvent, $idParticipant){
+    public function validateParticipant($eventId, $participantId){
         global $tedx_manager;
-        $tedx_manager->login('admin','admin');
+
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
-        $messageGetEvent = $tedx_manager->getEvent($idEvent);
+        $messageGetEvent = $tedx_manager->getEvent($eventId);
         //test if messageGetEven exists
         
         if($messageGetEvent->getStatus()){
@@ -251,15 +255,15 @@ class PersonView extends ViewController {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                    if($aParticipant->getPersonNo() == $idParticipant){
+                    if($aParticipant->getNo() == $participantId){
                         $aWaitingRegistration = $tedx_manager->getRegistration(array(
                             'status' =>$aRegistration->getStatus(), 
                             'event' => $anEvent, 
                             'participant' => $aParticipant))->getContent();
                         $anAcceptedRegistration= $tedx_manager->acceptRegistration($aWaitingRegistration);
                         //redirect on the same page and show a flash message "registration accepted"
-                        Template::redirect('addParticipant.tpl');
-                        Template::flash('The inscription of the participant number ' . $aParticipant->getPersonNo(). 'has been accepted');    
+                        Template::redirect('event/$eventId/participant/$participantId/validate');
+                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo(). 'has been accepted');    
                     }                   
 
                 }//foreach
@@ -282,11 +286,11 @@ class PersonView extends ViewController {
     * rejects the inscription of a participant to anEvent
     */
 
-    public function rejectParticipantSubmit($idEvent, $idParticipant){
+    public function rejectParticipant($eventId, $participantId){
         global $tedx_manager;
-        $tedx_manager->login('admin','admin');
+
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
-        $messageGetEvent = $tedx_manager->getEvent($idEvent);
+        $messageGetEvent = $tedx_manager->getEvent($eventId);
         //test if messageGetEven exists
         
         if($messageGetEvent->getStatus()){
@@ -307,15 +311,15 @@ class PersonView extends ViewController {
 
                     $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                    if($aParticipant->getPersonNo() == $idParticipant){
+                    if($aParticipant->getNo() == $participantId){
                         $aWaitingRegistration = $tedx_manager->getRegistration(array(
                             'status' =>$aRegistration->getStatus(), 
                             'event' => $anEvent, 
                             'participant' => $aParticipant))->getContent();
                         $aRejectedRegistration= $tedx_manager->acceptRegistration($aWaitingRegistration);
                         //redirect on the same page and show a flash message "registration rejected"
-                        Template::redirect('addParticipant.tpl');
-                        Template::flash('The inscription of the participant number ' . $aParticipant->getPersonNo(). 'has been rejected');    
+                        Template::redirect('event/$eventId/participant/$participantId/reject');
+                        Template::flash('The inscription of the participant number ' . $aParticipant->getNo(). 'has been rejected');    
                     }                   
 
                 }//foreach
