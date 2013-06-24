@@ -61,6 +61,8 @@ $r->get("event/:id",
 $r->get("video",
         "VideoView::video");
 
+$r->get("/event/:event/speaker/:speaker",
+"VideoView::videoDescription");
 
 /* ---------- Person ---------- */
 

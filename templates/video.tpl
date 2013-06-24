@@ -29,25 +29,25 @@ VIDEO
     </div>
     <div class="span3">
         <div class="thumbVideo">
+            <a href="" ><img src="{$baseURL}/public/images/Thumbnails/BenBryant.png" width="225"/></a>   
+       </div>
+       <p>Titre</p>       
+    </div>
+    <div class="span3">
+        <div class="thumbVideo">
+            <a href="{$baseURL}/videoDescription/1/1"><img src="{$baseURL}/public/images/Thumbnails/BenBryant.png" width="225"/></link>  
+       </div>
+       <p>TitreVIDEODESCRIPTION</p>       
+    </div>
+    <div class="span3">
+        <div class="thumbVideo">
             <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>   
        </div>
        <p>Titre</p>       
     </div>
     <div class="span3">
         <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
-       </div>
-       <p>Titre</p>       
-    </div>
-    <div class="span3">
-        <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>   
-       </div>
-       <p>Titre</p>       
-    </div>
-    <div class="span3">
-        <div class="thumbVideo">
-            <a href="#" class="zoombox"><img src="images/Thumbnails/BenBryant.png" width="225"/></a>  
+            <a href="#" class="zoombox"><img src="{$baseURL}/public/images/Thumbnails/BenBryant.png" width="225"/></a>  
        </div>
        <p>Titre</p>       
     </div>
