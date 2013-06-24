@@ -7,7 +7,7 @@
     <h1>Validate participant</h1>
     <h2>Event title : {$event->getMainTopic()}</h2>
     <p>Event date : {$event->getStartingDate()}</p>
-    {if $numberOfAcceptedRegistrations == 1}
+    {if $numberOfAcceptedRegistrations == 1 || $numberOfAcceptedRegistrations == 0}
     <p>{$numberOfAcceptedRegistrations} registration has been accepted</p>
     {else}
     <p>{$numberOfAcceptedRegistrations} registrations have been accepted</p>
@@ -22,6 +22,8 @@
   {assign var="keywords" value=$aRegistrationData['keywords']}
 
 <section class="profile-event">
+
+      <p class="row">Date of last change : {$registration->getRegistrationDate()}</p>
 
       <p class="row">
         <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()}</h3>
@@ -63,10 +65,12 @@
         <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a>
         <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/validate">Validate</a>
     </h4>
-    {else}
+    {elseif $statusRegistration =="Accepted" || $statusRegistration =="Rejected" }
     <h4 class="row offset8"> 
-        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Cancel</a>
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/cancel">Cancel</a>
     </h4>
+    {else}
+    <h4 class="row offset8">No action can be done</h4>    
     {/if}
 
     
