@@ -1,5 +1,8 @@
 
 {include '_header.tpl'}
+<scriptsrc="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+
+</script>
 <form action="{$baseURL}/addEvent" method="post">
 <div class="row">
             	<div class="span7">
@@ -144,16 +147,8 @@
 							  	{/foreach}
 				</select>
 				</p>
+				$('p').after('<p>Paragraphe suivant</p>')
 				<p class="span3">
-				Select a speaker
-				<select>
-			  					{foreach from=$speakers item=speaker}	
-			  											  
-			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
-							  	{/foreach}
-				</select>
-				</p>
-				<p class="span2">
 				Select a speaker
 				<select>
 			  					{foreach from=$speakers item=speaker}	

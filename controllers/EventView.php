@@ -144,6 +144,7 @@ class EventView extends ViewController {
 			echo "</pre>";*/
 			$idEvents = $messageAddEvent->getContent();
 			$idEvent = $idEvents[0]->getNo();
+			
     	
     	//Template::flash($messageAddEvent->getMessage());
     	
@@ -209,41 +210,16 @@ class EventView extends ViewController {
     }
     
     
-    	public function slot() {
+    	public function slot($id) {
 		global $tedx_manager;
+					
+		echo "<pre>";
+		echo $this->getSpeakerAndLocationData();
+		echo "</pre>";
 		
-			$messageGetLocations = $tedx_manager->getLocations();
-						
-			//message
-			if( $messageGetLocations->getStatus()){
-				
-				$someLocations = $messageGetLocations->getContent();
-			}
-			
-			else{
-				
-			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
-
-			}
-			
-			$searchArgs = array(
-			'personType' => 'speaker');
-			// exec the search
-			$messageSearchPersons = $tedx_manager->searchPersons($searchArgs);
-
-			// test answer
-			if($messageSearchPersons ->getStatus()){
-			$someSpeakers = $messageSearchPersons->getContent();
-			}
-			else{
-			echo 'No Speaker matched your criterias';
-			}
-			
-			
+		$untableau= array_merge($this->getEventData($id), $this->getSpeakerAndLocationData());
 		
-		Template::render('addSlot.tpl',array(
-			'someLocations' => $someLocations,
-			'someSpeakers' => $someSpeakers));
+		Template::render('addSlot.tpl',$untableau);
 	}
 	
 	

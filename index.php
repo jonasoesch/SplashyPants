@@ -71,7 +71,7 @@ $r->get("addEvent",
 $r->post("addEvent",
 				"EventView::submitEvent");
 
-$r->get("addSlot",
+$r->get("addSlot/:id",
 				"EventView::slot");
 				
 $r->get("modifyEvent/:id",
