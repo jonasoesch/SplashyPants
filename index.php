@@ -62,6 +62,8 @@ $r->get("logout",
         
 $r->get("event/:id",
 				"EventView::show");
+$r->get("events",
+                                "EventView::showEvents");
 				
 $r->get("addEvent",
 				"EventView::add");
@@ -144,8 +146,7 @@ $r->get("event/:eventId/participant/:participantId/cancel",
 
 
 /* ---------- Admin ---------- */
-$r->get("events",
-				"EventView::listEvents");
+
 
 $r->run();
 

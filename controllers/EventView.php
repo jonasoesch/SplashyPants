@@ -13,6 +13,45 @@ class EventView extends ViewController {
 			$this->getEventData($id) 
 		);
 	}
+
+	/**------------------------------------------------------------------------------------------
+	* Shows a list of all the events
+	*/
+	public function showEvents(){
+		global $tedx_manager;
+
+		$messageGetEvents = $tedx_manager->getEvents();
+		$numberOfEvents = 0;
+		if($messageGetEvents->getStatus()){
+			$someEvents = $messageGetEvents->getContent();
+
+			$arrayEventsLocation = array();
+
+			foreach ($someEvents as $anEvent) {
+				$messageLocation = $tedx_manager->getLocationFromEvent($anEvent);
+				if($messageLocation->getStatus()){
+					$LocationOfanEvent = $messageLocation->getContent();
+
+					$arrayEventsLocation[] = array(
+			          'event' => $anEvent,
+			          'location' => $LocationOfanEvent);
+					$numberOfEvents++;
+				}else{
+					Template::flash('Could not find location of the event no ' . $anEvent->getNo());
+				}
+			}
+				Template::render('listEvents.tpl', array(
+					'arrayEventsLocation' => $arrayEventsLocation,
+					'numberOfEvents' => $numberOfEvents));
+
+		}else{
+
+			Template::flash('Could not find events ' . $messageGetEvents->getMessage());
+		}
+
+
+	}
+
 	
 	public function modify($id){
 		

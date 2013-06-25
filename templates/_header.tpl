@@ -21,11 +21,11 @@
 
 <nav class="menu row">
 	<ul>
-                <li class="span1"><a href="{$baseURL}/event/1">Event </a></li>
+                <li class="span1"><a href="{$baseURL}/events">Events </a></li>
                 <li class="span1"><a href="{$baseURL}/video">Videos </a></li>
                 <li class="span1"><a href="{$baseURL}/about">About </a></li>
                 <li class="span1"><a href="{$baseURL}/team">Team </a></li>
-                <li class="span1"><a href="{$baseURL}/partners">Partner </a></li>
+                <li class="span1"><a href="{$baseURL}/partners">Partners </a></li>
                 <li class="span2"><a href="{$baseURL}/contact">Contact Us </a></li>
                 <div class="span2 offset3" style="align:right;">
                     {if !$tedx->isLogged()}

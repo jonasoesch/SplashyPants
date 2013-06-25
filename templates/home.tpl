@@ -6,6 +6,7 @@
             <h1 class="span11 offeset1">Next Event</h1><br />
             <h2 class="span11 offset1"> {$event->getMainTopic()}</h2>
             <h3 class="span11 offset1">{$event->getStartingDate()}</h3>
+            <p class="span11 offset1">{$event->getDescription()}</p>
             <a class="span6 offset6" href="{$baseURL}/event/{$event->getNo()}">more info</a>
             <figure class="span11 offset1">
                 <a href="{$baseURL}/event/{$event->getNo()}"><img src="{$baseURL}/public/images/event/event{$event->getNo()}.png" width="270" alt="TEDxLausanne | {$event->getMainTopic()} | {$event->getStartingDate()}" title="TEDxLausanne | {$event->getMainTopic()}" /></a>
