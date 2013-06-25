@@ -71,6 +71,12 @@ $r->post("addEvent",
 
 $r->get("addSlot",
 				"EventView::slot");
+				
+$r->get("modifyEvent/:id",
+				"EventView::modify");
+				
+$r->post("modifyEvent/:id",
+				"EventView::submitModifyEvent");
 
 /* ---------- Videos ---------- */
 $r->get("video",

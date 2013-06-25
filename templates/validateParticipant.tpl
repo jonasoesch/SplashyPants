@@ -24,7 +24,7 @@
 <section class="profile-event">
       <p class="row">
         <p class="span12">Date of last change : {$registration->getRegistrationDate()}</p>
-        <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()}</h3>
+        <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()} No Participant : {$participant->getNo()}</h3>
       </p>
 
       <p class="row">
