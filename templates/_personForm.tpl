@@ -1,10 +1,3 @@
-{include "_header.tpl"}
-<link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
-
-<form 
-	{if isset($personId)} action="{$baseURL}/person/{$personId}/edit"
-		{else} action="{$baseURL}/register"{/if}
-		method="post">
 <div class="row profile-details">
 	  <figure class="span2 offset1" >
 	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
@@ -64,28 +57,5 @@
 	  			/>  
 	  		</p>
 	  	</div>
-	  	
-	 {if !isset($personId)}
-	 <div class="row">
-		 <p class="span6">
-		 	<input type="text" name="username" placeholder="Username" />
-		 </p>
-	 	<p class="span6">
-	 		<input type="password" name="password" placeholder="Password" />
-	 	</p>
-	 </div>
-	 {/if}
-	 <div class="row">
-	 		<p class="span6 offset6">
-	 			<input type="submit" />
-	 		</p>
-	 </div>
-
-	 	 </div>
+	  </div>
 </div>
-
-</form>
-
-{include "_footer.tpl"}
-
- 

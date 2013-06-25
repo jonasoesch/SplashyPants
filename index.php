@@ -71,6 +71,12 @@ $r->post("addEvent",
 
 $r->get("addSlot",
 				"EventView::slot");
+				
+$r->get("modifyEvent/:id",
+				"EventView::modify");
+				
+$r->post("modifyEvent/:id",
+				"EventView::submitModifyEvent");
 
 /* ---------- Videos ---------- */
 $r->get("video",
@@ -87,21 +93,42 @@ $r->get("team",
 
 $r->get("persons",
         "PersonView::showAll");
-
-$r->get("register",
-        "PersonView::register");
         
-$r->post("register",
-        "PersonView::registerSubmit");
-
 $r->get("person/:id",
         "PersonView::show");
+
+// ---------- Visitor
+$r->get("register",
+        "PersonView::registerVisitor");
+
+$r->post("register",
+        "PersonView::registerVisitorSubmit");
+
+// ---------- Speaker
+$r->get("register/speaker",
+        "PersonView::registerSpeaker");
+
+$r->post("register/speaker",
+        "PersonView::registerSpeakerSubmit");
+
+// ---------- Organizer
+$r->get("register/organizer",
+        "PersonView::registerOrganizer");
+
+$r->post("register/organizer",
+        "PersonView::registerOrganizerSubmit");
         
+
+
+         
+         
 $r->get("person/:id/edit",
         "PersonView::editProfil");
         
 $r->post("person/:id/edit",
         "PersonView::editProfilSubmit");
+        
+        
 
 $r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");

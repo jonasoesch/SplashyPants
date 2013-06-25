@@ -5,19 +5,17 @@
 <div class="row profile-details">
 
 	  <figure class="span2 offset1" >
-	  	<img src="images/profile.jpeg" alt="cristo" class="portrait" />
+	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
 	  </figure>
 	  
 
-	  	<h1 class="offset1">
+	  	<h1 class="offset1 span8">
 	  	  <span class="prenom">{$person->getFirstName()}</span>
 	  	  <span class="nom">{$person->getName()}</span>
 	  	  
 	  	  
-	  	  {if $tedx->isGranted('changeProfil')->getContent()}
+	  	  {if $canEdit}
 	  	 	 <a href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
-	  	 	{else}
-					<a href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
 	  	  {/if}
 	  	</h1>
 	  
@@ -41,8 +39,15 @@
 	 </div>
 	 
 </div>
+
+{if $person->getDescription() != ""}
+<div class="row profile-event">
+  <h3 class="span4">Description</h3>
+  <p class="span8">{$person->getDescription()}</p>
+</div>
+{/if}
                 
-<!--
+{*
 <div class="profile-event">
 	<h2>TEDx du 21.5.2011</h2>
 	<div class="row">
@@ -64,27 +69,5 @@
     <li class="pill">90ties Music</li>
   </ul>
 </div>
-
-<div class="profile-event">
-	<h2>TEDx du 11.9.2010</h2>
-	<div class="row">
-		<h3 class="span4">Registration Status</h3>
-		<p class="span8 declined">Declined</p>
-	</div>
-
-<div class="row">
-  <h3 class="span4">Motivation</h3>
-  <p class="span8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.
-  </p>
-</div>
-
-<div class="row">
-  <h3 class="span4">Keywords</h3>
-  <ul class="span8">
-    <li class="pill">Cowboys</li>
-    <li class="pill">Pipe Smoking</li>
-  </ul>
-</div>
--->
-
+*}
 {include '_footer.tpl'}

@@ -5,126 +5,228 @@ require_once SPLASHY_DIR . "/helpers/Template.php";
 
 class PersonView extends ViewController {
 
-    /**
-     * Shows a profile page for any kind of person
-     * @params: $id-> person's id
-     */
-    public function show($id) {
-        global $tedx_manager;
-        $personMsg = $tedx_manager->getPerson($id);
+    
+    /** ----------------------------------------------------------------------------------------------------
+		* Shows a profile page for any kind of person
+		* 
+		*/
+		public function show($id) {
+				global $tedx_manager;
+				$personMsg = $tedx_manager->getPerson($id);
+				
+				// Contrôler si qqn à le droit de changer un profil
+				$canEdit = $this->canEditProfile($id);
+				
+				if($canEdit) {
+  				if($personMsg->getStatus()) {
+    		 		Template::render('profile.tpl', array(
+    		 			'person' => $personMsg->getContent(),
+    		 			'canEdit' => $canEdit
+    		 		));
+  		 	} else {
+  		 		Template::flash($personMsg->getMessage());
+  		 		Template::redirect('');
+  		 	}
+  		} else {
+    		Template::flash("You don't have the right to view this page.");
+    		Template::redirect('');
+  		}
+		}
 
-        if ($personMsg->getStatus()) {
-            Template::render('profile.tpl', array(
-                'person' => $personMsg->getContent()
-            ));
-        } else {
-            Template::flash($personMsg->getMessage());
-            Template::redirect('');
-        }
-    }
-
-    /*
-     * Displays a list of all the persons
-     *
-     */
-
-    public function showAll() {
-        global $tedx_manager;
-        $persons = $tedx_manager->getPersons()->getContent();
-        Template::render('persons.tpl', array('persons' => $persons));
-    }
-
-    /**
-     * Displays the form to allow subscription with TEDx
-     * but only if you're not logged in 
-     */
-    public function register() {
-        global $tedx_manager;
-
-        if (!$tedx_manager->isLogged()) {
-            Template::render('register.tpl');
-        } else {
-            Template::flash("Can't register when you already have an account");
-            Template::redirect('');
-        }
-    }
-
-    /*
-     * Adds the Person to the database.
-     *
-     */
-
-    public function registerSubmit() {
-        global $tedx_manager;
-
-        $args = array(
-            'name' => $_POST['lastname'],
-            'firstname' => $_POST['firstname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . '-' . $_POST['dob_day'],
-            'address' => $_POST['address'],
-            'city' => $_POST['city'],
-            'country' => $_POST['country'],
-            'phoneNumber' => $_POST['telephone'],
-            'email' => $_POST['email'],
-            'idmember' => isset($_POST['username']) ? $_POST['username'] : "",
-            'password' => isset($_POST['password']) ? $_POST['password'] : ""
-        );
-
-        $aRegisteredVisitor = $tedx_manager->registerVisitor($args);
-        Template::flash($aRegisteredVisitor->getMessage());
-
-        if ($aRegisteredVisitor->getStatus()) {
-            Template::redirect("persons");
-        } else {
-            // Only functions when E-Mail not valid?
-            Template::render('register.tpl', array(
-                "person" => $aRegisteredVisitor->getContent()
-                    )
-            );
-        }
-    }
-
-    /*
-     * 	
-     */
-
-    public function editProfil($id) {
-        global $tedx_manager;
-        $personMsg = $tedx_manager->getPerson($id);
-
-        Template::render('register.tpl', array(
-            "person" => $personMsg->getContent(),
-            "personId" => $id
-        ));
-    }
-
-    public function editProfilSubmit($id) {
-        global $tedx_manager;
-
-        $args = array(
-            'no' => $id,
-            'name' => $_POST['lastname'],
-            'firstName' => $_POST['firstname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . "-" . $_POST['dob_day'],
-            'address' => $_POST['address'],
-            'city' => $_POST['city'],
-            'country' => $_POST['country'],
-            'phoneNumber' => $_POST['telephone'],
-            'email' => $_POST['email']
-        );
-
-        $aChangedProfil = $tedx_manager->changeProfil($args);
-
-        if ($aChangedProfil->getStatus()) {
-            Template::redirect("person/$id");
-        } else {
-            Template::redirect("person/$id/edit");
-        }
+    /** ----------------------------------------------------------------------------------------------------
+		* Displays a list of all the persons
+		*
+		*/
+		public function showAll() {
+			global $tedx_manager;
+			$persons = $tedx_manager->getPersons()->getContent();
+			Template::render('persons.tpl', array('persons' => $persons));
+		}
+    
+    
+      
+   
+    /** ----------------------------------------------------------------------------------------------------
+    * Displays the form to allow subscription with TEDx
+    * but only if you're not logged in 
+    */
+    public function registerVisitor() {
+    	global $tedx_manager;
+    	
+    	if(!$tedx_manager->isLogged()) {
+    		Template::render('participantForm.tpl', array(
+    		  "mode" => "new"
+    		  )
+    		);
+    	} else {
+    		Template::flash("Can't register when you already have an account");
+    		Template::redirect('');
+    	}
     }
 
     
+    /** ----------------------------------------------------------------------------------------------------
+    * Adds the Person to the database.
+    *
+    */
+    public function registerVisitorSubmit() {
+    	global $tedx_manager;
+    	  $args = $this->createPersonArray();
+    	
+    	  $aRegisteredVisitor = $tedx_manager->registerVisitor( $args );
+        Template::flash($aRegisteredVisitor->getMessage());
+    	
+    	if($aRegisteredVisitor->getStatus()) {
+    		Template::redirect("persons");
+    	} else {
+    	  $args['no'] = 0;
+    	  $args['isArchived'] = false;
+    		Template::render('participantForm.tpl', array(
+    			"person" => new Person($args),
+    			'mode' => "new"
+    			)
+    		);
+    	}
 
-    /*
+    }
+    
+    
+    /** ----------------------------------------------------------------------------------------------------
+    **/
+    public function registerSpeaker() {
+      global $tedx_manager;
+    	
+    	if($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
+    		Template::render('speakerForm.tpl', array(
+    		  'mode' => 'new')
+    		);    		
+    	} else {
+    		Template::flash("You don't have the right to add a speaker");
+    		Template::redirect('');
+    	}
+    }
+
+
+    /** ----------------------------------------------------------------------------------------------------
+    **/
+    public function registerSpeakerSubmit() {
+       global $tedx_manager;
+
+    	if($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
+          $args = $this->createPersonArray();
+
+          $aRegisteredSpeaker = $tedx_manager->registerSpeaker( $args );
+          Template::flash($aRegisteredSpeaker->getMessage());
+          
+          if($aRegisteredSpeaker->getStatus()) {
+            Template::redirect('persons');
+          } else {
+            $args['no'] = 0;
+            $args['isArchived'] = false;
+            Template::render('speakerForm.tpl', array(
+              'person' => new Person($args),
+              'mode' => 'new'
+            ));
+          }
+      }
+    }
+    
+    
+    /** ----------------------------------------------------------------------------------------------------
+    **/
+    public function registerOrganizer() {
+      global $tedx_manager;
+      
+      if($tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
+        Template::render('organizerForm.tpl', array(
+          'mode' => 'new'
+        ));
+      } else {
+        Template::flash("You don't have the right to add an organizer");
+        Template::redirect('');
+      }
+    }
+    
+    public function registerOrganizerSubmit() {
+      global $tedx_manager;
+      
+      if($tedx_manager->isAdministrator() ||$tedx_manager->isSuperadmin()) {
+        $args = $this->createPersonArray();
+        
+        $aRegisteredOrganizer = $tedx_manager->registerOrganizer( $args );
+        Template::flash($aRegisteredOrganizer->getMessage());
+        
+        if($aRegisteredOrganizer->getStatus()) {
+          Template::redirect('persons');
+        } else {
+          $args['no'] = 0;
+          $args['isArchived'] = false;
+          
+          Template::render('organizerForm.tpl', array(
+            'person' => new Person($args),
+            'mode' => 'new'
+          ));
+        }
+      }
+    }
+    
+
+    /** ----------------------------------------------------------------------------------------------------
+		*	
+		*/
+		public function editProfil($id) {
+			global $tedx_manager;
+			if($this->canEditProfile($id)) {
+			  
+			  $personMsg = $tedx_manager->getPerson($id);
+        
+        // Speaker
+        // Not implemented
+        if($tedx_manager->getSpeaker($id)->getStatus()) {
+          Template::render('speakerForm.tpl', array(
+				    "person" => $personMsg->getContent(),
+            "mode" => "edit"
+          ));
+        // Organizer  
+        } elseif($tedx_manager->getOrganizer($id)->getStatus()) {
+          Template::render('organizerForm.tpl', array(
+            "person" => $personMsg->getContent(),
+            "mode" => "edit"
+          ));
+        }
+        // Participant
+        else {
+          Template::render('participantForm.tpl', array(
+  				  "person" => $personMsg->getContent(),
+            "mode" => "edit"
+            ));
+        }
+      } else {
+        Template::flash("You can't edit this profile");
+        Template::redirect("");
+      }
+		}
+		
+		
+		/** -------------------------------------------------------------------------
+		**/
+		public function editProfilSubmit($id) {
+			global $tedx_manager;
+			
+			$args = $this->createPersonArray();
+			
+			$aChangedProfil= $tedx_manager->changeProfil( $args );
+		
+			if($aChangedProfil->getStatus()) {
+				Template::redirect("person/$id");
+			} else {
+				Template::redirect("person/$id/edit");
+			}
+			
+			
+		}
+		
+/*
      * accept the inscription of a participant to anEvent
      * create a new acceptedRegistration and redirect on the validation page for anEvent
      * @param: 
@@ -406,9 +508,67 @@ class PersonView extends ViewController {
             //error message: no event found
             Template::flash('Could not find event ' . $messageGetEvent->getMessage());
         }//else
+    } //function
+
+/************************************************************************************************************
+******************************************** Helper Functions ***********************************************
+*************************************************************************************************************/
+
+    /** ----------------------------------------------------------------------------------------------------
+    * Check if somebody has the right to change the profile of a 
+    * person with a given id.
+    */
+    public function canEditProfile($personId) {
+      global $tedx_manager;
+      
+      $loggedPersonMsg = $tedx_manager->getLoggedPerson();
+      $canEdit = false;
+      
+      if($loggedPersonMsg->getStatus()) {
+          
+          // Anybody can edit his proper profile
+  				if($loggedPersonMsg->getContent()->getNo() == $personId) {
+    				$canEdit = true;
+  				
+  				// All kinds of website-manager can edit any profile
+  				} else if($tedx_manager->isValidator() || 
+  				          $tedx_manager->isOrganizer() ||
+  				          $tedx_manager->isAdministrator() ||
+  				          $tedx_manager->isSuperadmin()
+  				        ) {
+    				$canEdit = true; 
+  				}
+				}
+        return $canEdit;
+    }
+    
+    
+    /** ----------------------------------------------------------------------------------------------------
+    **/
+    public function createPersonArray() {
+        $args = array(
+    	    'name'        => $_POST['lastname'],
+    	    'firstname'   => $_POST['firstname'],
+    	    'dateOfBirth' => $_POST['dob_year']."-".$_POST['dob_month'].'-'.$_POST['dob_day'],
+    	    'address'     => $_POST['address'],
+    	    'city'        => $_POST['city'],
+    	    'country'     => $_POST['country'],
+    	    'phoneNumber' => $_POST['telephone'],
+    	    'email'       => $_POST['email']
+    	   );
+    	   
+    	   if(isset($_POST['username']) && isset($_POST['password'])) {
+      	    $args['idmember'] = $_POST['username'];
+            $args['password'] = $_POST['password'];
+          }
+          
+          if(isset($_POST['description'])) {
+            $args['description'] = $_POST['description'];
+          }
+          
+    	   return $args;
     }
 
-//function
 }
 
 //class
