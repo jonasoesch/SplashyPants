@@ -38,8 +38,6 @@ class Router {
       $this->request_uri = ltrim($this->request_uri, "/"); // Ugly hack for the server
     }
     
-    var_dump($this->request_uri);
-    
 		$this->routes = array();
 	}
 
