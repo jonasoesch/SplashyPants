@@ -34,9 +34,8 @@ class Router {
     {$this->request_uri = str_replace(SPLASHY_URL, "", $request);} //Making the base URL changable in tedx-config.php for the server
     else {$this->request_uri = $request; }
     
-    if($this->request_uri[0] == "/") {
-      $this->request_uri = ltrim($this->request_uri, "/"); // Ugly hack for the server
-    }
+
+    $this->request_uri = ltrim($this->request_uri, "/"); // Ugly hack for the server
     
 		$this->routes = array();
 	}
