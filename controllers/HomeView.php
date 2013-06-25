@@ -12,6 +12,25 @@ class HomeView extends ViewController {
     //get some talks for the aside part
     $someTalks=$tedx_manager->getTalks()->getContent();
 
+    $arraySpeakerTalks = array();
+
+    foreach ($someTalks as $aTalk) {
+      $idSpeaker = $aTalk->getSpeakerPersonNo();
+      $messageGetPerson = $tedx_manager->getSpeaker($idSpeaker);
+      if($messageGetPerson->getStatus()){
+        $speaker = $messageGetPerson->getContent();
+        //$array_push($arraySpeakerTalks, $speaker);
+        $arraySpeakerTalks[] = array(
+          'talk' => $aTalk,
+          'speaker' => $speaker);
+        //var_dump($speaker);
+        
+      }else{
+        Template::flash('Could not find speaker ' . $messageGetPerson->getMessage());
+      }
+
+    }
+
     //get the events
     $messageGetEvents = $tedx_manager->getEvents();
     //test if the messageGetEvents isn't empty
@@ -36,7 +55,7 @@ class HomeView extends ViewController {
     }
    	Template::render('home.tpl', array(
       'event' => $theLastEvent,
-      'someTalks' => $someTalks));
+      'arraySpeakerTalks' => $arraySpeakerTalks));
   }
   
   public function hey($event, $contact) {
