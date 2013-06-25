@@ -57,7 +57,7 @@ class Template {
 	}
 	
 	public static function getBaseURL() {
-		return 'http://'.$_SERVER['HTTP_HOST'].'/tedxEventManager/SplashyPants/';
+		return 'http://'.$_SERVER['HTTP_HOST'].SPLASHY_URL.'/';
 	}
 	
 	public static function flash($message) {
