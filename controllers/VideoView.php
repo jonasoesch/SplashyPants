@@ -18,6 +18,7 @@ class VideoView extends ViewController {
         
     }
 
+    //Fonction de la page videoDescription
     public function videoDescription($eventId, $speakerId) {
 
 
@@ -59,6 +60,9 @@ class VideoView extends ViewController {
             Template::flash("Could not find Event");
         }
     }
+    
+    
+    
 
 }
 
