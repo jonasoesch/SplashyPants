@@ -30,9 +30,16 @@ class Router {
 
 	public function __construct() {
 		$request = $this->get_request();
-    if(SPLASHY_URL) 
-    {$this->request_uri = str_replace(SPLASHY_URL, "", $request);} 
+    if(SPLASHY_URL)
+    {$this->request_uri = str_replace(SPLASHY_URL, "", $request);} //Making the base URL changable in tedx-config.php for the server
     else {$this->request_uri = $request; }
+    
+    if($this->request_uri[0] == "/") {
+      $this->request_uri = ltrim($this->request_uri, "/"); // Ugly hack for the server
+    }
+    
+    var_dump($this->request_uri);
+    
 		$this->routes = array();
 	}
 
