@@ -17,15 +17,20 @@ class PersonView extends ViewController {
 				// Contrôler si qqn à le droit de changer un profil
 				$canEdit = $this->canEditProfile($id);
 				
-				if($personMsg->getStatus()) {
-  		 		Template::render('profile.tpl', array(
-  		 			'person' => $personMsg->getContent(),
-  		 			'canEdit' => $canEdit
-  		 		));
-		 	} else {
-		 		Template::flash($personMsg->getMessage());
-		 		Template::redirect('');
-		 	}
+				if($canEdit) {
+  				if($personMsg->getStatus()) {
+    		 		Template::render('profile.tpl', array(
+    		 			'person' => $personMsg->getContent(),
+    		 			'canEdit' => $canEdit
+    		 		));
+  		 	} else {
+  		 		Template::flash($personMsg->getMessage());
+  		 		Template::redirect('');
+  		 	}
+  		} else {
+    		Template::flash("You don't have the right to view this page.");
+    		Template::redirect('');
+  		}
 		}
 
     /** ----------------------------------------------------------------------------------------------------
@@ -67,11 +72,6 @@ class PersonView extends ViewController {
     public function registerVisitorSubmit() {
     	global $tedx_manager;
     	  $args = $this->createPersonArray();
-    	  
-    	  if(isset($_POST['username']) && isset($_POST['password'])) {
-      	  $args['idmember'] = $_POST['username'];
-      	  $args['password'] = $_POST['password'];
-    	  }
     	
     	  $aRegisteredVisitor = $tedx_manager->registerVisitor( $args );
         Template::flash($aRegisteredVisitor->getMessage());
@@ -79,9 +79,10 @@ class PersonView extends ViewController {
     	if($aRegisteredVisitor->getStatus()) {
     		Template::redirect("persons");
     	} else {
-    	  // Only functions when E-Mail not valid?
+    	  $args['no'] = 0;
+    	  $args['isArchived'] = false;
     		Template::render('participantForm.tpl', array(
-    			"person" => $aRegisteredVisitor->getContent(),
+    			"person" => new Person($args),
     			'mode' => "new"
     			)
     		);
@@ -96,9 +97,11 @@ class PersonView extends ViewController {
       global $tedx_manager;
     	
     	if($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
-    		Template::render('speakerForm.tpl');    		
+    		Template::render('speakerForm.tpl', array(
+    		  'mode' => 'new')
+    		);    		
     	} else {
-    		Template::flash("You don't have the rights to add a speaker");
+    		Template::flash("You don't have the right to add a speaker");
     		Template::redirect('');
     	}
     }
@@ -111,25 +114,59 @@ class PersonView extends ViewController {
 
     	if($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
           $args = $this->createPersonArray();
-          if(isset($_POST['username']) && isset($_POST['password'])) {
-      	    $args['idmember'] = $_POST['username'];
-            $args['password'] = $_POST['password'];
-          }
-          
-          if(isset($_POST['description'])) {
-            $args['description'] = $_POST['description'];
-          }
+
           $aRegisteredSpeaker = $tedx_manager->registerSpeaker( $args );
           Template::flash($aRegisteredSpeaker->getMessage());
           
           if($aRegisteredSpeaker->getStatus()) {
             Template::redirect('persons');
           } else {
+            $args['no'] = 0;
+            $args['isArchived'] = false;
             Template::render('speakerForm.tpl', array(
-              'person' => $aRegisteredSpeaker->getContent(),
+              'person' => new Person($args),
               'mode' => 'new'
             ));
           }
+      }
+    }
+    
+    
+    /** ----------------------------------------------------------------------------------------------------
+    **/
+    public function registerOrganizer() {
+      global $tedx_manager;
+      
+      if($tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
+        Template::render('organizerForm.tpl', array(
+          'mode' => 'new'
+        ));
+      } else {
+        Template::flash("You don't have the right to add an organizer");
+        Template::redirect('');
+      }
+    }
+    
+    public function registerOrganizerSubmit() {
+      global $tedx_manager;
+      
+      if($tedx_manager->isAdministrator() ||$tedx_manager->isSuperadmin()) {
+        $args = $this->createPersonArray();
+        
+        $aRegisteredOrganizer = $tedx_manager->registerOrganizer( $args );
+        Template::flash($aRegisteredOrganizer->getMessage());
+        
+        if($aRegisteredOrganizer->getStatus()) {
+          Template::redirect('persons');
+        } else {
+          $args['no'] = 0;
+          $args['isArchived'] = false;
+          
+          Template::render('organizerForm.tpl', array(
+            'person' => new Person($args),
+            'mode' => 'new'
+          ));
+        }
       }
     }
     
@@ -150,8 +187,15 @@ class PersonView extends ViewController {
 				    "person" => $personMsg->getContent(),
             "mode" => "edit"
           ));
+        // Organizer  
+        } elseif($tedx_manager->getOrganizer($id)->getStatus()) {
+          Template::render('organizerForm.tpl', array(
+            "person" => $personMsg->getContent(),
+            "mode" => "edit"
+          ));
+        }
         // Participant
-        } else {
+        else {
           Template::render('participantForm.tpl', array(
   				  "person" => $personMsg->getContent(),
             "mode" => "edit"
@@ -163,6 +207,9 @@ class PersonView extends ViewController {
       }
 		}
 		
+		
+		/** -------------------------------------------------------------------------
+		**/
 		public function editProfilSubmit($id) {
 			global $tedx_manager;
 			
@@ -509,6 +556,16 @@ class PersonView extends ViewController {
     	    'phoneNumber' => $_POST['telephone'],
     	    'email'       => $_POST['email']
     	   );
+    	   
+    	   if(isset($_POST['username']) && isset($_POST['password'])) {
+      	    $args['idmember'] = $_POST['username'];
+            $args['password'] = $_POST['password'];
+          }
+          
+          if(isset($_POST['description'])) {
+            $args['description'] = $_POST['description'];
+          }
+          
     	   return $args;
     }
 

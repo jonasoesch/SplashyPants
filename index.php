@@ -109,7 +109,7 @@ $r->post("register/speaker",
 $r->get("register/organizer",
         "PersonView::registerOrganizer");
 
-$r->get("register/organizer",
+$r->post("register/organizer",
         "PersonView::registerOrganizerSubmit");
         
 

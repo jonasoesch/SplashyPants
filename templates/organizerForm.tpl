@@ -1,9 +1,9 @@
 {include "_header.tpl"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
-<h1>Speaker {var_dump($mode)}</h1>
+<h1>Organizer</h1>
 <form
 	{if $mode == "edit"} action="{$baseURL}/person/{$personId}/edit"
-		{else} action="{$baseURL}/register/speaker"{/if}
+		{else} action="{$baseURL}/register/organizer"{/if}
 		method="post">
 		
 {include "_personForm.tpl"}
