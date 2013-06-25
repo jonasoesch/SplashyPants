@@ -394,8 +394,7 @@ class PersonView extends ViewController {
             Template::flash('Could not find event ' . $messageGetEvent->getMessage());
         }//else
     }
-
-    /*
+    /*-----------------------------------------------------------------------------------------------------------
      * Gets the participants with their motivations and keywords for an Event
      * sort to keep only the last registration to an Event for each participant and only if the status of this last registration is different from 'pending'
      * and shows the last registration ba participant in a list for an Event where there are no status equals to 'pending'
@@ -405,7 +404,9 @@ class PersonView extends ViewController {
 
     public function showParticipant($id) {
         global $tedx_manager;
-        //to count the number of AcceptedRegistrations
+
+        if($tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin() || $tedx_manager->isValidator()){
+            //to count the number of AcceptedRegistrations
         $numberOfAcceptedRegistrations = 0;
         //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
         $messageGetEvent = $tedx_manager->getEvent($id);
@@ -508,6 +509,11 @@ class PersonView extends ViewController {
             //error message: no event found
             Template::flash('Could not find event ' . $messageGetEvent->getMessage());
         }//else
+    }else{
+        Template::flash('Acces denied');
+        Template::redirect('');
+    }
+        
     } //function
 
 /************************************************************************************************************
