@@ -2,6 +2,7 @@
   <html>
     <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
       <title>Splashy Title</title>
       <link href="{$baseURL}/public/css/grid.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/normalize.css" rel="stylesheet" />

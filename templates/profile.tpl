@@ -4,8 +4,8 @@
 
 <div class="row profile-details">
 
-	  <figure class="span2 offset1" >
-	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait" />
+	  <figure class="span2" >
+	  	<img src="{$baseURL}/public/images/profile.jpeg" alt="cristo" class="portrait-big" />
 	  </figure>
 	  
 
