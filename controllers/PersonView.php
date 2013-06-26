@@ -108,20 +108,8 @@ class PersonView extends ViewController {
         Template::render('teamRoles.tpl');
     }
     
-    //fonction qui affiche toute les personnes
-    public function showAll() {
-        global $tedx_manager;
-        $persons = $tedx_manager->getPersons()->getContent();
-        Template::render('persons.tpl', array('persons' => $persons));
-    }
-    
-    public function show($id) {
-        global $tedx_manager;
-        $person = $tedx_manager->getPerson($id)->getContent();
-        Template::render('profile.tpl', array(
-            'person' => $person
-        ));
-    }
+
+  
     
       //fonction qui affiche le template register
     public function register() {
