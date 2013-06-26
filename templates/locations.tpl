@@ -15,7 +15,7 @@
 		  	</div>
 		  	
 	        <div class="row">
-		 		<p class="span6 offset6"><input type="submit" /></p>
+		 		<p class="span6 offset6"><input type="submit" name="validate"value="validate"/></p>
 	        </div>
 	</form>
 </section>
