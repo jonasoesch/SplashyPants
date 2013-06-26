@@ -18,12 +18,22 @@ class PersonView extends ViewController {
 				$canView = $this->canViewProfile($id);
 				$canEdit = $this->canEditProfile($id);
 				
+				$talksMsg = $tedx_manager->getTalksBySpeaker($personMsg->getContent());
+				
 				if($canView) {
   				if($personMsg->getStatus()) {
-    		 		Template::render('profile.tpl', array(
+  				  
+  				  $argsTpl = array(
     		 			'person' => $personMsg->getContent(),
     		 			'canEdit' => $canEdit
-    		 		));
+    		 		);
+    		 		
+    		 		// If it's the profile of a speaker we want to show his talks
+    		 		if($talksMsg->getStatus()) 
+    		 		     { $argsTpl['talks'] = $talksMsg->getContent(); }
+    		 		else { $argsTpl['talks'] = array(); }
+    		 		
+    		 		Template::render('profile.tpl', $argsTpl);
   		 	} else {
   		 		Template::flash($personMsg->getMessage());
   		 		Template::redirect('');
@@ -701,7 +711,8 @@ class PersonView extends ViewController {
                 'Event' => $event
             ));}
         } else {
-            Template::render('register.tpl');
+            Template::flash('You need to become member of the TEDx community before you can register for an event');
+            Template::redirect('register');
         }
     }
 

@@ -46,6 +46,16 @@
   <p class="span8">{$person->getDescription()}</p>
 </div>
 {/if}
+
+ {if count($talks) != 0} <h2>Talks</h2> {/if}
+ {foreach from=$talks item=aTalk}
+    <div class="span3">
+        <div class="thumbVideo">
+            <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}"><img src="{$baseURL}/public/images/Thumbnails/{$aTalk->getVideoTitle()}.png" width="225"/></a>   
+            <p>{$aTalk->getVideoTitle()}</p>
+       </div>    
+    </div>
+{/foreach}
                 
 {*
 <div class="profile-event">
