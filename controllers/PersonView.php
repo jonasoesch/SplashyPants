@@ -14,10 +14,11 @@ class PersonView extends ViewController {
 				global $tedx_manager;
 				$personMsg = $tedx_manager->getPerson($id);
 				
-				// Contrôler si qqn à le droit de changer un profil
+				// Contrôler si qqn à le droit de voir ou changer un profil
+				$canView = $this->canViewProfile($id);
 				$canEdit = $this->canEditProfile($id);
 				
-				if($canEdit) {
+				if($canView) {
   				if($personMsg->getStatus()) {
     		 		Template::render('profile.tpl', array(
     		 			'person' => $personMsg->getContent(),
@@ -40,7 +41,16 @@ class PersonView extends ViewController {
 		public function showAll() {
 			global $tedx_manager;
 			$persons = $tedx_manager->getPersons()->getContent();
-			Template::render('persons.tpl', array('persons' => $persons));
+			$speakers = $tedx_manager->getSpeakers()->getContent();
+			$organizers = $tedx_manager->getOrganizers()->getContent();
+			$participants = $tedx_manager->getParticipants()->getContent();
+			
+			Template::render('persons.tpl', array(
+			  'persons' => $persons,
+			  'speakers' => $speakers,
+			  'organizers' => $organizers,
+			  'participants' => $participants
+			  ));
 		}
     
     
@@ -570,6 +580,42 @@ class PersonView extends ViewController {
 /************************************************************************************************************
 ******************************************** Helper Functions ***********************************************
 *************************************************************************************************************/
+
+    /** ---------------------------------------------
+    *
+    */
+    public function canViewProfile($personId) {
+      global $tedx_manager;
+      
+      $loggedPersonMsg = $tedx_manager->getLoggedPerson();
+      $canView = false;
+      
+      // Everybody can view a speaker profile
+      if($tedx_manager->getSpeaker($personId)->getStatus()) {
+        $canView = true;
+      }
+      
+      // Everybody can view an organizer profile
+      if($tedx_manager->getOrganizer($personId)->getStatus()) {
+        $canView = true;
+      }
+      
+      // Everybody can view his own profile
+      if($loggedPersonMsg->getStatus() && ($loggedPersonMsg->getContent()->getNo() == $personId)) {
+        $canView = true;
+      }
+      
+      // Validators, Organizers and Admins can view all the profiles
+      if($tedx_manager->isValidator() || 
+  		   $tedx_manager->isOrganizer() ||
+  		   $tedx_manager->isAdministrator() ||
+  		   $tedx_manager->isSuperadmin()) {
+    		   $canView = true;
+  		   }
+  		
+  		return $canView;
+    }
+
 
     /** ----------------------------------------------------------------------------------------------------
     * Check if somebody has the right to change the profile of a 
