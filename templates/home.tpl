@@ -20,7 +20,7 @@
         {section name=index loop=$arraySpeakerTalks max=3 step=-1} 
             <article class="row thumbVideo">
                 <figure>
-                <a href="{$baseURL}/videoDescription/event/{$arraySpeakerTalks[index].talk->getEventNo()}/speaker/{$arraySpeakerTalks[index].talk->getSpeakerPersonNo()}" class="speakerImage span6"><img src="{$baseURL}/public/images/Thumbnails/{$arraySpeakerTalks[index].talk->getVideoTitle()}.png" width="225" alt="{$arraySpeakerTalks[index].talk->getVideoTitle()}" title="{$arraySpeakerTalks[index].talk->getVideoTitle()}" /></a>
+                <a href="{$baseURL}/videoDescription/event/{$arraySpeakerTalks[index].talk->getEventNo()}/speaker/{$arraySpeakerTalks[index].talk->getSpeakerPersonNo()}" class="speakerImage span6"><img src="{$baseURL}/public/images/Thumbnails/{$arraySpeakerTalks[index].talk->getVideoTitle()}.png" width="225" alt="{$arraySpeakerTalks[index].talk->getVideoTitle()}" title="{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} | {$arraySpeakerTalks[index].talk->getVideoTitle()}" /></a>
                 </figure> 
                 <h5 class="speakerText span6">{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} </h5>
                 <p class="speakerText span6"> {$arraySpeakerTalks[index].talk->getVideoTitle()}</p>
