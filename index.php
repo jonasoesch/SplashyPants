@@ -76,6 +76,12 @@ $r->get("register",
 $r->post("register",
         "PersonView::registerSubmit");
 
+$r->get("event/:eventId/registerToAnEvent",
+        "PersonView::registerToAnEvent");
+
+$r->post("event/:eventId/registerToAnEvent",
+        "PersonView::registerToAnEventSubmit");
+
 $r->get("person/:id",
         "PersonView::show");
 
@@ -85,6 +91,20 @@ $r->get("person/:id",
 /* ---------- Admin ---------- */
 $r->get("events",
 				"EventView::listEvents");
+$r->get("admin",	
+        "HomeView::admin");
+
+$r->get("locations",
+        "PersonView::locations");
+
+$r->post("admin/locations",
+        "PersonView::locationsSubmit");
+
+$r->get("teamRoles",
+        "PersonView::teamRoles");
+
+$r->post("admin/teamRoles",
+        "PersonView::teamRolesSubmit");
 
 $r->run();
 

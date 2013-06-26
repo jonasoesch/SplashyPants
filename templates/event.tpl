@@ -57,7 +57,7 @@ $country="suisse";
 			                 
 			        </div>
 			        <div class="row">
-			        <form action="register.php" method="post">
+			        <form action="{$event->getNo()}/registerToAnEvent" method="get">
 			        <p class="span5"><input type="Submit" name="submit" value="Participate" /></p>
 			        </form>
 			        </div>
@@ -74,7 +74,7 @@ $country="suisse";
  		{foreach from=$slotData key=key item=data}
  		{if $key == 'slotData'}
  				<div class="span4">
-	 				<h3><h3>Slot {$data->getNo()}</h3></h3>
+	 				<h3>Slot {$data->getNo()}</h3>
 	 				<p>{$data->getHappeningDate()}</p>
 		</div>
 

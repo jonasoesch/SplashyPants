@@ -11,10 +11,13 @@ class HomeView extends ViewController {
    	Template::render('home.tpl');
   }
   
-  
   // "login"
   public function login() {
   	Template::render('login.tpl');
+  }
+  
+    public function admin() {
+  	Template::render('admin.tpl');
   }
   
   // "login/do"

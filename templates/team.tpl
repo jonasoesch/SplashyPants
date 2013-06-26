@@ -1,31 +1,33 @@
 {include "_header.tpl"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
-<div class="row">
-	<p class="span4 offset1"><a href="">Curators and hosts</a></p>
-	<p class="span4 offset1"><a href="">Design team</a></p>
-	<p class="span4 offset1"><a href="">External communications team</a></p>
-	<p class="span4 offset1"><a href="">Fundraising & finance team</a></p>
-	<p class="span4 offset1"><a href="">Hospitality & events team</a></p>
-	<p class="span4 offset1"><a href="">Speakers selection team</a></p>
-	<p class="span4 offset1"><a href="">Quality & sustainability team</a></p>
-</div>
+<!--<div class="row">
+    foreach from=$roles item=role}        
+	<p class="span4 offset1"><a href="">$role[0]->getName()}</a></p>
+         /foreach}
+</div>-->
 
+{assign var=val value=1}
  {foreach from=$organizers item=organizer}
-
+    
 	<div class="row event-slot">
 
 		<figure class="span2" >
 	  		<img src="{$baseURL}/public/images/clot.jpg" alt="jerome" class="portrait" />
 	  	</figure>
 	  	
-	  	<h1 class="span9 offset1">
+	  	<h1 class="span8 offset2">
                     <span class="prenom">{$organizer->getFirstName()}</span>
 	  	  <span class="nom">{$organizer->getName()}</span>
-	  	  <span class="role">(Bitches coordinator)</span>
-               
-	  	</h1>
-	  	<p class="span9 offset1 ">{$organizer->getDescription()}</p><br />
-		<p class="span9 offset1 "><a href="mailto:{$organizer->getEmail()}">{$organizer->getEmail()}</a></p>
+	  	  </h1>
+                  <h4 class="span8 offset2">
+                  <span class="role"> (
+                   {foreach from=$roles[$organizer@index] item=role}
+                  {$role->getName()}
+                  {/foreach}
+                  )</span>
+	  	</h4>
+	  	<p class="span8 offset2 ">{$organizer->getDescription()}</p><br />
+		<p class="span8 offset2 "><a href="mailto:{$organizer->getEmail()}">{$organizer->getEmail()}</a></p>
      </div>
 
                         {/foreach}
