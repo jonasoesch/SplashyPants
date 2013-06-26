@@ -290,7 +290,7 @@ class EventView extends ViewController {
 					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $someSpeakers, 
-					'slot' => $slot,
+					'slot' => $slot
 					
 					
 					);
