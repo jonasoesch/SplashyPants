@@ -2,7 +2,7 @@
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
 <h1>Organizer</h1>
 <form
-	{if $mode == "edit"} action="{$baseURL}/person/{$personId}/edit"
+	{if $mode == "edit"} action="{$baseURL}/person/{$person->getNo()}/edit"
 		{else} action="{$baseURL}/register/organizer"{/if}
 		method="post">
 		
