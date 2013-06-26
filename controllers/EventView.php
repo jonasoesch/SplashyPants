@@ -368,15 +368,15 @@ class EventView extends ViewController {
 						
 				if($this->canEditEvent()) {
 						
-	
+          $eventData = $this->getEventData($id);
+          $speakerAndLocation = $this->getSpeakerAndLocationData();
+          
 					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
-					'someSpeakers' => $this->getSpeakerAndLocationData()['someSpeakers'],
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
+					'someSpeakers' => $speakerAndLocation['someSpeakers'],
 					//'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
-					
-					
 					);
 			
 				Template::render('editSlotWithSpeakers.tpl',$untableau);
