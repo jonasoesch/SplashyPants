@@ -287,11 +287,10 @@ class EventView extends ViewController {
 					
 				
 					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
+					//'event' => $this->getEventData($id)['event'],
+					//'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
-					
 					
 					);
 					
@@ -371,7 +370,7 @@ class EventView extends ViewController {
 					$untableau= array(
 					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
-					'someSpeakers'=> $this->getSpeakerAndLocationData()['someSpeakers'],
+					'someSpeakers' => $this->getSpeakerAndLocationData()['someSpeakers'],
 					//'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
 					
