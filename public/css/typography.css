@@ -73,10 +73,10 @@ a:focus {
 
 /* --------- Forms --------- */
 form {
-  margin: 0 0 20px;
+  margin: 20px 20px 20px;
 }
 input {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 legend {
@@ -89,7 +89,7 @@ legend {
 }
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 select,
 textarea,
