@@ -334,11 +334,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
 
@@ -389,11 +389,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number ' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
 
@@ -446,11 +446,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number ' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
     /*-----------------------------------------------------------------------------------------------------------
@@ -562,11 +562,12 @@ class PersonView extends ViewController {
                 ));
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('There is no registrations for the event number ' . $id);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number' . $id);
+            Template::redirect('');
         }//else
     }else{
         Template::flash('Acces denied');
