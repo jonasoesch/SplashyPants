@@ -1,6 +1,6 @@
 <div class="row">
             	<div class="span7">
-                    	
+				
                     	                    	
                  <div class="span11">
                  	<div class="row">
@@ -55,11 +55,7 @@ $country="suisse";
 			                 <p class="span12">{$location->getName()}<br />{$location->getAddress()}<br />{$location->getCity()}<br />{$location->getCountry()}</p>
 			                 
 			        </div>
-			        <div class="row">
-			        <form action="register.php" method="post">
-			        <p class="span5"><input type="Submit" name="submit" value="Participate" /></p>
-			        </form>
-			        </div>
+
                 </div>
                 
                 

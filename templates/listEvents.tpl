@@ -1,10 +1,10 @@
-<!-- template validation -->
 
 {include "_header.tpl"}
 
 <header class="row">
     <h1 class="span12">Our TEDx Events</h1>
-    <p class="span12">TEDxLausanne took place {$numberOfEvents} time{if $numberOfEvents > 1 }s{/if}</p>
+    <p class="span10">TEDxLausanne took place {$numberOfEvents} time{if $numberOfEvents > 1 }s{/if}</p>
+    <p class="span2"><a class="button" href="{$baseURL}/addEvent">Create Event </a></p>
 </header>
     
 {section name=index loop=$arrayEventsLocation step=-1}
@@ -20,4 +20,5 @@
 
   </article>
 {/section}
+
 {include "_footer.tpl"}

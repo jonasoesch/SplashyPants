@@ -20,7 +20,7 @@
 {/if}
 	 <div class="row">
 	 		<p class="span6 offset6">
-	 			<input type="submit" />
+	 			<input type="submit" name="validate"value="validate" />
 	 		</p>
 	 </div>
 
