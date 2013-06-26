@@ -3,7 +3,7 @@
                         
 <section>
 	<h1 class="span12">Create Location</h1>
-	<form action="locations" method="post"> 
+	<form action="admin/locations" method="post"> 
 		  	<div class="row">
 		  		<p class="span6 offset 5 address">
 		  			<input type="text" name="name" placeholder="Name" size="30" maxlength="25" /><br />
