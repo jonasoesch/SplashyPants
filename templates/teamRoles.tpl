@@ -2,7 +2,7 @@
 
 <form action="teamRoles" method="post">   	
 	  	<div class="row">
-	  		<p class="span6 address">
+	  		<p class="offset5">
 	  			<input type="text" name="name" placeholder="Name" size="30" maxlength="25" /><br />
 	  		</p>
 

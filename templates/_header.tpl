@@ -33,7 +33,7 @@
                     {/if} 
                     {if $tedx->isLogged()}
 
-                    	<a href="{$baseURL}/logout"/>logout</a>{if $tedx->isAdministrator()|| $tedx->isSuperAdmin() || $tedx->isOrganizer() }<a href="{$baseURL}/admin"/> | admin</a>{/if}  
+                    	<a href="{$baseURL}/logout"/>logout</a> | {if $tedx->isAdministrator()|| $tedx->isSuperAdmin() || $tedx->isOrganizer() }<a href="{$baseURL}/admin"/>  admin</a>{/if}  
                     {/if}
                    
                    

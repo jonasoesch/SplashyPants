@@ -25,7 +25,7 @@ class TeamView extends ViewController {
         $someOrganizers=$someOrganizers->getContent();
         foreach($someOrganizers as $organizer){
             
-        array_push($roles ,ASFree::getRolesByOrganizer($organizer)->getContent());
+        array_push($roles ,$tedx_manager->getRolesByOrganizer($organizer)->getContent());
         }
         
         Template::render("team.tpl", array(

@@ -70,7 +70,14 @@ class HomeView extends ViewController {
   }
   
     public function admin() {
-  	Template::render('admin.tpl');
+        global $tedx_manager;
+        if ($tedx_manager->isAdministrator()|| $tedx_manager->isSuperAdmin() || $tedx_manager->isOrganizer()){
+        Template::render('admin.tpl');
+        
+        }
+        else{
+            index();
+        }
   }
   
   // "login/do"
