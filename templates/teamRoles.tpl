@@ -2,14 +2,14 @@
 
 <form action="teamRoles" method="post">   	
 	  	<div class="row">
-	  		<p class="offset5">
-	  			<input type="text" name="name" placeholder="Name" size="30" maxlength="25" /><br />
+	  		<p class="span6 offset4">
+	  			<input type="text" name="role" placeholder="Team role name" size="45" maxlength="25" /><br />
 	  		</p>
 
 	  	</div>
 	  	
                 <div class="row">
-	 		<p class="span6 offset6">
+	 		<p class="span6 offset5">
 	 			<input type="submit" />
 	 		</p>
                 </div>

@@ -363,7 +363,34 @@ class EventView extends ViewController {
 		}
 		
 
-}//class
+//class
+
+public function locations() {
+        Template::render('locations.tpl');
+    }
+
+    public function locationsSubmit() {
+        global $tedx_manager;
+        $args = array(
+            'Name' => $_POST['name'],
+            'Address' => $_POST['address'],
+            'City' => $_POST['city'],
+            'Country' => $_POST['country'],
+            'Direction' => $_POST['direction']
+        );
+
+        $messageAddLocation = $tedx_manager->addLocation($args);
+
+        // Message
+        if ($messageAddLocation->getStatus()){
+            
+         Template::flash('Congrats! ' . $messageAddLocation->getMessage());
+            Template::redirect("locations");}
+        else{
+          Template::flash($messageAddLocation->getMessage());
+          Template::redirect("locations");}
+        }
+    }
 
 
 ?>
