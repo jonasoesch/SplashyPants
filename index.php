@@ -25,6 +25,7 @@ $r = new Router();
 
 /* ---------- Home and Static ---------- */
 $r->get("",	"HomeView::index");
+$r->get("index.php", "HomeView::index");
 
 /*
 * Pour Mickael :-)
