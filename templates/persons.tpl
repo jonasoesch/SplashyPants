@@ -10,8 +10,7 @@
 		</p>
 	
 		<span class="admin-bar">
-			<a class="edit" href="{$baseURL}/event/{$person->getNo()}/edit">Edit</a>
-			<a class="edit" href="{$baseURL}/event/{$person->getNo()}/archive">Remove</a>
+			<a class="edit" href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
 		</span>
 	</div> 	
 {/foreach}

@@ -1,47 +1,35 @@
 {include '_header.tpl'}
-<div class="row">
-            	<div class="span7">
+
+<section class="row">
+            	<section class="span7">
                     	
                     	                    	
-                 <div class="span11">
+                 <article class="span11">
                  	<div class="row">
                  		<h3 class="span12 eventTitle">{$event->getMainTopic()}</h3>
                     	<p class="span12">{$event->getStartingDate()}</p>
                  	</div>
-	                 <div class="row">
-		                 <h4 class="span11">Program</h4>
-		             </div>
-		             <div class="row">
+                 	<div class="row">
 		                 <p class="span12">{$event->getDescription()}</p>
 		             </div>
 	                 <div class="row">
-		                 <p class="span3">17:00</p>
-		                 <p class="span9">Registration</p>
-		             </div>
-		             <div class="row">
-		                 <p class="span3">17:30</p>
-		                 <p class="span9">The Event</p>
-		             </div>
-		             <div class="row">
-		                 <p class="span9 offset3">Welcome and introduction</p>
-		             </div>
-		             <div class="row"> 
-		                 <p class="span9 offset3">Live presentations</p>
+		                 <h4 class="span11">Program</h4>
 		             </div>
 
-		             
-		             <div class="row">
-		                 <p class="span3">19:30</p>
-		                 <p class="span9">Apéro</p>
+	                 <div class="row">
+		                 <p class="span3">Starting Time </p>
+		                 <p class="span9">{$event->getStartingTime()}</p>
 		             </div>
-	  	
-		                 
-	  	
-			      </div>
+		             <div class="row">
+		                 <p class="span3">Ending Time</p>
+		                 <p class="span9">{$event->getEndingTime()}</p>
+		             </div>
 
-                 </div> 
+			      </article>
+
+                 </section> 
             
-                <div class="span5">
+                <section class="span5">
                 
                 	<?php
 $street="av des sports 10";
@@ -61,22 +49,22 @@ $country="suisse";
 			        <p class="span5"><input type="Submit" name="submit" value="Participate" /></p>
 			        </form>
 			        </div>
-                </div>
+                </section>
                 
                 
                 
-</div>
+</section>
 <h2>Speakers</h2>
 
-
+<section>
  {foreach from=$slotsWithSpeakers item=slotData}
- 	<div class="row event-slot">
+ 	<article class="row event-slot">
  		{foreach from=$slotData key=key item=data}
  		{if $key == 'slotData'}
  				<div class="span4">
 	 				<h3>Slot {$data->getNo()}</h3>
 	 				<p>{$data->getHappeningDate()}</p>
-		</div>
+				</div>
 
  		{else}
  			<figure class="span2">
@@ -88,11 +76,12 @@ $country="suisse";
  			
  		{/if}
  	{/foreach}
- 	</div>
+ 	</article>
+ </section>
  {/foreach}
 
 
+
+
 <?php include 'public/eventFooter.html'; ?>
-
-
 {include "_footer.tpl"}
