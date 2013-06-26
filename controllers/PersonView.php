@@ -72,7 +72,7 @@ class PersonView extends ViewController {
     */
     public function registerVisitor() {
     	global $tedx_manager;
-    	
+    	var_dump($_SESSION['registerToAnEvent']);
     	if(!$tedx_manager->isLogged()) {
     		Template::render('participantForm.tpl', array(
     		  "mode" => "new"
@@ -83,6 +83,9 @@ class PersonView extends ViewController {
     		Template::redirect('');
     	}
     }
+    
+    
+    
 
     
     /** ----------------------------------------------------------------------------------------------------
@@ -97,7 +100,14 @@ class PersonView extends ViewController {
         Template::flash($aRegisteredVisitor->getMessage());
     	
     	if($aRegisteredVisitor->getStatus()) {
-    		Template::redirect("persons");
+    		/*if($_SESSION['registerToAnEvent'] != null) {
+           $registerToAnEvent = $_SESSION['registerToAnEvent'];
+           $_SESSION['registerToAnEvent'] = null;
+           Template::redirect("event/$registerToAnEvent/registerToAnEvent");
+        } else {
+           Template::redirect("persons");
+        }*/
+        Template::redirect("persons");
     	} else {
     	  $args['no'] = 0;
     	  $args['isArchived'] = false;
@@ -109,47 +119,9 @@ class PersonView extends ViewController {
     	}
 
     }
-  
-
-
-
-    //fonction qui affiche le template teamRoles
-    public function teamRoles() {
-        Template::render('teamRoles.tpl');
-    }
     
 
-  
-    
-      //fonction qui affiche le template register
-    public function register() {
-    Template::render('register.tpl');}
-    
-    public function registerSubmit() {
-        global $tedx_manager;
-        $args = array(
-            'name' => $_POST['firstname'],
-            'firstname' => $_POST['lastname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . "-" . $_POST['dob_day'],
-            'address' => $_POST['address'],
-            'city' => $_POST['city'],
-            'country' => $_POST['country'],
-            'phoneNumber' => $_POST['telephone'],
-            'email' => $_POST['email'],
-            'idmember' => $_POST['username'],
-            'password' => $_POST['password'],
-        );
 
-        $aRegisteredVisitor = $tedx_manager->registerVisitor($args);
-        Template::flash($aRegisteredVisitor->getMessage());
-
-            if ($aRegisteredVisitor->getStatus()) {
-                Template::redirect("persons");
-            } else {
-              Template::redirect('register');
-            }
-        }
-    
     /** ----------------------------------------------------------------------------------------------------
     **/
     public function registerSpeaker() {
@@ -273,12 +245,15 @@ class PersonView extends ViewController {
 			global $tedx_manager;
 			
 			$args = $this->createPersonArray();
+			$args['no'] = $id;
 			
 			$aChangedProfil= $tedx_manager->changeProfil( $args );
-		
+
+
 			if($aChangedProfil->getStatus()) {
 				Template::redirect("person/$id");
 			} else {
+			  Template::flash($aChangedProfil->getMessage());
 				Template::redirect("person/$id/edit");
 			}
 			
@@ -651,6 +626,7 @@ class PersonView extends ViewController {
         $args = array(
     	    'name'        => $_POST['lastname'],
     	    'firstname'   => $_POST['firstname'],
+    	    'firstName'   => $_POST['firstname'],
     	    'dateOfBirth' => $_POST['dob_year']."-".$_POST['dob_month'].'-'.$_POST['dob_day'],
     	    'address'     => $_POST['address'],
     	    'city'        => $_POST['city'],
@@ -697,6 +673,7 @@ class PersonView extends ViewController {
 
     public function registerToAnEvent($eventId) {
         global $tedx_manager;
+
         if ($tedx_manager->isLogged()) {
             if($tedx_manager->isParticipant()){
               
@@ -713,6 +690,7 @@ class PersonView extends ViewController {
             ));}
         } else {
             Template::flash('You need to become member of the TEDx community before you can register for an event');
+            $_SESSION['registerToAnEvent'] = $eventId;
             Template::redirect('register');
         }
     }

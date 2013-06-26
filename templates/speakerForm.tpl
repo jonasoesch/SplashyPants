@@ -9,9 +9,7 @@
 {include "_personForm.tpl"}
 
 <div class="row">
-  <textarea name="description" placeholder="Description" cols="50" rows="10"
-  {if isset($person)}value="{$person->getDescription()}"{/if} 
-  ></textarea>
+  <textarea name="description" placeholder="Description" cols="50" rows="10">{if isset($person)}{$person->getDescription()}{/if}</textarea>
 </div>
 
 {if !isset($personId) && ($mode != "edit")}

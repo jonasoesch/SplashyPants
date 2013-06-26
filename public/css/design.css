@@ -10,13 +10,22 @@ color: #000000;
 	position: relative;
 }
  
-.ted-rot { 
- color: #ff2b06;
+.float {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 8px;
+}
 
- }
  
- 
- 
+.subtitle {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 5px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #EDEDED;
+  margin-bottom: 24px;
+}
+
 .menu{
 	margin-top: 20px;
 	margin-bottom: 60px;
@@ -32,12 +41,12 @@ color: #000000;
 }
  
 
- .speakerImage{
+.speakerImage{
    /*  width: 40%; "*/
      display: inline-block;
      height: auto;
      margin-bottom: 15px;
- }
+}
  
  
  ul {

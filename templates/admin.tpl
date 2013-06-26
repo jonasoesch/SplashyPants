@@ -1,12 +1,12 @@
 {include '_header.tpl' }
 
-<div class="row">
-<ul class="offset4">
-                <li class="span3"><a href="{$baseURL}/teamRoles">Team Roles </a></li>
-                <li class="span3"><a href="{$baseURL}/locations">Locations </a></li>
+
+<ul class="row">
+                <li class="span2"><a class="button" href="{$baseURL}/teamRoles">Team Roles </a></li>
+                <li class="span2"><a class="button" href="{$baseURL}/locations">Locations </a></li>
+                <li class="span2"><a class="button" href="{$baseURL}/addSpeaker">Add Speaker </a></li>
                 
-    </ul>
-</div>
+</ul>
 
 
 

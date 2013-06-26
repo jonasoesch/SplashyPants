@@ -6,8 +6,8 @@
                     	                    	
                  <article class="span11">
                  	<div class="row">
-                 		<h3 class="span12 eventTitle">{$event->getMainTopic()}</h3>
-                    	<p class="span12">{$event->getStartingDate()|date_format:"%d %B %Y"}</p>
+                 		<h2 class="span12 eventTitle">{$event->getMainTopic()}</h2>
+                    <h3 class="span12 subtitle">{$event->getStartingDate()|date_format:"%d %B %Y"}</h3>
                  	</div>
                  	<div class="row">
 		                 <p class="span12">{$event->getDescription()}</p>
