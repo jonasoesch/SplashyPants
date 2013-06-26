@@ -29,7 +29,7 @@ h2 {
 }
 h3 {
   font-size: 24px;
-  line-height: 28px;
+  line-height: 30px;
 }
 h4 {
   font-size: 20.8px;
@@ -58,13 +58,13 @@ a {
 }
 a:hover,
 a:focus {
-  opacity: 0.8;
+  opacity: 0.95;
   text-decoration: none;
+  color: #fd7058;
 }
 
 .link:hover,
 .link:focus  {
-  color: #fd7058;
   border-bottom: 1px solid #fd7058;
   padding-bottom: 2px;
   text-decoration: none;

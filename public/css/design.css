@@ -26,6 +26,7 @@ color: #000000;
   margin-bottom: 24px;
 }
 
+
 .menu{
 	margin-top: 20px;
 	margin-bottom: 60px;
@@ -119,23 +120,20 @@ textarea{
 .module
 {
 	margin-top: 20px;
+	padding-top: 15px;
 	border-top:  8px solid #EDEDED;
 }
 
-.event-slot,
-.profile-event .row,
-.module row
-{
-			padding-top: 20px;
+.module.row {
+  margin-left: 0;
 }
 
-.profile-event [class*="span"],
-.event-slot [class*="span"],
-.module [class*="span"]
-{
-	margin-top: 0;
-	line-height: 24px;
+.admin-link {
+  display: block;
+  padding-left: 18px;
+  background: url("../images/edit.png") 0px no-repeat;
 }
+
 
 .profile-img,
 .portrait
@@ -144,8 +142,8 @@ textarea{
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
 	max-width: 180px;
-
 }
+
 select{
     height:20em;
 }
