@@ -94,7 +94,7 @@
 
 <h2>Speakers</h2>
 
- {foreach from=$slotsWithSpeakers key=keySlot item=slotData}
+{foreach from=$slotsWithSpeakers key=keySlot item=slotData}
  	<div class="row event-slot">{$keySlot}
  		{foreach from=$slotData key=keySpeaker item=data}
  		{if $keySpeaker == 'slotData'}
@@ -115,7 +115,7 @@
 	  					</p>
 		        </div>
 	 				
-	 			<div class="row">
+	 			<div class=" row">
 	            	<p class="span12">Starting Time</p>
 	            </div>
 		        <div class="row">
