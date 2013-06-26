@@ -43,13 +43,22 @@ class VideoView extends ViewController {
                 //var_dump($messageGetTalk);
 
                 if ($messageGetTalk->getStatus()) {
-
+                    
                     $aTalk = $messageGetTalk->getContent();
+                    $messageGetPerson = $tedx_manager->getSpeaker($speakerId);
+                    if($messageGetPerson->getStatus()){
+                        
+                        $speaker = $messageGetPerson->getContent();
+                         $arraySpeakerTalk = array(
+                        'talk' => $aTalk,
+                        'speaker' => $speaker);
+                    }
+                        
 
                     Template::render('videoDescription.tpl', array(
-                        'talk' => $aTalk,
-                        'event' => $anEvent,
-                        'speaker' => $aSpeaker));
+                        'arraySpeakerTalk' => $arraySpeakerTalk,
+                        'event' => $anEvent
+                        ));
                 } else {
                     Template::flash('could not find any video in the DB');
                 }

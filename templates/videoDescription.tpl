@@ -1,15 +1,19 @@
 {include "_header.tpl"}
-{$talk->getVideoTitle()}
+{$arraySpeakerTalk.talk->getVideoTitle()}
 
 
 <div class="row">
     <div class="span6">
-    <a href={$talk->getVideoURL()} class="zoombox"><img src="{$baseURL}/public/images/Thumbnails/{$talk->getVideoTitle()}.png" width="225" class="videoIcon"/></a>
+    <a href={$arraySpeakerTalk.talk->getVideoURL()} class="zoombox"><img src="{$baseURL}/public/images/Thumbnails/{$arraySpeakerTalk.talk->getVideoTitle()}.png" width="225" class="videoIcon"/></a>
+    <!--<iframe width="560" height="315" src="http://www.youtube.com/embed/{$arraySpeakerTalk.talk->getVideoURL()}" frameborder="0" allowfullscreen></iframe>-->
+    
     </div>
         <div class ="descriptionVideo">
-    <!--{$talk->getVideoURL()}-->
-
-    {$talk->getVideoDescription()} 
+    <p>
+        {$arraySpeakerTalk.speaker->getFirstName()}
+        {$arraySpeakerTalk.speaker->getName()}
+    </p>
+    {$arraySpeakerTalk.talk->getVideoDescription()} 
        </div>
     
 </div>
