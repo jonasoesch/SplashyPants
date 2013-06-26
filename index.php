@@ -155,8 +155,7 @@ $r->get("event/:eventId/participant/:participantId/cancel",
 
 
 /* ---------- Admin ---------- */
-$r->get("events",
-	"EventView::listEvents");
+
 $r->get("admin",	
         "HomeView::admin");
 
