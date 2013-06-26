@@ -17,13 +17,18 @@ color: #000000;
 }
 
  
-.subtitle {
+.subtitle,
+.subtitle-fat {
   font-size: 16px;
   font-weight: normal;
   margin-top: 5px;
   padding-bottom: 12px;
   border-bottom: 1px solid #EDEDED;
   margin-bottom: 24px;
+}
+
+.subtitle-fat {
+  font-weight: bold;
 }
 
 
@@ -136,13 +141,21 @@ textarea{
 
 
 .profile-img,
-.portrait
+.portrait-big,
+.portrait-small
  {
 	border-radius: 50%;
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
-	max-width: 180px;
 }
+
+.portrait-big {
+  max-width: 180px;
+}
+
+.portrait-small {
+  max-width: 120px;
+} 
 
 select{
     height:20em;
