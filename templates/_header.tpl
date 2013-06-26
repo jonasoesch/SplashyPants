@@ -32,7 +32,7 @@
                     	<a href="{$baseURL}/login"/>login</a> | <a href="{$baseURL}/register"/>register</a>
                     {/if} 
                     {if $tedx->isLogged()}
-                    	<a href="{$baseURL}/logout"/>logout</a> | <a href="profile-form.php"/>admin</a>
+                    	<a href="{$baseURL}/logout"/>logout</a> | <a href="profile-form.php"/>{$tedx->getUsername()}</a>
                     {/if}
                    
                    
