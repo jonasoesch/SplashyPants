@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="TEDx Lausanne"}
 
 <section class="row">
     <section class="row event span6">

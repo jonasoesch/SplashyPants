@@ -1,4 +1,4 @@
-{include '_header.tpl' }
+{include '_header.tpl' title="Admin Area"}
 
 <section>
 	<ul class="row">

@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Login"}
 <header class="row">
   <h1 class="offset4 span4">Get access</h1>
 </header>

@@ -1,5 +1,4 @@
-
-{include "_header.tpl"}
+{include "_header.tpl" title="Our TEDx Events"}
 
 <header class="row">
     <h1 class="span12">Our TEDx Events</h1>

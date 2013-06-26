@@ -1,4 +1,4 @@
-{include '_header.tpl'}
+{include '_header.tpl' title=$person->getFirstName()|cat:" "|cat:$person->getName()}
 <link href="css/profile.css" rel="stylesheet" />
 
 

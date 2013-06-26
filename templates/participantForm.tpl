@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Register with TEDx"}
 <link href="{$baseURL}/public/css/profile.css" rel="stylesheet" />
 <h1>Participant</h1>
 <form 

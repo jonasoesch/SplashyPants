@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Our team"}
 
 <h1>The people who shape TEDx</h1>
 {assign var=val value=1}

@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Contact us"}
 <section class="row">
   <h1 class="offset3">Contact</h1>
 </section>
