@@ -42,7 +42,9 @@ class EventView extends ViewController {
 			}
 				Template::render('listEvents.tpl', array(
 					'arrayEventsLocation' => $arrayEventsLocation,
-					'numberOfEvents' => $numberOfEvents));
+					'numberOfEvents' => $numberOfEvents,
+					'canEdit' => $this->canEditEvent()
+					));
 
 		}else{
 

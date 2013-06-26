@@ -4,7 +4,7 @@
 <header class="row">
     <h1 class="span12">Our TEDx Events</h1>
     <p class="span10">TEDxLausanne took place {$numberOfEvents} time{if $numberOfEvents > 1 }s{/if}</p>
-    <p class="span2"><a class="button" href="{$baseURL}/addEvent">Create Event </a></p>
+    {if $canEdit}<p class="span2"><a class="button" href="{$baseURL}/addEvent">Create Event </a></p>{/if}
 </header>
     
 {section name=index loop=$arrayEventsLocation step=-1}
@@ -16,7 +16,7 @@
     <p class="span3 offset1">{$arrayEventsLocation[index].location->getName()} {$arrayEventsLocation[index].location->getDirection()}<br />
     {$arrayEventsLocation[index].location->getAddress()} {$arrayEventsLocation[index].location->getCity()}
     </p>
-    <a class="admin-link span12" href="{$baseURL}/modifyEvent/{$arrayEventsLocation[index].event->getNo()}">Edit</a>
+    {if $canEdit}<a class="admin-link span12" href="{$baseURL}/modifyEvent/{$arrayEventsLocation[index].event->getNo()}">Edit</a>{/if}
 
   </article>
 {/section}
