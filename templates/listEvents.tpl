@@ -1,16 +1,17 @@
-<!-- template validation -->
 
 {include "_header.tpl"}
 <link href="css/profile.css" rel="stylesheet" />
 
 <section id="row">
-    <h1>Events List</h1>
-    {if $numberOfEvents == 1 || $numberOfEvents == 0}
-    <p>TEDxLausanne counts {$numberOfEvents} event</p>
-    {else}
-    <p>TEDxLausanne counts {$numberOfEvents} events</p>
-    {/if}
-
+    <section>
+        <h1>Events List</h1>
+        {if $numberOfEvents == 1 || $numberOfEvents == 0}
+        <p>TEDxLausanne counts {$numberOfEvents} event</p>
+        {else}
+        <p>TEDxLausanne counts {$numberOfEvents} events</p>
+        {/if}
+        <a class="button" href="{$baseURL}/addEvent">Create Event </a>
+    </section>
     {section name=index loop=$arrayEventsLocation step=-1}
       <article class="row event-slot">
         <a href="{$baseURL}/event/{$arrayEventsLocation[index].event->getNo()}">
