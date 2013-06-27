@@ -297,6 +297,8 @@ class EventView extends ViewController {
 			//check the message getEvent
 			if( $messageGetEvent->getStatus()){
 			
+				$eventData = $this->getEventData($id);
+
 				$anEvent = $messageGetEvent->getContent();
 		
 				//array of for the function getSlot
@@ -329,8 +331,9 @@ class EventView extends ViewController {
 							if ($messageGetSpeakerByPlace->getStatus()){
 						
 								$someSpeakers[]=$speaker;
+
+								
 							}
-							
 							else
 							{
 								$someSpeakers=false;
@@ -345,8 +348,8 @@ class EventView extends ViewController {
 							
 					}	
 								$untableau= array(
-									'event' => $this->getEventData($id)['event'],
-									'location' => $this->getEventData($id)['location'],
+									'event' => $eventData['event'],
+									'location' => $eventData['location'],
 									'someSpeakers' => $someSpeakers, 
 									'slot' => $slot,
 									'canEdit'=>$canEdit				
@@ -424,6 +427,90 @@ class EventView extends ViewController {
 		}//end function editslot()
 		
 		
+
+		public function editSpeaker($id,$idSlot,$idSpeaker) {
+		global $tedx_manager;
+		
+			$messageGetEvent = $tedx_manager->getEvent($id);
+		
+			//message
+			if( $messageGetEvent->getStatus()){
+			
+				$anEvent = $messageGetEvent->getContent();
+		
+				$args=array(
+				'no'	=>	$idSlot,
+				'event' =>	$anEvent);		
+		
+				$messageGetSlot = $tedx_manager->getSlot($args);
+						
+				//message
+				if( $messageGetSlot->getStatus()){
+				
+					$slot = $messageGetSlot->getContent();
+					}//if getSlot
+			
+				else{
+				
+					Template::flash('Could not find this slot! ' . $messageGetSlot->getMessage());
+
+					}//else getslot
+					
+				$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($slot);
+				
+				$speakers;
+				
+				if ($messageGetPlacesBySlot->getStatus()){
+					$places = $messageGetPlacesBySlot->getContent();
+			
+							
+					foreach($places as $place){
+		
+						$messageGetSpeakerByPlace = $tedx_manager->getSpeakerByPlace($place);
+						//faire if
+						$speaker = $messageGetSpeakerByPlace->getContent();
+						
+						if ($messageGetSpeakerByPlace->getStatus()){
+						
+							$speakers[]=$speaker;
+							
+						}
+						
+						else{
+						
+							Template::flash('Could not find speaker ' . $messageGetSpeakerByPlace->getMessage());	
+						}
+						
+					}// foreach place
+		
+				}//if status	
+	
+
+						
+				if($this->canEditEvent()) {
+						
+					$eventData = $this->getEventData($id);
+					$speakerAndLocation = $this->getSpeakerAndLocationData();
+          
+					$untableau= array(
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
+					'someSpeakers' => $this->getSpeakersData(),
+					'someSpeakers' => $speakers, 
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
+					'someSpeakers' => $speakerAndLocation['someSpeakers'],
+					//'someSpeakers' => $someSpeakers, 
+					'slot' => $slot
+					);
+			
+				Template::render('editSlotWithSpeakers.tpl',$untableau);
+				}//if editEvent
+			
+			}//if getEvent
+			
+		}//end function editslot()
+		
 		
 		
 		public function addSpeaker($id,$idSlot) {
@@ -489,10 +576,10 @@ class EventView extends ViewController {
 						
 				if($this->canEditEvent()) {
 						
-	
+          $eventData = $this->getEventData($id);
 					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
 					'someSpeakers' => $this->getSpeakersData(),
 					//'speakers' => $speakers, 
 					'slot' => $slot,
