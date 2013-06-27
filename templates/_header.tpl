@@ -35,7 +35,7 @@
                 <li class="span1"><a class="link" href="{$baseURL}/team" {if isset($where) && $where == 'team'}class="active"{/if}>Team </a></li>
                 <li class="span1"><a class="link" href="{$baseURL}/partners" {if isset($where) && $where == 'partners'}class="active"{/if}>Partners </a></li>
                 <li class="span2"><a class="link" href="{$baseURL}/contact" {if isset($where) && $where == 'contact'}class="active"{/if}>Contact Us </a></li>
-                <div class="span2 offset3" style="align:right;">
+                <div class="span2 offset4" style="align:right;">
                     {if !$tedx->isLogged()}
                     	<a class="link" href="{$baseURL}/login"/>Login</a>
                          | 

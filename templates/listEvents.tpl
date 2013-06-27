@@ -15,7 +15,7 @@
     <p class="span3 offset1">{$arrayEventsLocation[index].location->getName()} {$arrayEventsLocation[index].location->getDirection()}<br />
     {$arrayEventsLocation[index].location->getAddress()} {$arrayEventsLocation[index].location->getCity()}
     </p>
-    {if $canEdit}<a class="admin-link span1" href="{$baseURL}/modifyEvent/{$arrayEventsLocation[index].event->getNo()}">Edit</a>{/if}
+    {if $canEdit}<a class="admin-link span1" href="{$baseURL}/event/{$arrayEventsLocation[index].event->getNo()}/modify">Edit</a>{/if}
     {if $tedx->isValidator() or $tedx->isAdministrator()}<a class="admin-link span3" href="{$baseURL}/event/{$arrayEventsLocation[index].event->getNo()}/validateParticipant">Validate participants</a>{/if}
 
   </article>
