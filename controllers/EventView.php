@@ -546,6 +546,39 @@ class EventView extends ViewController {
 	        return $canEdit;
 		}
 		
+		  /**
+  * Can return null
+  **/
+  public static function getLatestEvent() {
+    global $tedx_manager;
+    
+    $theLastEvent = null;
+    
+    //get the events
+    $messageGetEvents = $tedx_manager->getEvents();
+    //test if the messageGetEvents isn't empty
+    if($messageGetEvents->getStatus()){
+      $someEvents = $messageGetEvents->getContent();
+      //reference event for the test
+      $eventTest = $someEvents[0];
+      //for each event, try to catch the last event (sort by Starting date) by comparison with the reference Event
+      foreach ($someEvents as $anEvent) {
+        $resultOfComparisonDate = strcmp($anEvent->getStartingDate(), $eventTest->getStartingDate());
+        //comparison on the StartingDate, if the StartingDate is before the $eventTest's StartingDate, the lastEvent is $anEvent
+        if($resultOfComparisonDate <=0){
+          //asignment
+          $theLastEvent = $anEvent;
+        }else{
+          //the lastEvent is the reference Event ($eventTest)
+          $theLastEvent = $eventTest;
+        }        
+      }
+    }else{
+      //error message: no event found
+      Template::flash('Could not find events ' . $messageGetEvents->getMessage());
+    }
+    return  $theLastEvent;
+  }
 
 }//class
 

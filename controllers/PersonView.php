@@ -537,6 +537,9 @@ class PersonView extends ViewController {
                     }
                 }//foreach
                 
+                // Quick fix for the case where $registrationsParticipantswithMotivations is not getting set
+                if(!isset($registrationsParticipantswithMotivations)) {$registrationsParticipantswithMotivations = array();}
+                
                 //apply of the template validateParticipant.tpl and add of the var we need to use it
                 Template::render('validateParticipant.tpl', array(
                     'event' => $anEvent,

@@ -10,6 +10,7 @@ class VideoView extends ViewController {
         global $tedx_manager;
         
         $someTalks=$tedx_manager->getTalks()->getContent();
+        //$msgSpeakers = $tedx_manager->
         //var_dump($someTalks);
         Template::render('video.tpl',array (
             'someTalks' => $someTalks
@@ -47,7 +48,6 @@ class VideoView extends ViewController {
                     $aTalk = $messageGetTalk->getContent();
                     $messageGetPerson = $tedx_manager->getSpeaker($speakerId);
                     if($messageGetPerson->getStatus()){
-                        
                         $speaker = $messageGetPerson->getContent();
                          $arraySpeakerTalk = array(
                         'talk' => $aTalk,

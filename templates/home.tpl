@@ -24,7 +24,9 @@
                 <figure>
                 <a href="{$baseURL}/videoDescription/event/{$arraySpeakerTalks[index].talk->getEventNo()}/speaker/{$arraySpeakerTalks[index].talk->getSpeakerPersonNo()}" class="speakerImage span6"><img src="{$baseURL}/public/images/Thumbnails/{$arraySpeakerTalks[index].talk->getVideoTitle()}.png" width="225" alt="{$arraySpeakerTalks[index].talk->getVideoTitle()}" title="{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} | {$arraySpeakerTalks[index].talk->getVideoTitle()}" /></a>
                 </figure> 
-                <h5 class="speakerText span6">{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} </h5>
+                <h5 class="speakerText span6">
+                  <a href="{$baseURL}/person/{$arraySpeakerTalks[index].speaker->getNo()}">{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()}</a>
+                </h5>
                 <p class="speakerText span6"> {$arraySpeakerTalks[index].talk->getVideoTitle()}</p>
             </article>   
         {/section}

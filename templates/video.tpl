@@ -1,5 +1,6 @@
 {include "_header.tpl" title="Our TEDx talks"}
-VIDEOWALL
+
+<h1>Past Talks at TEDx</h1>
 
 <div class="row">
 <!--{$someTalks|@var_dump}
@@ -9,7 +10,11 @@ VIDEOWALL
     <div class="span3">
         <div class="thumbVideo">
             <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}"><img src="{$baseURL}/public/images/Thumbnails/{$aTalk->getVideoTitle()}.png" width="225"/></a>   
-            <p>{$aTalk->getVideoTitle()}</p>
+            <h3 class="subtitle-fat">
+              <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}">{$aTalk->getVideoTitle()}</a>
+            </h3>
+              <a href="{$baseURL}/person/{$aTalk->getSpeakerPersonNo()}"></a>
+            <p></p>
        </div>    
     </div>
 {/foreach}
