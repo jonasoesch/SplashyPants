@@ -1,9 +1,10 @@
 {include '_header.tpl' }
-<div class="offset3">
 <form action="allocateTeamRoles" method="post"> 
+<div class="offset3">
+
 <select name="organizerSelect">
 {foreach from=$organizers item=organizer}
-  <option value={$organizer->getNo()}>{$organizer->getName()}</option>
+  <option value={$organizer->getNo()}>{$organizer->getName()} {$organizer->getFirstname()}</option>
  {/foreach}
 </select>
 <select name="roleSelect">
@@ -13,11 +14,12 @@
 </select>
 
 
-</form>
+
 </div>
 <div class="row">
 	 		<p class="span6 offset5">
 	 			<input type="submit" />
 	 		</p>
                 </div>
+</form>
 {include '_footer.tpl'}

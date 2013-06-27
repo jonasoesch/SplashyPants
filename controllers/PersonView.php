@@ -782,11 +782,8 @@ class PersonView extends ViewController {
             Template::redirect('register');
         }
 
-        if ($aMotivationAddedToAnEvent->getStatus())
-            echo 'Congrats!' . $aMotivationAddedToAnEvent->getMessage();
-        else
-            echo 'Error!' . $aMotivationAddedToAnEvent->getMessage();
-
+       
+           Template::flash($aMotivationAddedToAnEvent->getMessage());
 
         // Args addKeywordsToAnEvent
         $args2 = array(
@@ -797,11 +794,7 @@ class PersonView extends ViewController {
         // Add keyword to an event
         $anAddedKeywords = $tedx_manager->addKeywordsToAnEvent($args2);
 
-        // Message
-        if ($anAddedKeywords->getStatus())
-            echo 'Congrats!' . $anAddedKeywords->getMessage();
-        else
-            echo 'Error!' . $anAddedKeywords->getMessage();
+        Template::flash($anAddedKeywords->getMessage());
     }
 
     public function allocateTeamRoles() {
@@ -814,41 +807,36 @@ class PersonView extends ViewController {
 // Message
         if (!$messageGetOrganizers->getStatus())
             Template::flash($messageGetOrganizers->getMessage());
-        Template::render("allocateTeamRoles.tpl", array('roles' => $messageGetRole->getContent(), 'organizers' => $messageGetOrganizers->getContent()));
+            Template::render("allocateTeamRoles.tpl", array('roles' => $messageGetRole->getContent(), 'organizers' => $messageGetOrganizers->getContent()));
     }
 
     public function allocateTeamRolesSubmit() {
         global $tedx_manager;
+        
         // object Organizer
-        $anOrganizer=$tedx_manager->getOrganizer($_POST['organizerSelect']);
+        $anOrganizer = $tedx_manager->getOrganizer($_POST['organizerSelect']);
+        $anOrganizer = $anOrganizer->getContent();
         // object TeamRole
-        $aTeamRole=$_POST['rolesSelect'];
+        $aRole = $_POST['roleSelect'];
         //current event
-        $anEvent= EventView::getLatestEvent();
-                
-        $argsRole = array(
-            'name' => $aTeamRole,
+        $anEvent = EventView::getLatestEvent();
+        
+        $args = array(
+            'name' => $aRole,
+            'level' => 1,
             'event' => $anEvent,
             'organizer' => $anOrganizer
         );
+ 
 
-        $messageGetRole = $tedx_manager->getRole($argsRole);
-        
-        $args = array(
-            'organizer' => $anOrganizer,
-            'teamRole' => $messageGetRole->getContent()
-        );
-        // affect teamRole
-        $messageAffectTeamRole = $tedx_manager->affectTeamRole($args);
-        
-        if (!$messageGetRole->getStatus())
-            Template::flash($messageGetRole->getMessage());
-        
+
+        // Add Role
+        $messageAddRole = $tedx_manager->addRole($args);
+
         // Message
-            Template::flash('Congrats! ' . $messageAffectTeamRole->getMessage());
-
-   
-        
+        Template::flash($messageAddRole->getMessage());
+        Template::redirect("allocateTeamRoles");
+ 
     }
 
 //class
