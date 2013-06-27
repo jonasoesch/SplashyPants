@@ -37,7 +37,7 @@
    <figure class="span2">
 		  <img class="profil portrait-small" src="{$baseURL}/public/images/speaker/{rand(1,3)}.jpg" />
       <p>
-        <a href="{$baseURL}/{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()}</a>
+        <a href="{$baseURL}/person/{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()}</a>
       </p>
 	</figure>
 	

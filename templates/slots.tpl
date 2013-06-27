@@ -40,7 +40,7 @@
  	{/foreach}
  	{if $canEdit}
  	<p>
-				<a href="{$baseURL}/{$event->getNo()}/Slot/{$slotNo}/addSpeaker" class="admin-link">Add Speaker</a>
+				<a href="{$baseURL}/event/{$event->getNo()}/Slot/{$slotNo}/addSpeaker" class="admin-link">Add Speaker</a>
 	</p>
 	{/if}
  	</article>
