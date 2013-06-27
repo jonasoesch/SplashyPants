@@ -186,16 +186,22 @@ $r->get("admin",
         "HomeView::admin");
 
 $r->get("locations",
-        "PersonView::locations");
+        "EventView::locations");
 
-$r->post("admin/locations",
-        "PersonView::locationsSubmit");
+$r->post("locations",
+        "EventView::locationsSubmit");
 
 $r->get("teamRoles",
         "PersonView::teamRoles");
 
-$r->post("admin/teamRoles",
+$r->post("teamRoles",
         "PersonView::teamRolesSubmit");
+
+$r->get("allocateTeamRoles",
+        "PersonView::allocateTeamRoles");
+
+$r->post("teamRoles",
+        "PersonView::allocateTeamRolesSubmit");
 
 
 $r->run();
