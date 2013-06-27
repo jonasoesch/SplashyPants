@@ -124,10 +124,17 @@ class PersonView extends ViewController {
     }
 
     /** ---------------------------------------------------------------------------------------------------
-    * Displays the page to create a new TeamRole
+    * Displays the page to create a new TeamRole if the visitor has the rights
+    * redirects to the homepage otherwise
     **/
     public function teamRoles() {
+      global $tedx_manager;
+      if ($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
         Template::render('teamRoles.tpl');
+       } else {
+            Template::flash("You don't have the right to add TeamRoles");
+            Template::redirect('');
+        }
     }
 
 
@@ -147,7 +154,10 @@ class PersonView extends ViewController {
 
 
     /** ----------------------------------------------------------------------------------------------------
-     * */
+    * Shows the form for adding a speaker to persistence
+    * if the visitor has the rights or redirects to the Homepage
+    * 
+    **/
     public function registerSpeaker() {
         global $tedx_manager;
 
@@ -162,11 +172,13 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * */
+    * 
+    *
+    **/
     public function registerSpeakerSubmit() {
         global $tedx_manager;
 
-        if ($tedx_manager->isOrganizer() || $tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin()) {
+        if ($tedx_manager->isGranted('registerSpeaker')) {
             $args = $this->createPersonArray();
 
             $aRegisteredSpeaker = $tedx_manager->registerSpeaker($args);
@@ -182,6 +194,8 @@ class PersonView extends ViewController {
                     'mode' => 'new'
                 ));
             }
+        } else {
+          Template::redirect("");
         }
     }
 
