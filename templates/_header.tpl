@@ -37,13 +37,17 @@
                 <li class="span2"><a class="link" href="{$baseURL}/contact">Contact Us </a></li>
                 <div class="span2 offset3" style="align:right;">
                     {if !$tedx->isLogged()}
-                    	<a class="link" href="{$baseURL}/login"/>login</a>
+                    	<a class="link" href="{$baseURL}/login"/>Login</a>
                          | 
-                        <a class="link" href="{$baseURL}/register"/>register</a> 
+                        <a class="link" href="{$baseURL}/register"/>Register</a> 
                     {/if} 
                     {if $tedx->isLogged()}
 
-                    	<a href="{$baseURL}/logout"/>logout</a> | {if $tedx->isAdministrator()|| $tedx->isSuperAdmin() || $tedx->isOrganizer() }<a href="{$baseURL}/admin"/>  admin</a>{/if}  
+                    	<a href="{$baseURL}/logout"/>Logout</a> | 
+                    	{if $tedx->isAdministrator()|| $tedx->isSuperAdmin() || $tedx->isOrganizer() }<a href="{$baseURL}/admin"/>Admin</a>
+                    	{else} <a href="{$baseURL}/person/{$tedx->getLoggedPerson()->getContent()->getNo()}">Profile</a>
+                    	{/if}
+                    	  
                     {/if}
                    
                    
