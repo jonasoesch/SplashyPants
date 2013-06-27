@@ -1,3 +1,4 @@
+<h2 class="row">Speakers</h2>
 <section>
  {foreach from=$slotsWithSpeakers key=keySlot item=slotData}
  	<article class="row event-slot">
