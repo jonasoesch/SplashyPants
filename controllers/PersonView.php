@@ -255,9 +255,12 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * Displays the forms for editing any kind of profile (checks if
-     * This is what the "edit" mode is for
-     * the mode parameter allows to reuse the form in "new" and "edit" mode
+     * Displays the forms for editing any kind of person
+     * (chooses which form by checking if the $id is a speakerm, an organizer or else)
+     * Here we use the "edit" mode so the form will submit to the right URL
+     * The form is only displayed if the user has edit rights (see canEditProfile method)
+     *
+     * @param: $id -> id of a person
      */
     public function editProfil($id) {
         global $tedx_manager;
@@ -292,8 +295,15 @@ class PersonView extends ViewController {
         }
     }
 
-    /** -------------------------------------------------------------------------
-     * */
+
+    /** --------------------------------------------------------------------------
+     * Modifies any kind of person in the persistence
+     * gets its info from the form at editProfil
+     * when the action wasn't successful, the editProfil form is shown again 
+     * with a message of what has gone wrong
+     * 
+     * @param: $id -> ID of a person
+     */
     public function editProfilSubmit($id) {
         global $tedx_manager;
 
@@ -600,14 +610,20 @@ class PersonView extends ViewController {
 
 //function
 
-    /*     * **********************************************************************************************************
-     * ******************************************* Helper Functions ***********************************************
-     * *********************************************************************************************************** */
+    /* #############################################################
+     * Helper methods
+     * #############################################################
 
     /** ---------------------------------------------
+<<<<<<< HEAD
      *This function checks if the logged user has the right to see the profil that he wants to see.
      * @param:
      *          $personId -> id of the profil that the user wants to see
+=======
+     * This method checks if the logged person has the rights
+     * to edit the profile of the person with the given $personId
+     * 
+>>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
      */
     public function canViewProfile($personId) {
         global $tedx_manager;

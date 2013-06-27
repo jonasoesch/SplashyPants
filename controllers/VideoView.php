@@ -45,27 +45,31 @@ class VideoView extends ViewController {
 
 
         global $tedx_manager;
+        //gets the event from the $eventId recieved in the function parameters
         $messageGetEvent = $tedx_manager->getEvent($eventId);
 
 
         if ($messageGetEvent->getStatus()) {
+            //gets the speaker recieved from the function parameters
             $anEvent = $messageGetEvent->getContent();
             $messageGetSpeaker = $tedx_manager->getSpeaker($speakerId);
 
-            //var_dump($messageGetSpeaker);
+            
             if ($messageGetSpeaker->getStatus()) {
                 $aSpeaker = $messageGetSpeaker->getContent();
-
+                    
+               
                 $args = array(
                     'event' => $anEvent,
                     'speaker' => $aSpeaker
                 );
-
+                
+                //gets the talk object from the $tedx_manager class
                 $messageGetTalk = $tedx_manager->getTalk($args);
-                //var_dump($messageGetTalk);
-
+                
+                    //checks the status
                 if ($messageGetTalk->getStatus()) {
-                    
+                    //if positive then get the speaker
                     $aTalk = $messageGetTalk->getContent();
                     $messageGetPerson = $tedx_manager->getSpeaker($speakerId);
                     if($messageGetPerson->getStatus()){
