@@ -67,15 +67,6 @@
                  </div> 
             
                <div class="span5">
-               		<div class="row">
-	                	<p class="address" span="12">
-	                		<input type="text" name="locationName1" placeholder="Name" size="35" maxlength="25" /><br />
-				  			<input type="text" name="address" placeholder="Address" size="35" maxlength="25" /><br />
-				  			<input type="text" name="zipcode" placeholder="Zipcode" size="5" maxlength="5" />
-				  			<input type="text" name="city" placeholder="City" size="22" maxlength="25" /> <br />
-				  			<input type="text" name="country" placeholder="Country" size="20" maxlength="25" />
-		  				</p>        
-		  			</div>
 		  			<div class="row">
 		  				<p span="12">Existing Location</p>
 		  					<select name="locationName2">
@@ -116,10 +107,10 @@
 		        </div>
 		        
 		        <div class="row">
-	            	<p class="span12">Starting Time</p>
+	            	<p class="span6">Starting Time</p>
 	            </div>
 		        <div class="row">
-					<p class="span12">
+					<p class="span6">
 						<input type="text" name="slot_hob" placeholder="17:00" size="5"/>
 					</p>
 			    </div>
@@ -133,30 +124,6 @@
 						<input type="text" name="slot_hoe" placeholder="17:00" size="5"/>
 					</p>
 			    </div>
-		</div>
-
-		<div span="9">
-			<div class="row">
-				<p class="span3">
-				Select a speaker
-				<select>
-			  					{foreach from=$speakers item=speaker}	
-			  											  
-			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
-							  	{/foreach}
-				</select>
-				</p>
-				$('p').after('<p>Paragraphe suivant</p>')
-				<p class="span3">
-				Select a speaker
-				<select>
-			  					{foreach from=$speakers item=speaker}	
-			  											  
-			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
-							  	{/foreach}
-				</select>
-				</p>
-			</div>
 		</div>
 	</div>
 	<div class="row"> 

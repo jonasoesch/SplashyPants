@@ -19,29 +19,7 @@
 		             <div class="row">
 		                 <p class="span12">{$event->getDescription()}</p>
 		             </div>
-	                 <div class="row">
-		                 <p class="span3">17:00</p>
-		                 <p class="span9">Registration</p>
-		             </div>
-		             <div class="row">
-		                 <p class="span3">17:30</p>
-		                 <p class="span9">The Event</p>
-		             </div>
-		             <div class="row">
-		                 <p class="span9 offset3">Welcome and introduction</p>
-		             </div>
-		             <div class="row"> 
-		                 <p class="span9 offset3">Live presentations</p>
-		             </div>
-
-		             
-		             <div class="row">
-		                 <p class="span3">19:30</p>
-		                 <p class="span9">Apéro</p>
-		             </div>
-	  	
-		                 
-	  	
+		                 	  	
 			      </div>
 
                  </div> 

@@ -124,13 +124,8 @@ class EventView extends ViewController {
 			    'startingTime'  => $_POST['slot_hob'].":00",
 			    'endingTime'    => $_POST['slot_hoe'].":00",
 			);
-			$slot2 = array (
-			    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
-			    'startingTime'  => $_POST['slot_hob'].":00",
-			    'endingTime'    => $_POST['slot_hoe'].":00",
-			);
-			// Un array de Slots
-			$argsSlots = array($slot1, $slot2);
+						// Un array de Slots
+			$argsSlots = array($slot1);
 			 
 			// L'array final pour la fonction addEvent
 			$megaArgsAddEvent = array (
