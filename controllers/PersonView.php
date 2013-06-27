@@ -820,7 +820,7 @@ class PersonView extends ViewController {
         // object TeamRole
         $aTeamRole=$_POST['rolesSelect'];
         //current event
-        $anEvent=
+        $anEvent= EventView::getLatestEvent();
                 
         $argsRole = array(
             'name' => $_POST['rolesSelect'],
