@@ -1,27 +1,26 @@
 {include '_header.tpl' title="Persons"}
 
-
+<section>
 <h2>Speakers</h2>
 {foreach from=$speakers item=person}
 	<div class="row event-slot">
 
 		<h2 class="span4">
 		 <a href="{$baseURL}/person/{$person->getNo()}">
-		  {$person->getNo()} {$person->getFirstName()} {$person->getName()}
+		  {$person->getFirstName()} {$person->getName()}
 		 </a>
 		</h2>
 		<p class="span4">{$person->getEmail()}</p>
-		<p class="span4">
-			{$person->getDescription()}
-		</p>
 	
-		<span class="admin-bar">
-			<a class="edit" href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
-		</span>
+		<div class="admin-bar span4">
+			<a class="admin-link" href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
+		</div>
 	</div> 	
 {/foreach}
+</section>
 
-<h2>Organizers</h2>
+<section>
+<h1>Organizers</h1>
 {foreach from=$organizers item=person}
 	<div class="row event-slot">
 
@@ -31,13 +30,13 @@
 		 </a>
 		</h2>
 		<p class="span4">{$person->getEmail()}</p>
-		<p class="span4">
-			{$person->getDescription()}
-		</p>
 
-			<a class="admin-link span1" href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
+		<div class="admin-bar span4">
+			<a class="admin-link" href="{$baseURL}/person/{$person->getNo()}/edit">Edit</a>
+		</div>
 
 	</div> 	
 {/foreach}
+</section>
       
 {include '_footer.tpl'}

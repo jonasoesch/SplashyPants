@@ -26,6 +26,18 @@ color: #000000;
   clear: both;
 }
 
+
+.v-small {
+  margin-top: 12px;
+}
+
+.v-medium {
+  margin-top: 24px;
+}
+
+.v-big {
+  margin-top: 48px;
+}
  
 .subtitle,
 .subtitle-fat {

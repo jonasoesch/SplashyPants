@@ -5,25 +5,22 @@
 
 		<article class="row event-slot">
  				<div class="span3">
-	 				<h3><h3>Slot </h3></h3>
-	 				<p>{if isset($slot)}{assign var='slotDate' value='-'|explode:$slot->getHappeningDate()}{/if}
-	 					{if isset($slot)}{$slotDate[2]}{/if}.
-	 					{if isset($slot)}{$slotDate[1]}{/if}.
-	 					{if isset($slot)}{$slotDate[0]}{/if}
-					</p>
-					<p class="offset0">{$slot->getStartingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1" }
+	 				<h3>
+  	 				{$slot->getStartingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1" }
 					 - {$slot->getEndingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1" }
+	 				</h3>
+	 				<p>Slot</p>
+					<p class="subtitle">
+					  {$slot->getHappeningDate()|date_format:"%d. %B %Y"}
 					</p>
 
 				</div>
 				
-		<form action="{$baseURL}/event/{$event->getNo()}/Slot/{$slot->getNo()}/addSpeaker" method="post">
+				
+<form action="{$baseURL}/event/{$event->getNo()}/Slot/{$slot->getNo()}/addSpeaker" method="post">
 
- 		
- 			
- 			<div span="9">
-								<p class="span2">
-				Select a speaker
+ 		<div class="span3">
+				<label for="speakerNo">Select a speaker</label>
 					<select name="speakerNo">
 
 			  					{foreach from=$someSpeakers item=speaker}	
@@ -31,18 +28,11 @@
 							  	{/foreach}
 					</select>
 					
-				</p>
 			</div>
- 
- 			
-
-
-
-
-	
+ 	
 	<div class="row"> 
-         	<p class="span6"> 
-           <input type="Submit" />  
+         	<p class="span3"> 
+           <input type="Submit" value="Add" />  
            </p> 
 		</div>
 </form>

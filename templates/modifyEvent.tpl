@@ -63,6 +63,7 @@
 
 <div class="row">
   <p class="span6">
+    <label for="description">Description</label>
     <textarea  name="description" placeholder="Enter a description" cols="50">
       {if isset($event)}{$event->getDescription()}{/if}
     </textarea>
