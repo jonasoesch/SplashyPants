@@ -64,7 +64,7 @@ $r->get("logout",
 $r->get("event/:id",
 				"EventView::show");
 $r->get("events",
-                                "EventView::showEvents");
+            "EventView::showEvents");
 				
 $r->get("addEvent",
 				"EventView::add");
@@ -76,13 +76,25 @@ $r->get("event/:id/editSlot/:idSlot",
 				"EventView::editSlot");				
 				
 $r->post("event/:id/editSlot/:idSlot",
-				"EventView::editSlot");
+				"EventView::sumbitSlot");
+				
+$r->post("event/:id/editSlot/:idSlot",
+				"EventView::sumbitSlot");
 
-$r->get("event/:id/addSlot",
+$r->get("event/:id/modifySlot",
 				"EventView::slot");
 				
 $r->get("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
 				"EventView::editSpeaker");
+				
+$r->post("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
+				"EventView::editSpeaker");
+				
+$r->get("event/:id/Slot/:idSlot/addSpeaker",
+				"EventView::addSpeaker");
+				
+$r->post("event/:id/Slot/:idSlot/addSpeaker",
+				"EventView::submitAddSpeaker");				
 				
 				
 				
@@ -174,16 +186,22 @@ $r->get("admin",
         "HomeView::admin");
 
 $r->get("locations",
-        "PersonView::locations");
+        "EventView::locations");
 
-$r->post("admin/locations",
-        "PersonView::locationsSubmit");
+$r->post("locations",
+        "EventView::locationsSubmit");
 
 $r->get("teamRoles",
         "PersonView::teamRoles");
 
-$r->post("admin/teamRoles",
+$r->post("teamRoles",
         "PersonView::teamRolesSubmit");
+
+$r->get("allocateTeamRoles",
+        "PersonView::allocateTeamRoles");
+
+$r->post("teamRoles",
+        "PersonView::allocateTeamRolesSubmit");
 
 
 $r->run();

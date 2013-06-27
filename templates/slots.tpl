@@ -33,7 +33,7 @@
  		
  	{/foreach}
  	<p>
-				<a href="/tedxEventManager/SplashyPants/person/{$data->getNo()}" >add speaker</a>
+				<a href="/tedxEventManager/SplashyPants/event/{$event->getNo()}/Slot/{$slotNo}/addSpeaker" >add speaker</a>
 	</p>
  	</article>
  	

@@ -12,5 +12,4 @@
 	</ul>
 </section>
 
-
 {include '_footer.tpl'}
