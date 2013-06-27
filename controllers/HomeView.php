@@ -19,11 +19,11 @@ class HomeView extends ViewController {
       $messageGetPerson = $tedx_manager->getSpeaker($idSpeaker);
       if($messageGetPerson->getStatus()){
         $speaker = $messageGetPerson->getContent();
-        //$array_push($arraySpeakerTalks, $speaker);
+        
         $arraySpeakerTalks[] = array(
           'talk' => $aTalk,
           'speaker' => $speaker);
-        //var_dump($speaker);
+      
         
       }else{
         Template::flash('Could not find speaker ' . $messageGetPerson->getMessage());
