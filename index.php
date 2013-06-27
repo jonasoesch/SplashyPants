@@ -72,14 +72,23 @@ $r->get("addEvent",
 $r->post("addEvent",
 				"EventView::submitEvent");
 				
+$r->post("event/:id/submitModifiedEvent",
+				"EventView::submitModifiedEvent");				
+				
 $r->get("event/:id/editSlot/:idSlot",
 				"EventView::editSlot");				
 				
-$r->post("event/:id/editSlot/:idSlot",
-				"EventView::sumbitSlot");
+$r->post("event/:id/slot/:idSlot/submitModifiedSlot",
+				"EventView::submitModifiedSlot");
 				
 $r->post("event/:id/editSlot/:idSlot",
 				"EventView::sumbitSlot");
+				
+$r->get("event/:id/addSlot",
+				"EventView::addSlot");
+				
+$r->post("event/:id/submitAddSlot",
+				"EventView::submitAddSlot");
 
 $r->get("event/:id/modifySlot",
 				"EventView::slot");
@@ -101,7 +110,7 @@ $r->post("event/:id/Slot/:idSlot/addSpeaker",
 //$r->get("event/:id/addSlot",
 			//	"EventView::submitSlots");				
 				
-$r->get("modifyEvent/:id",
+$r->get("event/:id/modify",
 				"EventView::modify");
 				
 $r->post("modifyEvent/:id",

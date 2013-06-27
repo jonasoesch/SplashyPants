@@ -57,10 +57,11 @@ $country="suisse";
 <h2>Speakers</h2>
 
 <section>
+
  {foreach from=$slotsWithSpeakers item=slotData}
  	<article class="row event-slot">
  		{foreach from=$slotData key=key item=data}
- 		{if $key == 'slotData'}
+ 		 		{if $key == 'slotData'}
  				<div class="span4">
 	 				<h3>Slot {$data->getNo()}</h3>
 	 				<p>{$data->getHappeningDate()}</p>

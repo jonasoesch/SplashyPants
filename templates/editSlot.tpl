@@ -3,7 +3,7 @@
 {include 'eventWithoutSlot.tpl'}
 <h2>Speakers</h2>
 
-<form method="post" >
+<form action="{$baseURL}/event/{$event->getNo()}/slot/{$slot->getNo()}/submitModifiedSlot" method="post" >
  	<div class="row event-slot">
  				<div class="span4">
 	 				<h3>Slot</h3>
@@ -53,7 +53,7 @@
  				
 	 		{foreach from=$someSpeakers key=keySpeaker item=speaker}
  
- 			<figure class="span3">
+ 			<figure class="span2">
 				<img class="profil portrait" src="{$baseURL}/public/images/speaker/{$speaker->getNo()}.jpg" />
 				<p>
 				<a href="/tedxEventManager/SplashyPants/person/{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()}</a>

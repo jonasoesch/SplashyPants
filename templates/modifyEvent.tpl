@@ -1,6 +1,6 @@
 
 {include '_header.tpl'}
-<form action="{$baseURL}/addEvent" method="post">
+<form action="{$baseURL}/event/{$event->getNo()}/submitModifiedEvent" method="post">
 <div class="row">
             	<div class="span7">
                    <div class="span11">

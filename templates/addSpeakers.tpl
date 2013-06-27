@@ -24,13 +24,13 @@
  			<div span="9">
 								<p class="span2">
 				Select a speaker
-					<input type="hidden" value="2" name="placeNo" />
 					<select name="speakerNo">
 
 			  					{foreach from=$someSpeakers item=speaker}	
 			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
 							  	{/foreach}
 					</select>
+					
 				</p>
 			</div>
  

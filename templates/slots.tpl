@@ -24,9 +24,7 @@
 				<p>
 				<a href="/tedxEventManager/SplashyPants/person/{$data->getNo()}" >{$data->getFirstName()} {$data->getName()}</a>
 				</p>
-				<p>
-				<a href="{$baseURL}/event/{$event->getNo()}/Slot/{$slotNo}/Speaker/{$data->getNo()}" >change speaker</a>
-				</p>
+
 			</figure>
  			
  		{/if}

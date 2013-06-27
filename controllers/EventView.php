@@ -158,57 +158,63 @@ class EventView extends ViewController {
     	}
     }
     
-    	public function submitModifyEvent($id) {
+    	public function submitModifiedEvent($id) {
 			global $tedx_manager;
 			
-			$argsCreateEvent = array(
-			'mainTopic'     => $_POST['mainTopic'],
-			'startingDate'  => $_POST['event_dob_year']."-".$_POST['event_dob_month']."-".$_POST['event_dob_day'],
-		    'endingDate'    => $_POST['event_doe_year']."-".$_POST['event_doe_month']."-".$_POST['event_doe_day'],
-		    'startingTime'  => $_POST['event_hob'],
-		    'endingTime'    => $_POST['event_hoe'],
-		    'description'   => $_POST['description'],
-		    'locationName'  => $_POST['locationName2']  // ligne à enlever si pas de Location !
+			$args = array(
+			    'no'           => $id,
+			    'mainTopic'    => $_POST['mainTopic'],
+			    'description'  => $_POST['description'],
+			    'startingDate' => $_POST['event_dob_year']."-".$_POST['event_dob_month']."-".$_POST['event_dob_day'],
+			    'endingDate'   => $_POST['event_doe_year']."-".$_POST['event_doe_month']."-".$_POST['event_doe_day'],
+			    'startingTime' => $_POST['event_hob'],
+			    'endingTime'   => $_POST['event_hoe'],
+			);
+			// Changing the Event
+			$messageChangeEvent = $tedx_manager->changeEvent( $args );
+			// if the change is done
+			if( $messageChangeEvent->getStatus())
+			    echo 'Congrats! ' . $messageChangeEvent->getMessage();
+			else
+			    echo 'Error! ' . $messageChangeEvent->getMessage();
+			
+			$idEvents = $messageChangeEvent->getContent();
+						
+			$messageGetEvent = $tedx_manager->getEvent($id);
+		
+			//message
+			if( $messageGetEvent->getStatus()){
+			
+				$anEvent = $messageGetEvent->getContent();
+			}
+			
+			$argsLocation = array(
+			'event'        => $tedx_manager->getEvent($id)->getContent(),
+			'locationName' => $_POST['locationName2']
 			);
 			
-			// 1..* arrays pour création des Slots
-			// Note: pas de référence à l'Event !(Event.No indéterminé)
-			$slot1 = array (
-			    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
-			    'startingTime'  => $_POST['slot_hob'],
-			    'endingTime'    => $_POST['slot_hoe'],
-			);
-			$slot2 = array (
-			    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
-			    'startingTime'  => $_POST['slot_hob'],
-			    'endingTime'    => $_POST['slot_hoe'],
-			);
-			// Un array de Slots
-			$argsSlots = array($slot1, $slot2);
-			 
-			// L'array final pour la fonction addEvent
-			$megaArgsAddEvent = array (
-			    'event'   => $argsCreateEvent,
-			    'slots'   => $argsSlots
-			);
-			 
-			// Création de l'Event !
-			$messageAddEvent = $tedx_manager->addEvent($megaArgsAddEvent);
 			
-			/*echo "<pre>";
-			var_dump($messageAddEvent->getContent());
-			echo "</pre>";*/
-			$idEvents = $messageAddEvent->getContent();
-			$idEvent = $idEvents[0]->getNo();
-    	
+			
+			// Change the location
+			$messageChangeEventLocation = $tedx_manager->changeEventLocation($argsLocation);
+			
+			// Message
+			if( $messageChangeEventLocation->getStatus()) {
+			 echo 'Congrats! A location name changed in the event' . $messageChangeEventLocation->getMessage();
+			}
+			else {
+			 echo 'Error! ' . $messageChangeEventLocation->getMessage();
+			}
+			
     	//Template::flash($messageAddEvent->getMessage());
     	
-    	if($messageAddEvent->getStatus()) {
+    	if($messageChangeEvent->getStatus()) {
     		//$idEvent->getNo();
-    		Template::redirect("event/$idEvent");
+    		Template::redirect("event/$id");
     	} else {
     		//Template::redirect('addEvent');
     	}
+    	
     }
     
     
@@ -292,7 +298,7 @@ class EventView extends ViewController {
 					
 				
 					$untableau= array(
-					//'event' => $this->getEventData($id)['event'],
+					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
@@ -308,6 +314,42 @@ class EventView extends ViewController {
 			}//if getEvent
 			
 		}//end function editslot()
+		
+		public function submitModifiedSlot($id,$idSlot) {
+		global $tedx_manager;
+		
+		// Args change profil
+		$messageGetEvent = $tedx_manager->getEvent($id);
+		
+			//message
+		if( $messageGetEvent->getStatus()){
+			
+		$anEvent = $messageGetEvent->getContent();
+		}
+		
+        $args = array(
+                    'no'            => $idSlot,
+                    'event'       	=> $anEvent,
+                    'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
+					'startingTime'  => $_POST['slot_hob'],
+					'endingTime'    => $_POST['slot_hoe'],
+                );
+                echo var_dump($args);
+				// Changing the Slot
+				$messageChangeSlot = $tedx_manager->changeSlot( $args );
+
+				// if the change is done
+				if( $messageChangeSlot->getStatus()){
+				echo 'Congrats! ' . $messageChangeSlot->getMessage();
+				}
+				else{
+				echo 'Error! ' . $messageChangeSlot->getMessage();
+				}
+				
+		Template::redirect('');
+						
+		}//end function editslot()
+		
 		
 		
 		public function editSpeaker($id,$idSlot,$idSpeaker) {
@@ -516,14 +558,28 @@ class EventView extends ViewController {
 			else {
 			    echo 'Speaker not found, see error '. $messageGetSpeaker->getMessage();
 			}// else
-			 
+			
+			$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($slot);
+		
+			if ($messageGetPlacesBySlot->getStatus()){
+				$places = $messageGetPlacesBySlot->getContent();
+				
+				
+				//compte le nombre de places existantes dans le slot				
+				$nbrPlaces = count($places)+1;
+			}
+			
+			
 			// Args addSpeakerToPlace
+			
 			$argsAddSpeakerToPlace = array(
-			    'no'                => $_POST['placeNo'],
+			    'no'                => $nbrPlaces,
 			    'event'             => $anEvent,
 			    'slot'              => $slot,
 			    'speaker'           => $aSpeaker,
-			    
+			    'videoTitle'        => "Super Video Title",
+			    'videoDescription'  => "Super video Description",
+			    'videoURL'          => "http://www.youtube.com/watch?v=u5obDMFMFxQ"
 			);
 			 
 			$messageSpeakerAddedToPlace = $tedx_manager->addSpeakerToPlace($argsAddSpeakerToPlace);
@@ -546,6 +602,64 @@ class EventView extends ViewController {
 				Template::render('addSlot.tpl',$untableau);
 			
 			}
+			
+		public function addSlot($id) {
+			global $tedx_manager;
+		
+			if($this->canEditEvent()) {
+			
+			$someSpeakers = $this->getSpeakersData();
+			
+			$speaker = array('someSpeakers' => $someSpeakers);
+			
+				$untableau= array_merge($this->getEventData($id), $speaker);
+			
+				Template::render('addSlotToAnEvent.tpl',$untableau);
+			}
+		}	
+		
+		public function submitAddSlot($id){
+			global $tedx_manager;
+
+			$messageGetEvent = $tedx_manager->getEvent($id);
+		
+			//message
+			if( $messageGetEvent->getStatus()){
+			
+				$anEvent = $messageGetEvent->getContent();
+				
+			
+			// Args addSlotToEvent
+			$args = array(
+				'happeningDate' => $_POST['slot_dob_year']."-".$_POST['slot_dob_month']."-".$_POST['slot_dob_day'],
+			    'startingTime'  => $_POST['slot_hob'],
+			    'endingTime'    => $_POST['slot_hoe'],
+			    'event'         => $anEvent
+			);
+			
+			echo var_dump($args);
+			// Add slot to an event
+			$messageAddSlotToEvent = $tedx_manager->addSlotToEvent( $args );
+			 
+			//if Slot added successfully
+			if( $messageAddSlotToEvent->getStatus() ){
+				Template::redirect("event/$id");
+				}
+				 
+			else{
+			    echo 'Error! ' . $messageAddSlotToEvent->getMessage();
+			    }
+			}
+			else{
+				
+			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
+
+			}
+			
+
+		
+			
+		}//end function addsubmitSlot
 
 		public function getLocationsData(){
 			global $tedx_manager;
@@ -619,25 +733,31 @@ class EventView extends ViewController {
 			
 					$slotsWithSpeakers = array();
 			
-					$i=0;
+					$i=0; // compter les slots
 			
 					foreach($someSlot as $aSlot){
 					
 						$slotsWithSpeakers[$i]['slotData']=$aSlot;
 						$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($aSlot);
 						
+
+						
 						if ($messageGetPlacesBySlot->getStatus()){
 							$places = $messageGetPlacesBySlot->getContent();
-					
-									
+													
+														
 							foreach($places as $place){
 				
 								$messageGetSpeakerByPlace = $tedx_manager->getSpeakerByPlace($place);
 								//faire if
-								$speaker = $messageGetSpeakerByPlace->getContent();
 								
 								if ($messageGetSpeakerByPlace->getStatus()){
 								
+																
+									$speaker = $messageGetSpeakerByPlace->getContent();
+
+									// Overwrites if there is already a place with the same No
+									// Only the last place with a given No is shown
 									$slotsWithSpeakers[$i][$place->getNo()]=$speaker;
 									
 								}
@@ -679,7 +799,6 @@ class EventView extends ViewController {
 			Template::redirect("");
 			
 		}//else
-		
 		return array(
 			'event' => $anEvent,
 			'location' => $aLocation,
