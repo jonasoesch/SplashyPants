@@ -42,8 +42,10 @@ class EventView extends ViewController {
 			}
 				Template::render('listEvents.tpl', array(
 					'arrayEventsLocation' => $arrayEventsLocation,
-					'numberOfEvents' => $numberOfEvents));
-
+					'numberOfEvents' => $numberOfEvents,
+					'canEdit' => $this->canEditEvent()
+					));
+					
 		}else{
 
 			Template::flash('Could not find events ' . $messageGetEvents->getMessage());
@@ -369,15 +371,19 @@ class EventView extends ViewController {
 						
 				if($this->canEditEvent()) {
 						
-	
+          $eventData = $this->getEventData($id);
+          $speakerAndLocation = $this->getSpeakerAndLocationData();
+          
 					$untableau= array(
 					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $this->getSpeakersData(),
 					'someSpeakers' => $speakers, 
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
+					'someSpeakers' => $speakerAndLocation['someSpeakers'],
+					//'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
-					
-					
 					);
 			
 				Template::render('editSlotWithSpeakers.tpl',$untableau);
@@ -513,7 +519,7 @@ class EventView extends ViewController {
 			 
 			// Args addSpeakerToPlace
 			$argsAddSpeakerToPlace = array(
-			    'no'                => 4,
+			    'no'                => $_POST['placeNo'],
 			    'event'             => $anEvent,
 			    'slot'              => $slot,
 			    'speaker'           => $aSpeaker,
