@@ -814,7 +814,7 @@ class PersonView extends ViewController {
     }
 
     public function allocateTeamRolesSubmit() {
-
+        global $tedx_manager;
         // object Organizer
         $anOrganizer=$tedx_manager->getOrganizer($_POST['organizerSelect']);
         // object TeamRole
@@ -823,7 +823,7 @@ class PersonView extends ViewController {
         $anEvent= EventView::getLatestEvent();
                 
         $argsRole = array(
-            'name' => $_POST['rolesSelect'],
+            'name' => $aTeamRole,
             'event' => $anEvent,
             'organizer' => $anOrganizer
         );
@@ -837,27 +837,13 @@ class PersonView extends ViewController {
         // affect teamRole
         $messageAffectTeamRole = $tedx_manager->affectTeamRole($args);
         
-        if ($messageGetRole->getStatus())
-            echo 'Congrats! ' . $messageGetRole->getMessage();
-        else
-            echo 'Error! ' . $messageGetRole->getMessage();
+        if (!$messageGetRole->getStatus())
+            Template::flash($messageGetRole->getMessage());
         
         // Message
-        if ($messageAffectTeamRole->getStatus())
-            echo 'Congrats! ' . $messageAffectTeamRole->getMessage();
-        else
-            echo 'Error! ' . $messageAffectTeamRole->getMessage();
+            Template::flash('Congrats! ' . $messageAffectTeamRole->getMessage());
 
-        // Object Event
-        $anEvent;
-        // Object Organizer
-        $anOrganizer;
-
-        // args get Role
-        
-// getting the role
-        
-// Message
+   
         
     }
 
