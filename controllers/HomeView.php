@@ -3,10 +3,17 @@
 require_once(SPLASHY_DIR."/helpers/ViewController.php");
 require_once(SPLASHY_DIR."/helpers/Template.php");
 
+
+/**
+* HomeView does the retrieval, treatment and display of pages
+* who are not in relation with any special object
+**/
 class HomeView extends ViewController {
   
   
-  // ""
+  /*
+  * Displays the Homepage
+  */
   public function index() {
     global $tedx_manager;
     //get some talks for the aside part
@@ -38,30 +45,36 @@ class HomeView extends ViewController {
       'arraySpeakerTalks' => $arraySpeakerTalks));
   }
   
-  public function hey($event, $contact) {
-  	var_dump($event);
-  	var_dump($contact);
-  }
-  
-  
-    public function admin() {
+
+  /*
+  * Displays the page which collects common administration functionnality
+  * but only when the visitor has the proper rights.
+  * Otherwise it redirects to the homepage
+  */
+  public function admin() {
         global $tedx_manager;
         if ($tedx_manager->isAdministrator()|| $tedx_manager->isSuperAdmin() || $tedx_manager->isOrganizer()){
         Template::render('admin.tpl');
         
         }
         else{
-            index();
+          Template::redirect('');
         }
   }
   
   
-  // "login"
+  /*
+  * Displays the Login form
+  */  
   public function login() {
   	Template::render('login.tpl');
   }
   
-  // "login/do"
+  /*
+  * Executes the login with the data it receives from the login form
+  * If the login was successfuk it displays the persons profile (or to the homepage in case of an error)
+  * otherwise it re-displays the login form
+  */
   public function loginDo() {
   	global $tedx_manager;
   	
@@ -82,7 +95,9 @@ class HomeView extends ViewController {
   	}
   }
   
-  // "logout"
+  /*
+  * Executes the logout process and redirects to the homepage
+  */
   public function logout() {
   	global $tedx_manager;
   	$message = $tedx_manager->logout();
@@ -90,18 +105,25 @@ class HomeView extends ViewController {
   	Template::redirect('');
   }
   
-  // "about"
+  /*
+  * Displays the about TED-Page
+  */
   public function about() {
     Template::render('about.tpl');
   }
   
   
-  // "contact"
+  /*
+  * Displays the contact form
+  * (not implemented)
+  */
   public function contact() {
   	Template::render('contact.tpl');
   }
   
-  // "partners"
+  /*
+  * Displays the partners page
+  */
   public function partners() {
     Template::render('partners.tpl');
   }

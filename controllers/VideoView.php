@@ -35,8 +35,6 @@ class VideoView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * Cette méthode affiche l'event à partir de l'id reçu.
-     * 
      * This function is here to show the detailed video template. 
      * @param:eventId identifier of the event
      *        $speakerId identifier of the speaker

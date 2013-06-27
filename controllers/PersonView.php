@@ -620,110 +620,7 @@ class PersonView extends ViewController {
 
 //function
 
-    /* #############################################################
-     * Helper methods
-     * #############################################################
 
-    /** ---------------------------------------------
-
-     * This method checks if the logged person has the rights
-     * to edit the profile of the person with the given $personId
-     * @param:
-     *          $personId -> id of the profil that the user wants to see
-     * 
-     */
-    public function canViewProfile($personId) {
-        global $tedx_manager;
-
-        $loggedPersonMsg = $tedx_manager->getLoggedPerson();
-        $canView = false;
-
-        // Everybody can view a speaker profile
-        if ($tedx_manager->getSpeaker($personId)->getStatus()) {
-            $canView = true;
-        }
-
-        // Everybody can view an organizer profile
-        if ($tedx_manager->getOrganizer($personId)->getStatus()) {
-            $canView = true;
-        }
-
-        // Everybody can view his own profile
-        if ($loggedPersonMsg->getStatus() && ($loggedPersonMsg->getContent()->getNo() == $personId)) {
-            $canView = true;
-        }
-
-        // Validators, Organizers and Admins can view all the profiles
-        if ($tedx_manager->isValidator() ||
-                $tedx_manager->isOrganizer() ||
-                $tedx_manager->isAdministrator() ||
-                $tedx_manager->isSuperadmin()) {
-            $canView = true;
-        }
-
-        return $canView;
-    }
-
-    /** ----------------------------------------------------------------------------------------------------
-     * Check if somebody has the right to change the profile of a 
-     * person with a given id.
-     * @param:
-     *          $personId -> the id from the profil that the user is looking for
-     */
-    public function canEditProfile($personId) {
-        global $tedx_manager;
-
-        $loggedPersonMsg = $tedx_manager->getLoggedPerson();
-        $canEdit = false;
-
-        if ($loggedPersonMsg->getStatus()) {
-
-            // Anybody can edit his proper profile
-            if ($loggedPersonMsg->getContent()->getNo() == $personId) {
-                $canEdit = true;
-
-                // All kinds of website-manager can edit any profile
-            } else if ($tedx_manager->isValidator() ||
-                    $tedx_manager->isOrganizer() ||
-                    $tedx_manager->isAdministrator() ||
-                    $tedx_manager->isSuperadmin()
-            ) {
-                $canEdit = true;
-            }
-        }
-        return $canEdit;
-    }
-
-    /** ----------------------------------------------------------------------------------------------------
-     * Cette mŽthode crŽe l'array avec les paramtres qu'il ˆ reu dans la variable $_POST
-     * et la mets dans l'array $args
-     * 
-     * rends le tableaux $args qui contiens les coordonnes d'un user
-     * */
-    public function createPersonArray() {
-        $args = array(
-            'name' => $_POST['lastname'],
-            'firstname' => $_POST['firstname'],
-            'firstName' => $_POST['firstname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . '-' . $_POST['dob_day'],
-            'address' => $_POST['address'],
-            'city' => $_POST['city'],
-            'country' => $_POST['country'],
-            'phoneNumber' => $_POST['telephone'],
-            'email' => $_POST['email']
-        );
-
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            $args['idmember'] = $_POST['username'];
-            $args['password'] = $_POST['password'];
-        }
-
-        if (isset($_POST['description'])) {
-            $args['description'] = $_POST['description'];
-        }
-
-        return $args;
-    }
     
      /** ----------------------------------------------------------------------------------------------------
      * Cette function affiche la page location
@@ -921,24 +818,113 @@ class PersonView extends ViewController {
         Template::redirect("allocateTeamRoles");
  
     }
+    
+    /* #############################################################
+     * Helper methods
+     * #############################################################
 
-//class
+    /** ---------------------------------------------
 
-
-    /*
-      $args = array(
-      'name'        => isset($_POST['lastname']) ? $_POST['lastname'] : "",
-      'firstname'   => isset($_POST['firstname']) ? $_POST['firstname'] : "",
-      'dateOfBirth' => $_POST['dob_year']."-".$_POST['dob_month'].'-'.$_POST['dob_day'],
-      'address'     => isset($_POST['address']) ? $_POST['address'] : "",
-      'city'        => isset($_POST['city']) ? $_POST['city'] : "",
-      'country'     => isset($_POST['country']) ? $_POST['country'] : "",
-      'phoneNumber' => isset($_POST['telephone']) ? $_POST['telephone'] : "",
-      'email'       => isset($_POST['email']) ? $_POST['email'] : "",
-      'idmember'    => isset($_POST['username']) ? $_POST['username'] : "",
-      'password'    => isset($_POST['password']) ? $_POST['password'] : ""
-      );
+     * This method checks if the logged person has the rights
+     * to edit the profile of the person with the given $personId
+     * @param:
+     *          $personId -> id of the profil that the user wants to see
+     * 
      */
-}
+    public function canViewProfile($personId) {
+        global $tedx_manager;
+
+        $loggedPersonMsg = $tedx_manager->getLoggedPerson();
+        $canView = false;
+
+        // Everybody can view a speaker profile
+        if ($tedx_manager->getSpeaker($personId)->getStatus()) {
+            $canView = true;
+        }
+
+        // Everybody can view an organizer profile
+        if ($tedx_manager->getOrganizer($personId)->getStatus()) {
+            $canView = true;
+        }
+
+        // Everybody can view his own profile
+        if ($loggedPersonMsg->getStatus() && ($loggedPersonMsg->getContent()->getNo() == $personId)) {
+            $canView = true;
+        }
+
+        // Validators, Organizers and Admins can view all the profiles
+        if ($tedx_manager->isValidator() ||
+                $tedx_manager->isOrganizer() ||
+                $tedx_manager->isAdministrator() ||
+                $tedx_manager->isSuperadmin()) {
+            $canView = true;
+        }
+
+        return $canView;
+    }
+
+    /** ----------------------------------------------------------------------------------------------------
+     * Check if somebody has the right to change the profile of a 
+     * person with a given id.
+     * @param:
+     *          $personId -> the id from the profil that the user is looking for
+     */
+    public function canEditProfile($personId) {
+        global $tedx_manager;
+
+        $loggedPersonMsg = $tedx_manager->getLoggedPerson();
+        $canEdit = false;
+
+        if ($loggedPersonMsg->getStatus()) {
+
+            // Anybody can edit his proper profile
+            if ($loggedPersonMsg->getContent()->getNo() == $personId) {
+                $canEdit = true;
+
+                // All kinds of website-manager can edit any profile
+            } else if ($tedx_manager->isValidator() ||
+                    $tedx_manager->isOrganizer() ||
+                    $tedx_manager->isAdministrator() ||
+                    $tedx_manager->isSuperadmin()
+            ) {
+                $canEdit = true;
+            }
+        }
+        return $canEdit;
+    }
+
+    /** ----------------------------------------------------------------------------------------------------
+     * Cette mŽthode crŽe l'array avec les paramtres qu'il ˆ reu dans la variable $_POST
+     * et la mets dans l'array $args
+     * 
+     * rends le tableaux $args qui contiens les coordonnes d'un user
+     * */
+    public function createPersonArray() {
+        $args = array(
+            'name' => $_POST['lastname'],
+            'firstname' => $_POST['firstname'],
+            'firstName' => $_POST['firstname'],
+            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . '-' . $_POST['dob_day'],
+            'address' => $_POST['address'],
+            'city' => $_POST['city'],
+            'country' => $_POST['country'],
+            'phoneNumber' => $_POST['telephone'],
+            'email' => $_POST['email']
+        );
+
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $args['idmember'] = $_POST['username'];
+            $args['password'] = $_POST['password'];
+        }
+
+        if (isset($_POST['description'])) {
+            $args['description'] = $_POST['description'];
+        }
+
+        return $args;
+    }
+
+
+} //class
 
 ?>
