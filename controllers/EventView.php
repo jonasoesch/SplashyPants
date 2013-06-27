@@ -280,10 +280,12 @@ class EventView extends ViewController {
 							if ($messageGetSpeakerByPlace->getStatus()){
 						
 								$someSpeakers[]=$speaker;
+								
+								$eventData = $this->getEventData($id);
 							
 								$untableau= array(
-									'event' => $this->getEventData($id)['event'],
-									'location' => $this->getEventData($id)['location'],
+									'event' => $eventData['event'],
+									'location' => $eventData['location'],
 									'someSpeakers' => $someSpeakers, 
 									'slot' => $slot,
 									'canEdit'=>$canEdit				
@@ -428,8 +430,8 @@ class EventView extends ViewController {
 					$speakerAndLocation = $this->getSpeakerAndLocationData();
           
 					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
 					'someSpeakers' => $this->getSpeakersData(),
 					'someSpeakers' => $speakers, 
 					'event' => $eventData['event'],
@@ -511,10 +513,10 @@ class EventView extends ViewController {
 						
 				if($this->canEditEvent()) {
 						
-	
+          $eventData = $this->getEventData($id);
 					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
+					'event' => $eventData['event'],
+					'location' => $eventData['location'],
 					'someSpeakers' => $this->getSpeakersData(),
 					//'speakers' => $speakers, 
 					'slot' => $slot,
