@@ -106,11 +106,16 @@ $r->get("event/:id/addSlot",
 $r->post("event/:id/submitAddSlot",
 				"EventView::submitAddSlot");
 
+$r->get("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
+				"EventView::editSpeaker");
 				
-$r->get("event/:id/slot/:idSlot",
+$r->post("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
+				"EventView::editSpeaker");
+				
+$r->get("event/:id/Slot/:idSlot/addSpeaker",
 				"EventView::addSpeaker");
 				
-$r->post("event/:id/slot/:idSlot/addSpeaker",
+$r->post("event/:id/Slot/:idSlot/addSpeaker",
 				"EventView::submitAddSpeaker");				
 							
 				
