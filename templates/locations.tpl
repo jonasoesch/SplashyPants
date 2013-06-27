@@ -3,7 +3,7 @@
                         
 <section>
 	<h1 class="span12">Create Location</h1>
-	<form action="{$baseURL}/admin/locations" method="post"> 
+	<form action="{$baseURL}/locations" method="post"> 
 		  	<div class="row">
 		  		<p class="span6 offset 5 address">
 		  			<input type="text" name="name" placeholder="Name" size="30" maxlength="25" /><br />
@@ -15,7 +15,7 @@
 		  	</div>
 		  	
 	        <div class="row">
-		 		<p class="span6 offset6"><input type="submit" name="validate"value="validate"/></p>
+		 		<p class="span6 offset6"><input type="submit"/></p>
 	        </div>
 	</form>
 </section>
