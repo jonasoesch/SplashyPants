@@ -38,8 +38,7 @@
                         {$person->getCountry()}
 	  		</p>
 	  		<p class="span6 birthday">{$person->getDateOfBirth()|date_format:"%d. %B %Y"}</p><br />
-                        
-                       
+              
 	  	</div>
 	  	
 	 </div>

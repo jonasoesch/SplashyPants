@@ -82,6 +82,7 @@ class PersonView extends ViewController {
      * Displays the form to allow subscription with TEDx
      * but only if you're not logged in
      * otherwise it redirects to the homepage
+     * the mode parameter allows to reuse the form in "new" and "edit" mode
      */
     public function registerVisitor() {
         global $tedx_manager;
@@ -100,6 +101,8 @@ class PersonView extends ViewController {
      * Adds a new person to persistence
      * gets its info from the register visitor form
      * if the person can't be persisted, the form is shown again but with the values prefilled
+     * for this it passes a Person object !!
+     * the mode parameter allows to reuse the form in "new" and "edit" mode
      */
     public function registerVisitorSubmit() {
         global $tedx_manager;
@@ -139,7 +142,7 @@ class PersonView extends ViewController {
 
 
     /** ---------------------------------------------------------------------------------------------------
-    * Adds a new TeamRole to persistence
+    * Adds a new TeamRole to persistence with the info from the teamRoles form
     * Shows a message with the status of this operation (in any case)
     * Redirects to the form in case somebody wants to add more roles
     **/
@@ -154,9 +157,9 @@ class PersonView extends ViewController {
 
 
     /** ----------------------------------------------------------------------------------------------------
-    * Shows the form for adding a speaker to persistence
-    * if the visitor has the rights or redirects to the Homepage
-    * 
+    * Shows the form for registerung a speaker if the visitor has the rights 
+    * otherwise it redirects to the homepage
+    * the mode parameter allows to reuse the form in "new" and "edit" mode
     **/
     public function registerSpeaker() {
         global $tedx_manager;
@@ -172,9 +175,12 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-    * 
-    *
-    **/
+     * Adds a new speaker to persistence
+     * gets its info from the form at registerSpeaker
+     * if the speaker can't be persisted, the form is shown again but with the values prefilled
+     * for this it passes a Person object !!
+     * the mode parameter allows to reuse the form in "new" and "edit" mode
+     */
     public function registerSpeakerSubmit() {
         global $tedx_manager;
 
@@ -200,7 +206,10 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * */
+    * Displays the form for registering an organizer if the visitor has the rights
+    * otherwise redirects to the homepage.
+    * The mode parameter allows to reuse the form in "new" and "edit" mode
+    **/
     public function registerOrganizer() {
         global $tedx_manager;
 
@@ -214,6 +223,14 @@ class PersonView extends ViewController {
         }
     }
 
+   
+    /** ----------------------------------------------------------------------------------------------------
+     * Adds a new organizer to persistence
+     * gets its info from the form at registerOrganizer
+     * if the organizer can't be persisted, the form is shown again but with the values prefilled
+     * for this it passes a Person object !!
+     * the mode parameter allows to reuse the form in "new" and "edit" mode
+     */
     public function registerOrganizerSubmit() {
         global $tedx_manager;
 
@@ -238,7 +255,9 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * 	
+     * Displays the forms for editing any kind of profile (checks if
+     * This is what the "edit" mode is for
+     * the mode parameter allows to reuse the form in "new" and "edit" mode
      */
     public function editProfil($id) {
         global $tedx_manager;
