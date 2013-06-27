@@ -914,11 +914,17 @@ class EventView extends ViewController {
 	    return  $theLastEvent;
 	}
 
-
+	/**
+	 *render a template with a  locations form
+	 **/
 	public function locations() {
 	        Template::render('locations.tpl');
 	    }
-
+	    
+	  /**
+	  *Get the information from the form locations and send to the persistence
+	  *
+	  **/
 	public function locationsSubmit() {
 	        global $tedx_manager;
 	        $args = array(
