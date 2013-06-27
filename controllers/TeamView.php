@@ -6,7 +6,11 @@ require_once(SPLASHY_DIR."/helpers/Template.php");
 class TeamView extends ViewController {
   
   
-   // "Team"
+   /**
+    * this function gets the organizers and their roles from the
+    * $tedxclass and sends it to the team template
+    * @global type $tedx_manager
+    */
   public function team() {
         global $tedx_manager;
 
@@ -14,17 +18,12 @@ class TeamView extends ViewController {
         
         $aOrganizerMessage="";
         $roles=array();
-        // Message
-       
-        
-        if ($someOrganizers->getStatus()){
-        $someOrganizers->getMessage();}
-        else{
-        echo 'Error! ' . $someOrganizers->getMessage();}
+        // flashes the message if the operation was successful or not
+        Template::flash($someOrganizers->getMessage());
         
         $someOrganizers=$someOrganizers->getContent();
         foreach($someOrganizers as $organizer){
-            
+            //for each organizer, put its roles in the array $roles
         array_push($roles ,$tedx_manager->getRolesByOrganizer($organizer)->getContent());
         }
         

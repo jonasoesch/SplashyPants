@@ -79,7 +79,8 @@ class VideoView extends ViewController {
                         'speaker' => $speaker);
                     }
                         
-
+                    //renders the videoDescription template with help of the
+                    //arraySpeakertalk and event array
                     Template::render('videoDescription.tpl', array(
                         'arraySpeakerTalk' => $arraySpeakerTalk,
                         'event' => $anEvent
