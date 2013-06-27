@@ -1,5 +1,10 @@
 <?php
 
+/**
+* PersonView retrieval, treatment and display of pages
+* in relation to a person
+**/
+
 require_once SPLASHY_DIR . "/helpers/ViewController.php";
 require_once SPLASHY_DIR . "/helpers/Template.php";
 
@@ -7,7 +12,8 @@ class PersonView extends ViewController {
 
     /** ----------------------------------------------------------------------------------------------------
      * Shows a profile page for any kind of person
-     * 
+     * Checks if the visitor has the rights to see and edit the profile
+     * If not, he gets redirected to the homepage
      */
     public function show($id) {
         global $tedx_manager;
@@ -55,7 +61,7 @@ class PersonView extends ViewController {
 
     /** ----------------------------------------------------------------------------------------------------
      * Displays a list of all the persons
-     *
+     * grouped by speakers, organizers and participants
      */
     public function showAll() {
         global $tedx_manager;
@@ -74,7 +80,8 @@ class PersonView extends ViewController {
 
     /** ----------------------------------------------------------------------------------------------------
      * Displays the form to allow subscription with TEDx
-     * but only if you're not logged in 
+     * but only if you're not logged in
+     * otherwise it redirects to the homepage
      */
     public function registerVisitor() {
         global $tedx_manager;
@@ -90,11 +97,14 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
-     * Adds the Person to the database.
-     *
+     * Adds a new person to persistence
+     * gets its info from the register visitor form
+     * if the person can't be persisted, the form is shown again but with the values prefilled
      */
     public function registerVisitorSubmit() {
         global $tedx_manager;
+        
+        // Gets the values, necessary to create a person from the $_POST variable
         $args = $this->createPersonArray();
 
         $aRegisteredVisitor = $tedx_manager->registerVisitor($args);
@@ -113,48 +123,28 @@ class PersonView extends ViewController {
         }
     }
 
-    //fonction qui affiche le template teamRoles
+    /** ---------------------------------------------------------------------------------------------------
+    * Displays the page to create a new TeamRole
+    **/
     public function teamRoles() {
         Template::render('teamRoles.tpl');
     }
 
+
+    /** ---------------------------------------------------------------------------------------------------
+    * Adds a new TeamRole to persistence
+    * Shows a message with the status of this operation (in any case)
+    * Redirects to the form in case somebody wants to add more roles
+    **/
     public function teamRolesSubmit() {
         global $tedx_manager;
+        
         $messageAddTeamRole = $tedx_manager->addTeamRole($_POST['role']);
-
+        
         Template::flash($messageAddTeamRole->getMessage());
         Template::redirect('teamRoles');
     }
 
-    //fonction qui affiche le template register
-    public function register() {
-        Template::render('register');
-    }
-
-    public function registerSubmit() {
-        global $tedx_manager;
-        $args = array(
-            'name' => $_POST['firstname'],
-            'firstname' => $_POST['lastname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . "-" . $_POST['dob_day'],
-            'address' => $_POST['address'],
-            'city' => $_POST['city'],
-            'country' => $_POST['country'],
-            'phoneNumber' => $_POST['telephone'],
-            'email' => $_POST['email'],
-            'idmember' => $_POST['username'],
-            'password' => $_POST['password'],
-        );
-
-        $aRegisteredVisitor = $tedx_manager->registerVisitor($args);
-        Template::flash($aRegisteredVisitor->getMessage());
-
-        if ($aRegisteredVisitor->getStatus()) {
-            Template::redirect("persons");
-        } else {
-            Template::redirect('register');
-        }
-    }
 
     /** ----------------------------------------------------------------------------------------------------
      * */
