@@ -4,7 +4,13 @@
                     	                    	
                  <div class="span11">
                  	<div class="row">
-                 		<h3 class="span12 eventTitle">{$event->getMainTopic()}</h3>
+                 		<h3 class="span11 eventTitle">{$event->getMainTopic()}</h3>
+                 		 {if $canEdit}
+                 		 <p class="span1">
+					 	 <a href="{$baseURL}/event/{$event->getNo()}/modify">Edit</a>
+					 	 </p>
+						
+						{/if}
                     	<p class="span12">{$event->getStartingDate()}</p>
                  	</div>
 	                 <div class="row">

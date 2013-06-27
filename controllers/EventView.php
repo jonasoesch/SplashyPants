@@ -6,13 +6,13 @@ require_once SPLASHY_DIR."/helpers/Template.php";
 class EventView extends ViewController {
   
  
-	public function show($id) {
+	/*public function show($id) {
 		
 
 		Template::render('event.tpl',
 			$this->getEventData($id) 
 		);
-	}
+	}*/
 
 	/**------------------------------------------------------------------------------------------
 	* Shows a list of all the events
@@ -218,24 +218,34 @@ class EventView extends ViewController {
     }
     
     
-    	public function slot($id) {
+    	public function show($id) {
 		global $tedx_manager;
 		
-			if($this->canEditEvent()) {
-			
+			//if($this->canEditEvent()) {}
+			$canEdit = $this->canEditEvent();
+			$logArray=array('canEdit'=>$canEdit);
+
+			if ($canEdit==true){
 			$someSpeakers = $this->getSpeakersData();
 			
-			$speaker = array('someSpeakers' => $someSpeakers);
+			$speaker = array('someSpeakers' => $someSpeakers, );
 			
-				$untableau= array_merge($this->getEventData($id), $speaker);
-			
-				Template::render('addSlot.tpl',$untableau);
+				$untableau= array_merge($this->getEventData($id), $speaker, $logArray);
 			}
+			else{
+				$untableau=array_merge($this->getEventData($id), $logArray);
+			}
+			
+				Template::render('event.tpl',$untableau);
+		
 		}
 		
 		public function editSlot($id,$idSlot) {
 		global $tedx_manager;
 		
+			$canEdit = $this->canEditEvent();
+			//$logArray=array('canEdit'=>$canEdit);
+			
 			$messageGetEvent = $tedx_manager->getEvent($id);
 		
 			//message
@@ -292,7 +302,6 @@ class EventView extends ViewController {
 	
 
 						
-				if($this->canEditEvent()) {
 						
 					
 					
@@ -301,15 +310,16 @@ class EventView extends ViewController {
 					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $someSpeakers, 
-					'slot' => $slot
+					'slot' => $slot,
+					'canEdit'=>$canEdit
+					
 					
 					);
-					
 					
 			
 					Template::render('editSlot.tpl',$untableau);
 					
-			}//if editEvent
+			
 			
 			}//if getEvent
 			
@@ -317,6 +327,9 @@ class EventView extends ViewController {
 		
 		public function submitModifiedSlot($id,$idSlot) {
 		global $tedx_manager;
+		
+		$canEdit = $this->canEditEvent();
+
 		
 		// Args change profil
 		$messageGetEvent = $tedx_manager->getEvent($id);
@@ -346,7 +359,7 @@ class EventView extends ViewController {
 				echo 'Error! ' . $messageChangeSlot->getMessage();
 				}
 				
-		Template::redirect('');
+		Template::redirect("event/$id");
 						
 		}//end function editslot()
 		
@@ -438,6 +451,8 @@ class EventView extends ViewController {
 		public function addSpeaker($id,$idSlot) {
 		global $tedx_manager;
 		
+			$canEdit = $this->canEditEvent();
+
 			$messageGetEvent = $tedx_manager->getEvent($id);
 		
 			//message
@@ -502,7 +517,8 @@ class EventView extends ViewController {
 					'location' => $this->getEventData($id)['location'],
 					'someSpeakers' => $this->getSpeakersData(),
 					//'speakers' => $speakers, 
-					'slot' => $slot
+					'slot' => $slot,
+					'canEdit' => $canEdit
 					
 					
 					);
@@ -599,7 +615,7 @@ class EventView extends ViewController {
 			
 				$untableau= array_merge($this->getEventData($id), $speaker);
 			
-				Template::render('addSlot.tpl',$untableau);
+				Template::redirect("event/$id",$untableau);
 			
 			}
 			
@@ -819,10 +835,9 @@ class EventView extends ViewController {
       
 	  	if($loggedPersonMsg->getStatus()) {
           
-  				if($tedx_manager->isValidator() || 
-  				          $tedx_manager->isOrganizer() ||
-  				          $tedx_manager->isAdministrator() ||
-  				          $tedx_manager->isSuperadmin()
+  				if( 		$tedx_manager->isOrganizer() ||
+  				      	    $tedx_manager->isAdministrator() ||
+  					  		$tedx_manager->isSuperadmin()
   				 ) 	{	
 	  				$canEdit = true; 
 					}

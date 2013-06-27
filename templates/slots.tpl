@@ -13,9 +13,11 @@
 					<p class="offset0">{$data->getStartingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1" }
 					 - {$data->getEndingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1" }
 					</p>
+					{if $canEdit}
 					<p>
 					<a href="{$baseURL}/event/{$event->getNo()}/editSlot/{$data->getNo()}">edit slot</a>
 					</p>
+					{/if}
 				</div>
 				{assign var='slotNo' value=$data->getNo()}
  		{else}
@@ -30,10 +32,17 @@
  		{/if}
  		
  	{/foreach}
+ 	{if $canEdit}
  	<p>
 				<a href="/tedxEventManager/SplashyPants/event/{$event->getNo()}/Slot/{$slotNo}/addSpeaker" >add speaker</a>
 	</p>
+	{/if}
  	</article>
  	
  </section>
  {/foreach}
+ {if $canEdit}
+<div class="row">
+<p><a href="{$baseURL}/event/{$event->getNo()}/addSlot">add a Slot</a></p>
+</div>
+{/if}
