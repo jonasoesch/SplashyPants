@@ -90,8 +90,8 @@ $r->get("event/:id/addSlot",
 $r->post("event/:id/submitAddSlot",
 				"EventView::submitAddSlot");
 
-$r->get("event/:id/modifySlot",
-				"EventView::slot");
+//$r->get("event/:id/modifySlot",
+//				"EventView::slot");
 				
 $r->get("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
 				"EventView::editSpeaker");

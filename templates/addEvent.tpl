@@ -69,7 +69,7 @@
                <div class="span5">
 		  			<div class="row">
 		  				<p span="12">Existing Location</p>
-		  					<select name="locationName2">
+		  					<select name="locationName">
 			  					{foreach from=$someLocations item=alocation}	
 			  											  
 			  						<option name="locationName" value="{$alocation->getName()}">{$alocation->getName()}</option>

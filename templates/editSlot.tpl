@@ -50,17 +50,18 @@
 
 	 			</div>
 
- 				
+ 			{if $someSpeakers!=false}
+
 	 		{foreach from=$someSpeakers key=keySpeaker item=speaker}
- 
- 			<figure class="span2">
+	 		 			<figure class="span2">
 				<img class="profil portrait" src="{$baseURL}/public/images/speaker/{$speaker->getNo()}.jpg" />
 				<p>
 				<a href="/tedxEventManager/SplashyPants/person/{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()}</a>
 				</p>
 			</figure>
-			
  			{/foreach}
+ 			{/if}
+
  		
 
  	
