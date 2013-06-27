@@ -55,13 +55,13 @@ class EventView extends ViewController {
 	
 	public function modify($id){
 		
-		$someSpeakers = $this->getSpeakersData();
-		$someLocations = $this->getLocationsData();
+
 		
-		$unautretableau = array('someSpeakers' => $someSpeakers,'someLocations' => $someLocations);
-		$untableau= array_merge($this->getEventData($id), $unautretableau);
+		$untableau= array_merge($this->getEventData($id), $this->getSpeakerAndLocationData());
 		
-		Template::render('modifyEvent.tpl',$untableau);
+		Template::render('modifyEvent.tpl',
+			$untableau
+		);
 		
 	}
 	
@@ -214,12 +214,9 @@ class EventView extends ViewController {
 		global $tedx_manager;
 		
 			if($this->canEditEvent()) {
+						
 			
-			$someSpeakers = $this->getSpeakersData();
-			
-			$speaker = array('someSpeakers' => $someSpeakers);
-			
-				$untableau= array_merge($this->getEventData($id), $speaker);
+				$untableau= array_merge($this->getEventData($id), $this->getSpeakerAndLocationData());
 			
 				Template::render('addSlot.tpl',$untableau);
 			}
@@ -338,7 +335,7 @@ class EventView extends ViewController {
 					
 				$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($slot);
 				
-				$speakers;
+				$someSpeakers;
 				
 				if ($messageGetPlacesBySlot->getStatus()){
 					$places = $messageGetPlacesBySlot->getContent();
@@ -352,7 +349,7 @@ class EventView extends ViewController {
 						
 						if ($messageGetSpeakerByPlace->getStatus()){
 						
-							$speakers[]=$speaker;
+							$someSpeakers[]=$speaker;
 							
 						}
 						
@@ -373,8 +370,8 @@ class EventView extends ViewController {
 					$untableau= array(
 					'event' => $this->getEventData($id)['event'],
 					'location' => $this->getEventData($id)['location'],
-					'someSpeakers' => $this->getSpeakersData(),
-					'someSpeakers' => $speakers, 
+					'someSpeakers' => $this->getSpeakerAndLocationData()['someSpeakers'],
+					//'someSpeakers' => $someSpeakers, 
 					'slot' => $slot
 					
 					
@@ -387,163 +384,8 @@ class EventView extends ViewController {
 			
 		}//end function editslot()
 		
-		public function addSpeaker($id,$idSlot) {
-		global $tedx_manager;
-		
-			$messageGetEvent = $tedx_manager->getEvent($id);
-		
-			//message
-			if( $messageGetEvent->getStatus()){
-			
-				$anEvent = $messageGetEvent->getContent();
-		
-				$args=array(
-				'no'	=>	$idSlot,
-				'event' =>	$anEvent);		
-		
-				$messageGetSlot = $tedx_manager->getSlot($args);
-						
-				//message
-				if( $messageGetSlot->getStatus()){
-				
-					$slot = $messageGetSlot->getContent();
-					}//if getSlot
-			
-				else{
-				
-					Template::flash('Could not find this slot! ' . $messageGetSlot->getMessage());
 
-					}//else getslot
-					
-				$messageGetPlacesBySlot = $tedx_manager->getPlacesBySlot($slot);
-				
-				$speakers;
-				
-				if ($messageGetPlacesBySlot->getStatus()){
-					$places = $messageGetPlacesBySlot->getContent();
-			
-							
-					foreach($places as $place){
-		
-						$messageGetSpeakerByPlace = $tedx_manager->getSpeakerByPlace($place);
-						//faire if
-						$speaker = $messageGetSpeakerByPlace->getContent();
-						
-						if ($messageGetSpeakerByPlace->getStatus()){
-						
-							$speakers[]=$speaker;
-							
-						}
-						
-						else{
-						
-							Template::flash('Could not find speaker ' . $messageGetSpeakerByPlace->getMessage());	
-						}
-						
-					}// foreach place
-		
-				}//if status	
-	
-
-						
-				if($this->canEditEvent()) {
-						
-	
-					$untableau= array(
-					'event' => $this->getEventData($id)['event'],
-					'location' => $this->getEventData($id)['location'],
-					'someSpeakers' => $this->getSpeakersData(),
-					//'speakers' => $speakers, 
-					'slot' => $slot
-					
-					
-					);
-			
-				Template::render('addSpeakers.tpl',$untableau);
-				}//if editEvent
-			
-			}//if getEvent
-			
-		}//end function editslot()
-
-		public function submitAddSpeaker($id,$idSlot) {
-		global $tedx_manager;
-		
-			
-			$messageGetEvent = $tedx_manager->getEvent($id);
-		
-			//message
-			if( $messageGetEvent->getStatus()){
-			
-				$anEvent = $messageGetEvent->getContent();
-		
-				$args=array(
-				'no'	=>	$idSlot,
-				'event' =>	$anEvent);		
-		
-				$messageGetSlot = $tedx_manager->getSlot($args);
-						
-				//message
-				if( $messageGetSlot->getStatus()){
-				
-					$slot = $messageGetSlot->getContent();
-					}//if getSlot
-			
-				else{
-				
-					Template::flash('Could not find this slot! ' . $messageGetSlot->getMessage());
-
-					}//else getslot
-			}
-			
-			// speaker numero
-			$aSpeakerPersonNo = $_POST['speakerNo'];
-			// getting the speaker with numero
-			$messageGetSpeaker = $tedx_manager->getSpeaker( $aSpeakerPersonNo );
-			
-			if($messageGetSpeaker->getStatus()){
-			    // getting the speaker from the message
-			    $aSpeaker = $messageGetSpeaker->getContent();
-			 
-			 
-			}// if
-			else {
-			    echo 'Speaker not found, see error '. $messageGetSpeaker->getMessage();
-			}// else
-			 
-			// Args addSpeakerToPlace
-			$argsAddSpeakerToPlace = array(
-			    'no'                => 4,
-			    'event'             => $anEvent,
-			    'slot'              => $slot,
-			    'speaker'           => $aSpeaker,
-			    'videoTitle'        => "Super Video Title",
-			    'videoDescription'  => "Super video Description",
-			    'videoURL'          => "www.youtube.com"
-			);
-			 
-			$messageSpeakerAddedToPlace = $tedx_manager->addSpeakerToPlace($argsAddSpeakerToPlace);
-			 
-			// Message
-			if( $messageSpeakerAddedToPlace->getStatus() ){
-			    echo 'Congrats! ' . $messageSpeakerAddedToPlace->getMessage();
-			    }
-			    
-			else{
-			    echo 'Error! ' . $messageSpeakerAddedToPlace->getMessage();
-			    }
-			
-			$someSpeakers = $this->getSpeakersData();
-			
-			$speaker = array('someSpeakers' => $someSpeakers);
-			
-				$untableau= array_merge($this->getEventData($id), $speaker);
-			
-				Template::render('addSlot.tpl',$untableau);
-			
-			}
-
-		public function getLocationsData(){
+			public function getSpeakerAndLocationData(){
 			global $tedx_manager;
 
 			$messageGetLocations = $tedx_manager->getLocations();
@@ -560,13 +402,6 @@ class EventView extends ViewController {
 
 			}
 		
-			return $someLocations;
-		}//end function locations
-		
-		
-		public function getSpeakersData(){
-			global $tedx_manager;
-		
 			$searchArgs = array(
 			'personType' => 'speaker');
 			// exec the search
@@ -581,16 +416,18 @@ class EventView extends ViewController {
 			echo 'No Speaker matched your criterias';
 			}
 			
-			return $someSpeakers;
 			
-		}//end function speakers
 		
+		return array(
+			'someLocations' => $someLocations,
+			'someSpeakers' => $someSpeakers);
+			
+		}
 		
-		
-	public function getEventData($id){
+		public function getEventData($id){
+			global $tedx_manager;
 		
 		global $tedx_manager;
-		
 		$messageGetEvent = $tedx_manager->getEvent($id);
 		
 		//message
@@ -688,24 +525,24 @@ class EventView extends ViewController {
 		  /** ----------------------------------------------------------------------------------------------------
 		    * Check if somebody has the right to change the event with a given id.
 		    */
-	public function canEditEvent() {
-      	global $tedx_manager;
-      
-	  	$loggedPersonMsg = $tedx_manager->getLoggedPerson();
-	  	$canEdit = false;
-      
-	  	if($loggedPersonMsg->getStatus()) {
-          
-  				if($tedx_manager->isValidator() || 
-  				          $tedx_manager->isOrganizer() ||
-  				          $tedx_manager->isAdministrator() ||
-  				          $tedx_manager->isSuperadmin()
-  				 ) 	{	
-	  				$canEdit = true; 
-					}
+		public function canEditEvent() {
+	      	global $tedx_manager;
+	      
+		  	$loggedPersonMsg = $tedx_manager->getLoggedPerson();
+		  	$canEdit = false;
+	      
+		  	if($loggedPersonMsg->getStatus()) {
+	          
+	  				if($tedx_manager->isValidator() || 
+	  				          $tedx_manager->isOrganizer() ||
+	  				          $tedx_manager->isAdministrator() ||
+	  				          $tedx_manager->isSuperadmin()
+	  				 ) 	{	
+		  				$canEdit = true; 
+						}
+			}
+	        return $canEdit;
 		}
-        return $canEdit;
-	}
 		
 
 }//class
