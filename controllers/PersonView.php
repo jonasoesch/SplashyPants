@@ -615,15 +615,12 @@ class PersonView extends ViewController {
      * #############################################################
 
     /** ---------------------------------------------
-<<<<<<< HEAD
-     *This function checks if the logged user has the right to see the profil that he wants to see.
-     * @param:
-     *          $personId -> id of the profil that the user wants to see
-=======
+
      * This method checks if the logged person has the rights
      * to edit the profile of the person with the given $personId
+     * @param:
+     *          $personId -> id of the profil that the user wants to see
      * 
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
      */
     public function canViewProfile($personId) {
         global $tedx_manager;
