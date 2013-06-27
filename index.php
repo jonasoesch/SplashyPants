@@ -1,8 +1,25 @@
 <?php
 
 /**
-* This is the main entry point of the application
+* This is the main entry point of the application.
 * 
+* The router object is responsible for interpreting URL-Patterns
+* and compare them to the URL requested from the server.
+* 
+* For this it offers the three methods 'get', 'post' and 'map'
+* get and post respond when the URL is requested with the respective HTTP method
+* map is HTTP method agnostic
+* 
+* When requested URL matches the pattern, the router object will
+* call a method.
+* 
+* Which method is being called is determined by the second argument of get/post/map
+* it is passed as a string with the follwing format "Class#method"
+* The router will then create an object of the given class and call the method on it.
+*
+* The URL-Pattern can be defined as having variable parts like so ':variableName'.
+* Each variable part has a name and is passed as a variable to the method.
+*
 **/
 
 // ---------- Setup ----------
@@ -10,7 +27,7 @@ ob_start(); // No headers get sent before everything is rendered
 require_once('../tedx-config.php');
 
 
-// ---------- Errors ----------------
+// ---------- Errors for Developemnt ----------------
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
@@ -24,13 +41,12 @@ require_once(SPLASHY_DIR.'/controllers/TeamView.php');
 
 $r = new Router();
 
-
 /* ######### Routes #################### */
 
 
 /* ---------- Home and Static ---------- */
 $r->get("",	"HomeView::index");
-$r->get("index.php", "HomeView::index");
+$r->get("index.php", "HomeView::index"); // just because we're used to it.
 
 
 
@@ -62,6 +78,7 @@ $r->get("logout",
         
 $r->get("event/:id",
 				"EventView::show");
+
 $r->get("events",
             "EventView::showEvents");
 				
@@ -89,9 +106,6 @@ $r->get("event/:id/addSlot",
 $r->post("event/:id/submitAddSlot",
 				"EventView::submitAddSlot");
 
-//$r->get("event/:id/modifySlot",
-//				"EventView::slot");
-				
 $r->get("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
 				"EventView::editSpeaker");
 				
@@ -103,11 +117,7 @@ $r->get("event/:id/Slot/:idSlot/addSpeaker",
 				
 $r->post("event/:id/Slot/:idSlot/addSpeaker",
 				"EventView::submitAddSpeaker");				
-				
-				
-				
-//$r->get("event/:id/addSlot",
-			//	"EventView::submitSlots");				
+							
 				
 $r->get("event/:id/modify",
 				"EventView::modify");
@@ -115,25 +125,16 @@ $r->get("event/:id/modify",
 $r->post("modifyEvent/:id",
 				"EventView::submitModifyEvent");
 
+
 /* ---------- Videos ---------- */
 $r->get("video",
         "VideoView::video");
 
 $r->get("videoDescription/event/:eventId/speaker/:speakerId",
-"VideoView::videoDescription");
-
-/* ---------- Person ---------- */
-
-$r->get("team","TeamView::team");
+        "VideoView::videoDescription");
 
 
-$r->get("persons",
-        "PersonView::showAll");
-        
-$r->get("person/:id",
-        "PersonView::show");
-
-// ---------- Visitor
+/* ---------- Visitor ------------- */
 $r->get("register",
         "PersonView::registerVisitor");
 
@@ -149,14 +150,15 @@ $r->post("event/:eventId/registerToAnEvent",
 $r->get("person/:id",
         "PersonView::show");
 
-// ---------- Speaker
+/* ---------- Speaker --------------- */
+
 $r->get("register/speaker",
         "PersonView::registerSpeaker");
 
 $r->post("register/speaker",
         "PersonView::registerSpeakerSubmit");
 
-// ---------- Organizer
+/* ---------- Organizer --------------- */
 $r->get("register/organizer",
         "PersonView::registerOrganizer");
 
@@ -165,7 +167,17 @@ $r->post("register/organizer",
         
 
 
-         
+/* ---------- Person ---------- */
+
+$r->get("team","TeamView::team");
+
+
+$r->get("persons",
+        "PersonView::showAll");
+        
+$r->get("person/:id",
+        "PersonView::show");
+              
          
 $r->get("person/:id/edit",
         "PersonView::editProfil");
@@ -210,6 +222,7 @@ $r->get("allocateTeamRoles",
 $r->post("teamRoles",
         "PersonView::allocateTeamRolesSubmit");
 
+/* ---------- Finally, call the method if there was a match ---------- */
 
 $r->run();
 
