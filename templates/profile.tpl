@@ -58,7 +58,7 @@
  {foreach from=$talks item=aTalk}
     <figure class="span3">
             <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}">
-              <img src="{$baseURL}/public/images/Thumbnails/{$aTalk->getVideoTitle()}.png" width="225"/>
+              <img src="{$baseURL}/public/images/Thumbnails/{rand(1,10)}.PNG" width="225"/>
             </a>   
             <p class="subtitle">{$aTalk->getVideoTitle()}</p>   
     </figure>
