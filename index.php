@@ -204,7 +204,7 @@ $r->get("teamRoles",
         "PersonView::teamRoles");
 
 $r->post("teamRoles",
-        "PersonView::allocateTeamRolesSubmit");
+        "PersonView::teamRolesSubmit");
 
 $r->get("allocateTeamRoles",
         "PersonView::allocateTeamRoles");
