@@ -9,11 +9,22 @@ class VideoView extends ViewController {
     public function video() {
         global $tedx_manager;
         
-        $someTalks=$tedx_manager->getTalks()->getContent();
-        //$msgSpeakers = $tedx_manager->
+        $talksMsg =$tedx_manager->getTalks();
+        if($talksMsg->getStatus()) {
+          
+          $talks = $talksMsg->getContent();
+          $speakers = array();
+          
+          foreach($talks as $talk) {
+            $speakers[$talk->getSpeakerPersonNo()] = $tedx_manager->getSpeaker($talk->getSpeakerPersonNo())->getContent();
+          }
+        }
+        
+        
         //var_dump($someTalks);
         Template::render('video.tpl',array (
-            'someTalks' => $someTalks
+            'someTalks' => $talks,
+            'speakers' => $speakers
             
         ));
         

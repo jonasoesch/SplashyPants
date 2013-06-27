@@ -13,7 +13,10 @@
             <h3 class="subtitle-fat">
               <a href="{$baseURL}/videoDescription/event/{$aTalk->getEventNo()}/speaker/{$aTalk->getSpeakerPersonNo()}">{$aTalk->getVideoTitle()}</a>
             </h3>
-              <a href="{$baseURL}/person/{$aTalk->getSpeakerPersonNo()}"></a>
+              <a href="{$baseURL}/person/{$aTalk->getSpeakerPersonNo()}">
+                {$speakers[$aTalk->getSpeakerPersonNo()]->getFirstName()}
+                {$speakers[$aTalk->getSpeakerPersonNo()]->getName()}
+              </a>
             <p></p>
        </div>    
     </div>
