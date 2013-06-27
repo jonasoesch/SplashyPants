@@ -8,7 +8,10 @@
             <h3 class="span12 subtitle">{$event->getStartingDate()|date_format:"%d. %B %Y"}</h3>
             <p class="span12">
               <figure class="float">
-                <a href="{$baseURL}/event/{$event->getNo()}"><img src="{$baseURL}/public/images/event/event{$event->getNo()}.png" width="270" alt="TEDxLausanne | {$event->getMainTopic()} | {$event->getStartingDate()}" title="TEDxLausanne | {$event->getMainTopic()}" /></a>
+                <a href="{$baseURL}/event/{$event->getNo()}">
+                  <!-- <img src="{$baseURL}/public/images/event/event{$event->getNo()}.png" width="270" alt="TEDxLausanne | {$event->getMainTopic()} | {$event->getStartingDate()}" title="TEDxLausanne | {$event->getMainTopic()}" /> -->
+                  <img src="{$baseURL}/public/images/event/event1.png" width="270" alt="TEDxLausanne | {$event->getMainTopic()} | {$event->getStartingDate()}" title="TEDxLausanne | {$event->getMainTopic()}" />
+                </a>
             </figure>
               {$event->getDescription()}
             </p>
@@ -22,7 +25,10 @@
         {section name=index loop=$arraySpeakerTalks max=6 step=-1} 
             <article class="row thumbVideo">
                 <figure>
-                <a href="{$baseURL}/videoDescription/event/{$arraySpeakerTalks[index].talk->getEventNo()}/speaker/{$arraySpeakerTalks[index].talk->getSpeakerPersonNo()}" class="speakerImage span6"><img src="{$baseURL}/public/images/Thumbnails/{$arraySpeakerTalks[index].talk->getVideoTitle()}.png" width="225" alt="{$arraySpeakerTalks[index].talk->getVideoTitle()}" title="{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} | {$arraySpeakerTalks[index].talk->getVideoTitle()}" /></a>
+                <a href="{$baseURL}/videoDescription/event/{$arraySpeakerTalks[index].talk->getEventNo()}/speaker/{$arraySpeakerTalks[index].talk->getSpeakerPersonNo()}" class="speakerImage span6">
+                  <img src="{$baseURL}/public/images/Thumbnails/{rand(1,10)}.PNG" width="225" alt="{$arraySpeakerTalks[index].talk->getVideoTitle()}" title="{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()} | {$arraySpeakerTalks[index].talk->getVideoTitle()}" />
+                  
+                  </a>
                 </figure> 
                 <h5 class="speakerText span6">
                   <a href="{$baseURL}/person/{$arraySpeakerTalks[index].speaker->getNo()}">{$arraySpeakerTalks[index].speaker->getName()} {$arraySpeakerTalks[index].speaker->getFirstName()}</a>

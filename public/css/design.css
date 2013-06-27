@@ -10,13 +10,34 @@ color: #000000;
 	position: relative;
 }
  
+
+
 .float {
   float: left;
   padding-right: 20px;
   padding-bottom: 8px;
 }
 
+.active {
+  text-decoration: underline;
+}
 
+.clear {
+  clear: both;
+}
+
+
+.v-small {
+  margin-top: 12px;
+}
+
+.v-medium {
+  margin-top: 24px;
+}
+
+.v-big {
+  margin-top: 48px;
+}
  
 .subtitle,
 .subtitle-fat {

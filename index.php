@@ -1,5 +1,10 @@
 <?php
 
+/**
+* This is the main entry point of the application
+* 
+**/
+
 // ---------- Setup ----------
 ob_start(); // No headers get sent before everything is rendered
 require_once('../tedx-config.php');
@@ -27,13 +32,7 @@ $r = new Router();
 $r->get("",	"HomeView::index");
 $r->get("index.php", "HomeView::index");
 
-/*
-* Pour Mickael :-)
-* Exemple pour comment plusiers variables avec une URL
-* Va sur http://localhost:8888/tedxEventManager/SplashyPants/hey/22/ho/33
-* et regarde la methode 'hey' dans HomeView
-*/
-$r->get("hey/:event/ho/:contact", "HomeView::hey");
+
 
 $r->get("contact",
         "HomeView::contact");
@@ -90,8 +89,8 @@ $r->get("event/:id/addSlot",
 $r->post("event/:id/submitAddSlot",
 				"EventView::submitAddSlot");
 
-$r->get("event/:id/modifySlot",
-				"EventView::slot");
+//$r->get("event/:id/modifySlot",
+//				"EventView::slot");
 				
 $r->get("event/:id/Slot/:idSlot/Speaker/:idSpeaker",
 				"EventView::editSpeaker");
@@ -175,7 +174,6 @@ $r->post("person/:id/edit",
         "PersonView::editProfilSubmit");
         
         
-
 $r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");
 
