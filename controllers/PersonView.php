@@ -605,7 +605,9 @@ class PersonView extends ViewController {
      * *********************************************************************************************************** */
 
     /** ---------------------------------------------
-     *
+     *This function checks if the logged user has the right to see the profil that he wants to see.
+     * @param:
+     *          $personId -> id of the profil that the user wants to see
      */
     public function canViewProfile($personId) {
         global $tedx_manager;
@@ -642,6 +644,8 @@ class PersonView extends ViewController {
     /** ----------------------------------------------------------------------------------------------------
      * Check if somebody has the right to change the profile of a 
      * person with a given id.
+     * @param:
+     *          $personId -> the id from the profil that the user is looking for
      */
     public function canEditProfile($personId) {
         global $tedx_manager;
@@ -668,6 +672,10 @@ class PersonView extends ViewController {
     }
 
     /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode crée l'array avec les paramètres qu'il à reçu dans la variable $_POST
+     * et la mets dans l'array $args
+     * 
+     * rends le tableaux $args qui contiens les coordonnes d'un user
      * */
     public function createPersonArray() {
         $args = array(
@@ -693,11 +701,19 @@ class PersonView extends ViewController {
 
         return $args;
     }
-
+    
+     /** ----------------------------------------------------------------------------------------------------
+     * Cette function affiche la page location
+     */
     public function locations() {
         Template::render('locations.tpl');
     }
-
+    
+     /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode qui est déclenché quand l'utilisateur a préssé sur le boutton submit dans le formulaire
+      * locations.Elle prends les données de la variable $_POST et le mets dans l'array $args.
+      * Ensuite il le rend le tableaux $args         
+     */
     public function locationsSubmit() {
         global $tedx_manager;
         $args = array(
@@ -721,7 +737,12 @@ class PersonView extends ViewController {
 
         return $args;
     }
-
+    
+    /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode qui est déclenché quand l'utilisateur a préssé sur le boutton submit dans le formulaire
+      * locations.Elle prends les données de la variable $_POST et le mets dans l'array $args.
+      * Ensuite il le rend le tableaux $args         
+     */
     public function registerToAnEvent($eventId) {
         global $tedx_manager;
 
