@@ -24,7 +24,7 @@
 <section class="profile-event">
       <p class="row">
         <p class="span12">Date of last change : {$registration->getRegistrationDate()}</p>
-        <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()} No Participant : {$participant->getNo()}</h3>
+        <h3 class="span12 offset4">{$participant->getFirstName()} {$participant->getName()}</h3>
       </p>
 
       <p class="row">
@@ -38,7 +38,7 @@
         {elseif $statusRegistration =="Accepted"}
         <p class="span8 accepted">{$registration->getStatus()}</p>
         {else}
-        <p class="span8 rejected">The status of registration doesn't exist</p>
+        <p class="span8 rejected">Not yet accepted</p>
         {/if}
       </p>
 
@@ -68,7 +68,10 @@
         <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/cancel">Cancel</a>
     </h4>
     {else}
-    <h4 class="row offset8">No action can be done</h4>    
+    <h4 class="row offset8"> 
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/reject">Reject</a> |
+        <a href="{$baseURL}/event/{$event->getNo()}/participant/{$participant->getNo()}/accept">Accept</a>
+    </h4>  
     {/if}
 
   </section>
