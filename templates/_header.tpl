@@ -2,7 +2,14 @@
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Splashy Title</title>
+      <meta name="viewport" content="width=device-width">
+      <title>
+        {if isset($title)}
+          {$title}
+        {else}
+          TEDx
+        {/if}
+      </title>
       <link href="{$baseURL}/public/css/grid.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/normalize.css" rel="stylesheet" />
       <link href="{$baseURL}/public/css/typography.css" rel="stylesheet" />

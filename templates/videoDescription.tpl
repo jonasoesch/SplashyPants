@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title=$arraySpeakerTalk.talk->getVideoTitle()}
 {$arraySpeakerTalk.talk->getVideoTitle()}
 
 

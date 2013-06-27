@@ -17,14 +17,20 @@ color: #000000;
 }
 
  
-.subtitle {
+.subtitle,
+.subtitle-fat {
   font-size: 16px;
   font-weight: normal;
   margin-top: 5px;
   padding-bottom: 12px;
   border-bottom: 1px solid #EDEDED;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
+
+.subtitle-fat {
+  font-weight: bold;
+}
+
 
 .menu{
 	margin-top: 20px;
@@ -119,36 +125,40 @@ textarea{
 .module
 {
 	margin-top: 20px;
+	padding-top: 15px;
 	border-top:  8px solid #EDEDED;
 }
 
-.event-slot,
-.profile-event .row,
-.module row
-{
-			padding-top: 20px;
+.module.row {
+  margin-left: 0;
 }
 
-.profile-event [class*="span"],
-.event-slot [class*="span"],
-.module [class*="span"]
-{
-	margin-top: 0;
-	line-height: 24px;
+.admin-link {
+  padding-left: 18px;
+  background: url("../images/edit.png") 0px no-repeat;
+  font-size: 16px;
+  font-weight: normal;
 }
+
 
 .profile-img,
-.portrait
+.portrait-big,
+.portrait-small
  {
 	border-radius: 50%;
 	border:  5px solid #EDEDED;
 	box-shadow: 0 0 4px rgba(50,50,50,0.2);
-	max-width: 180px;
+	margin-bottom: 20px;
+}
 
+.portrait-big {
+  max-width: 160px;
 }
-select{
-    height:20em;
-}
+
+.portrait-small {
+  max-width: 120px;
+} 
+
 
 a img{
 		background-color: #ffffff;
@@ -189,4 +199,36 @@ videoIcon::after{
 	max-width: 100%;
 	vertical-align: middle;
 	margin: auto;
+}
+
+
+
+.profile-table {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	border-top:  8px solid #EDEDED;;
+	box-shadow: 0 0 3px rgba(50,50,50,0.1);
+}
+
+.profile-table .row{
+	border-bottom: 1px solid #EDEDED;
+}
+
+
+.profile-table .row:last-child {
+	border:  none;	
+}
+
+.profile-table .row>* {
+	border-right: 1px solid #EDEDED;
+	margin-bottom: 0;
+}
+
+.profile-table .row>*:last-child {
+	border:  none;
+}
+
+.profile-details {
+	margin-bottom: 48px;
 }

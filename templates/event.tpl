@@ -1,4 +1,4 @@
-{include '_header.tpl'}
+{include '_header.tpl' title=$event->getMainTopic()}
 
 <section class="row">
             	<section class="span7">

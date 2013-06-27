@@ -1,4 +1,4 @@
-{include '_header.tpl' }
+{include '_header.tpl' title="Persons"}
 
 
 <h2>Speakers</h2>
