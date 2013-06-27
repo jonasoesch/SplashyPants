@@ -64,10 +64,6 @@ class HomeView extends ViewController {
   	var_dump($contact);
   }
   
-  // "login"
-  public function login() {
-  	Template::render('login.tpl');
-  }
   
     public function admin() {
         global $tedx_manager;
@@ -80,6 +76,12 @@ class HomeView extends ViewController {
         }
   }
   
+  
+  // "login"
+  public function login() {
+  	Template::render('login.tpl');
+  }
+  
   // "login/do"
   public function loginDo() {
   	global $tedx_manager;
@@ -88,7 +90,13 @@ class HomeView extends ViewController {
   	
   	if($message->getStatus()) {
   		Template::flash("Login successful");
-  		Template::redirect('');
+  		
+  		$personMsg = $tedx_manager->getLoggedPerson();
+  		if($personMsg->getStatus()) { 
+  		  Template::redirect("person/".$personMsg->getContent()->getNo());
+  		} else { 
+  		  Template::redirect(''); 
+  		}
   	} else {
   		Template::flash("Wrong password or username");
   		Template::redirect('login');

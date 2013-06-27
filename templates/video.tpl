@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Our TEDx talks"}
 VIDEOWALL
 
 <div class="row">

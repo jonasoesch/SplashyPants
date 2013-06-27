@@ -1,4 +1,4 @@
-{include "_header.tpl"}
+{include "_header.tpl" title="Partners"}
 <section class="row">
 	<article class="row">
 		<h1 class="span12">Partners</h1>

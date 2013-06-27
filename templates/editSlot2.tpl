@@ -2,16 +2,16 @@
 {include '_header.tpl'}
 {include 'eventWithoutSlot.tpl'}
 <h2>Speakers</h2>
-{include 'slots.tpl'}
 
 <form>
-	{foreach from=$slotsWithSpeakers key=keySlot item=slotData}
+	{$slot->getNo()}
  	<div class="row event-slot">
- 		{foreach from=$slotData key=keySpeaker item=data}
+ 		{foreach from=$slotsWithSpeakers[$slot->getNo()] key=keySpeaker item=data}
+ 		
  		{if $keySpeaker == 'slotData'}
  				<div class="span4">
-	 				<h3><h3>Slot {$keySlot+1}</h3></h3>
-	 				<input type="hidden" name="slotNumber" size="2" maxlength="2" {if isset($data)}value="{$slotDate[2]}"{/if} /> / 
+	 				<h3>Slot</h3>
+	 				<input type="hidden" name="slotNumber" size="2" maxlength="2" {if isset($data)}value="{$slotDate[2]}"{/if} />  
 
 	 			<div class="row">
 	       	 			<p class="span12">
@@ -54,44 +54,20 @@
 
 	 			</div>
 
- 		{else}
- 			<div span="9">
-				<p class="span2">
-				Select a speaker
+ 				{else}
 
-					<select>
- 								<option value="{$data->getNo()}" selected>{$data->getFirstName()} {$data->getName()}</option>
-
-			  					{foreach from=$someSpeakers item=speaker}	
-			  						{if $speaker->getNo()!= $data->getNo()}		  
-			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
-			  						{/if}
-							  	{/foreach}
-					</select>
+ 			<figure class="span3">
+				<img class="profil portrait" src="{$baseURL}/public/images/speaker/{$data->getNo()}.jpg" />
+				<p>
+				<a href="/tedxEventManager/SplashyPants/person/{$data->getNo()}" >{$data->getFirstName()} {$data->getName()}</a>
 				</p>
-			</div>
- 
+			</figure>
  			
  		{/if}
  	{/foreach}
- 	<div span="9">
-				<p class="span2">
-				Select a speaker
 
-					<select>
-								
-								<option value="none">---</option>
-			  					{foreach from=$someSpeakers item=speaker}	
-			  						{if $speaker->getNo()!= $data->getNo()}		  
-			  						<option value="{$speaker->getNo()}">{$speaker->getFirstName()} {$speaker->getName()} </option>
-			  						{/if}
-							  	{/foreach}
-					</select>
-				</p>
-			</div>
  	
  	</div>
- {/foreach}
 
 
 	
