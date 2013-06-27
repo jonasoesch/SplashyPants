@@ -767,6 +767,16 @@ class PersonView extends ViewController {
         }
     }
 
+    /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode qui est déclenché quand l'utilisateur a préssé sur le boutton submit dans le formulaire
+      * register to an event. Elle vérifie si l'utilisateur est loggé, si pas il affiche le template register.
+     * Ensuite elle prends les données de la variable $_POST et l'envoye à le service fonctionnel de la classe
+     * tedx_manager en appelant la méthode registerToAnEvent.  
+     * Maitenant l'utilisateur peut entrer sa motivation et ses keywords pour poser sa demande d'admission aux 
+     * organisateurs.
+     * @param:
+     *          $eventId -> le numéro d'authentification de l'id sur quel l'utilisateur aimerait participer.
+     */
     public function registerToAnEventSubmit($eventId) {
 
         global $tedx_manager;
@@ -836,7 +846,12 @@ class PersonView extends ViewController {
 
         Template::flash($anAddedKeywords->getMessage());
     }
-
+    
+      /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode cherche toute les roles et les organiseurs existants et l'envoye au 
+       * template allocateTeamRoles pour pouvoir l'afficher
+       * 
+     */
     public function allocateTeamRoles() {
         global $tedx_manager;
         $messageGetRole = $tedx_manager->getRoles();
@@ -849,7 +864,12 @@ class PersonView extends ViewController {
             Template::flash($messageGetOrganizers->getMessage());
             Template::render("allocateTeamRoles.tpl", array('roles' => $messageGetRole->getContent(), 'organizers' => $messageGetOrganizers->getContent()));
     }
-
+    
+      /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode s'enclenche quand l'utilisateur à préssé sur submit dans le template
+       * allocateTeamRoles. Elle enregistre via le service addRole et la variable $_POST 
+       * le choix du role et le lie avec l'organisateur choisi.
+     */
     public function allocateTeamRolesSubmit() {
         global $tedx_manager;
         

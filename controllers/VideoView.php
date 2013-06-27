@@ -5,7 +5,12 @@ require_once(SPLASHY_DIR . "/helpers/Template.php");
 
 class VideoView extends ViewController {
 
-    // "Permet d'afficher le video wall"
+    /** ----------------------------------------------------------------------------------------------------
+     * This function is for screening the video wall in the video template
+     * It takes all the information from the speaker and puts the speakers array which will be send
+     * with all the talkmessage array to the video template
+     * @param:$id identifiant de l'event
+     */
     public function video() {
         global $tedx_manager;
         
@@ -20,8 +25,7 @@ class VideoView extends ViewController {
           }
         }
         
-        
-        //var_dump($someTalks);
+       
         Template::render('video.tpl',array (
             'someTalks' => $talks,
             'speakers' => $speakers
@@ -30,7 +34,13 @@ class VideoView extends ViewController {
         
     }
 
-    //Fonction de la page videoDescription
+    /** ----------------------------------------------------------------------------------------------------
+     * Cette méthode affiche l'event à partir de l'id reçu.
+     * 
+     * This function is here to show the detailed video template. 
+     * @param:eventId identifier of the event
+     *        $speakerId identifier of the speaker
+     */
     public function videoDescription($eventId, $speakerId) {
 
 
