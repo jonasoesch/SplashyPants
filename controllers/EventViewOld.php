@@ -569,12 +569,13 @@ class EventView extends ViewController {
 			if ($messageGetPlacesBySlot->getStatus()){
 				$places = $messageGetPlacesBySlot->getContent();
 				
+				
 				//compte le nombre de places existantes dans le slot				
 				$nbrPlaces = count($places)+1;
 				
 			}
 			else{
-				$nbrPlaces=1;
+				$nbrPlaces=0;
 			}
 				
 			
@@ -603,7 +604,7 @@ class EventView extends ViewController {
 			    }
 
 			
-				Template::render("event/$id");
+				Template::redirect("event/$id");
 			
 			}
 			
@@ -611,14 +612,12 @@ class EventView extends ViewController {
 			global $tedx_manager;
 		
 			$canEdit = $this->canEditEvent();
-			$logArray=array('canEdit'=>$canEdit);
-			
 			
 			$someSpeakers = $this->getSpeakersData();
 			
 			$speaker = array('someSpeakers' => $someSpeakers);
 			
-				$untableau= array_merge($this->getEventData($id), $speaker, $logArray);
+				$untableau= array_merge($this->getEventData($id), $speaker);
 			
 				Template::render('addSlotToAnEvent.tpl',$untableau);
 			
