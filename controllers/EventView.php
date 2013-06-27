@@ -523,9 +523,7 @@ class EventView extends ViewController {
 			    'event'             => $anEvent,
 			    'slot'              => $slot,
 			    'speaker'           => $aSpeaker,
-			    'videoTitle'        => "Super Video Title",
-			    'videoDescription'  => "Super video Description",
-			    'videoURL'          => "www.youtube.com"
+			    
 			);
 			 
 			$messageSpeakerAddedToPlace = $tedx_manager->addSpeakerToPlace($argsAddSpeakerToPlace);

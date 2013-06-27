@@ -271,22 +271,7 @@ class PersonView extends ViewController {
         }
     }
 
-    /** -------------------------------------------------------------------------
-     * */
-    public function editProfilSubmit($id) {
-        global $tedx_manager;
 
-        $args = $this->createPersonArray();
-
-        $aChangedProfil = $tedx_manager->changeProfil($args);
-
-        if ($aChangedProfil->getStatus()) {
-            Template::redirect("person/$id");
-        } else {
-            Template::redirect("person/$id/edit");
-        }
-    }
-		
 		
 		/** -------------------------------------------------------------------------
 		**/
@@ -487,121 +472,116 @@ class PersonView extends ViewController {
     public function showParticipant($id) {
         global $tedx_manager;
 
-        if ($tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin() || $tedx_manager->isValidator()) {
+        if($tedx_manager->isAdministrator() || $tedx_manager->isSuperadmin() || $tedx_manager->isValidator()){
             //to count the number of AcceptedRegistrations
-            $numberOfAcceptedRegistrations = 0;
-            //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
-            $messageGetEvent = $tedx_manager->getEvent($id);
-            //test if messageGetEven exists
+        $numberOfAcceptedRegistrations = 0;
+        //get the messageGetEvent to get the object anEvent with the specified id for using the function getRegistrationsByEvents()
+        $messageGetEvent = $tedx_manager->getEvent($id);
+        //test if messageGetEven exists
 
-            if ($messageGetEvent->getStatus()) {
-                //get the object anEvent with the specified id
-                $anEvent = $messageGetEvent->getContent();
+        if ($messageGetEvent->getStatus()) {
+            //get the object anEvent with the specified id
+            $anEvent = $messageGetEvent->getContent();
 
-                //call to the function to get all the registrations of the anEvent
-                $messageGetRegistrationsByEvent = $tedx_manager->getRegistrationsByEvent($anEvent);
-                //test if there are some registrations or not
+            //call to the function to get all the registrations of the anEvent
+            $messageGetRegistrationsByEvent = $tedx_manager->getRegistrationsByEvent($anEvent);
+            //test if there are some registrations or not
 
-                if ($messageGetRegistrationsByEvent->getStatus()) {
+            if ($messageGetRegistrationsByEvent->getStatus()) {
 
-                    //creation of the array of RegistrationParticipantwithMotivations and keywords
-                    $registrationsParticipantsWithMotivations = array();
-
-
-                    //get all the registrations (array)
-                    $registrations = $messageGetRegistrationsByEvent->getContent();
-
-                    //for each registration, get the participant and his motivations related to anEvent
-                    foreach ($registrations as $aRegistration) {
+                //creation of the array of RegistrationParticipantwithMotivations and keywords
+                $registrationsParticipantsWithMotivations = array();
 
 
-                        $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
+                //get all the registrations (array)
+                $registrations = $messageGetRegistrationsByEvent->getContent();
 
-                        // Get the last registration for the participant to an event
-                        $args = array(
-                            'participant' => $aParticipant,
-                            'event' => $anEvent);
-                        $messageGetLastRegistration = $tedx_manager->getLastRegistration($args);
-
-                        // Get the Registrations from Message
-                        $theLastRegistration = $messageGetLastRegistration->getContent();
-                        //test the status of the registration because we want to keep only the status 'accepted', 'rejected', or 'sent'
-                        if ($theLastRegistration->getStatus() == 'Sent' || $theLastRegistration->getStatus() == 'Accepted' || $theLastRegistration->getStatus() == 'Rejected') {
-                            //test if the registration is the last registration of the participant to an event
-                            if ($theLastRegistration->getStatus() == $aRegistration->getStatus()) {
+                //for each registration, get the participant and his motivations related to anEvent
+                foreach ($registrations as $aRegistration) {
 
 
-                                //work on the motivations
-                                //parameters for the function getMotivationsByParticipantForEvent($args);
-                                $args = array(
-                                    'participant' => $aParticipant,
-                                    'event' => $anEvent
-                                );
-                                $messageGetMotivationsByParticipantForEvent = $tedx_manager->getMotivationsByParticipantForEvent($args);
+                    $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
-                                //test if there are some motivations for $aParticipant related to the anEvent
-                                if ($messageGetMotivationsByParticipantForEvent->getStatus()) {
-                                    //creation of an array of motivations
-                                    $motivations = $messageGetMotivationsByParticipantForEvent->getContent();
-                                } else {
-                                    //no motivations, array empty
-                                    $motivations = array();
-                                }//else
-                                //work on the Keywords
-                                //parameters for the function getKeywordsByPersonForEvent($args);
-                                $args = array(
-                                    'person' => $aParticipant,
-                                    'event' => $anEvent
-                                );
-                                $messageGetKeywordsByPersonForEvent = $tedx_manager->getKeywordsByPersonForEvent($args);
+                    // Get the last registration for the participant to an event
+                    $args = array(
+                        'participant' => $aParticipant,
+                        'event' => $anEvent);
+                    $messageGetLastRegistration = $tedx_manager->getLastRegistration($args);
 
-                                //test if there are some keywords for $aParticipant related to the anEvent
-                                if ($messageGetKeywordsByPersonForEvent->getStatus()) {
-                                    //creation of an array of keywords
-                                    $keywords = $messageGetKeywordsByPersonForEvent->getContent();
-                                } else {
-                                    //no keywords, array empty
-                                    $keywords = array();
-                                }//else
-                                //fill the array $registrationsParticipantswithMotivations[] with the registration, the participant, his motivations and his keywords, related to anEvent
-                                $registrationsParticipantswithMotivations[] = array(
-                                    'registration' => $theLastRegistration,
-                                    'participant' => $aParticipant,
-                                    'motivations' => $motivations,
-                                    'keywords' => $keywords
-                                );
-                                if ($theLastRegistration->getStatus() == 'Accepted') {
-                                    $numberOfAcceptedRegistrations++;
-                                }
+                    // Get the Registrations from Message
+                    $theLastRegistration = $messageGetLastRegistration->getContent();
+                    //test the status of the registration because we want to keep only the status 'accepted', 'rejected', or 'sent'
+                    if ($theLastRegistration->getStatus() == 'Sent' || $theLastRegistration->getStatus() == 'Accepted' || $theLastRegistration->getStatus() == 'Rejected') {
+                        //test if the registration is the last registration of the participant to an event
+                        if ($theLastRegistration->getStatus() == $aRegistration->getStatus()) {
+
+
+                            //work on the motivations
+                            //parameters for the function getMotivationsByParticipantForEvent($args);
+                            $args = array(
+                                'participant' => $aParticipant,
+                                'event' => $anEvent
+                            );
+                            $messageGetMotivationsByParticipantForEvent = $tedx_manager->getMotivationsByParticipantForEvent($args);
+
+                            //test if there are some motivations for $aParticipant related to the anEvent
+                            if ($messageGetMotivationsByParticipantForEvent->getStatus()) {
+                                //creation of an array of motivations
+                                $motivations = $messageGetMotivationsByParticipantForEvent->getContent();
+                            } else {
+                                //no motivations, array empty
+                                $motivations = array();
+                            }//else
+                            //work on the Keywords
+                            //parameters for the function getKeywordsByPersonForEvent($args);
+                            $args = array(
+                                'person' => $aParticipant,
+                                'event' => $anEvent
+                            );
+                            $messageGetKeywordsByPersonForEvent = $tedx_manager->getKeywordsByPersonForEvent($args);
+
+                            //test if there are some keywords for $aParticipant related to the anEvent
+                            if ($messageGetKeywordsByPersonForEvent->getStatus()) {
+                                //creation of an array of keywords
+                                $keywords = $messageGetKeywordsByPersonForEvent->getContent();
+                            } else {
+                                //no keywords, array empty
+                                $keywords = array();
+                            }//else
+                            //fill the array $registrationsParticipantswithMotivations[] with the registration, the participant, his motivations and his keywords, related to anEvent
+                            $registrationsParticipantswithMotivations[] = array(
+                                'registration' => $theLastRegistration,
+                                'participant' => $aParticipant,
+                                'motivations' => $motivations,
+                                'keywords' => $keywords
+                            );
+                            if ($theLastRegistration->getStatus() == 'Accepted') {
+                                $numberOfAcceptedRegistrations++;
                             }
                         }
-                    }//foreach
-                    //apply of the template validateParticipant.tpl and add of the var we need to use it
-                    Template::render('validateParticipant.tpl', array(
-                        'event' => $anEvent,
-                        'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations,
-                        'numberOfAcceptedRegistrations' => $numberOfAcceptedRegistrations
-                    ));
-                } else {
-                    //error message: no registrations found
-                    Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
-                }//else
+                    }
+                }//foreach
+                
+                //apply of the template validateParticipant.tpl and add of the var we need to use it
+                Template::render('validateParticipant.tpl', array(
+                    'event' => $anEvent,
+                    'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations,
+                    'numberOfAcceptedRegistrations' => $numberOfAcceptedRegistrations
+                ));
             } else {
-
                 //error message: no registrations found
-                Template::flash('There is no registrations for the event number ' . $id);
+                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event number' . $id);
-            Template::redirect('');
+            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
         }//else
     }else{
         Template::flash('Acces denied');
         Template::redirect('');
     }
-
-//function
+        
+    } //function
 
     /*     * **********************************************************************************************************
      * ******************************************* Helper Functions ***********************************************
