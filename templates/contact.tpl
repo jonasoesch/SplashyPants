@@ -6,10 +6,17 @@
 <section class="row">
   <form class="span4 offset3" methode="post" action="">
   	<fieldset>
-	    <input type="text" name="name" placeholder="Name" size="50"/>
-	    <input type="email" name="email" placeholder="E-mail" size="50"/>
-	    <input type="text" name="subject" placeholder="Subject" size="50"/>
-	    <textarea name="message" cols="60" placeholder="Message"></textarea>
+  	  <label for="name">Name</label>
+	    <input type="text" name="name" placeholder="Edward Teach" size="50"/>
+	    
+	    <label for="email">E-Mail</label>
+	    <input type="email" name="email" placeholder="teach@blackbeard.com" size="50"/>
+	    
+	    <label for="subject">Subject</label>
+	    <input type="text" name="subject" placeholder="Hello…" size="50"/>
+	    
+	    <textarea name="message" cols="60" placeholder="I wanted to tell you…"></textarea>
+	    
       <input type="submit" name="send"value="Send">
     </fieldset>
   </form>
