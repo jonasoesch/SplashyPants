@@ -10,7 +10,6 @@ require_once SPLASHY_DIR."/helpers/Template.php";
 
 class EventView extends ViewController {
   
-<<<<<<< HEAD
  /** ----------------------------------------------------------------------------------------------------
      * Cette mŽthode affiche l'event ˆ partir de l'id reu.
      * @param:$id identifiant de l'event
@@ -27,12 +26,6 @@ class EventView extends ViewController {
 	* Show a list of all events with help from the getEvents and the getLocations from Events methodes.
          * After that he gives the arrays to the template listEvents
          * 
-=======
-
-	/**------------------------------------------------------------------------------------------
-	* Shows a list of all the events
-	* If there aren't some event, a flash message come and the user is redirected to the homepage
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
 	*/
 	public function showEvents(){
 		global $tedx_manager;
@@ -75,19 +68,12 @@ class EventView extends ViewController {
 
 	}//end function showEvents
 
-<<<<<<< HEAD
+
 	/** ----------------------------------------------------------------------------------------------------
      * This methode gets speakers and locations data and sends it to the modifyEvent template.
      * It's helping the modify process
      * @param:$id identifiant de l'event
      */
-=======
-	
-	/**------------------------------------------------------------------------------------------
-	* Get the data from the persistence
-	* render a form for event with the informations in the fields
-	*/
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
 	public function modify($id){
 		
 		$someSpeakers = $this->getSpeakersData();
@@ -100,20 +86,14 @@ class EventView extends ViewController {
 		
 	}
 	
-<<<<<<< HEAD
-        /** ----------------------------------------------------------------------------------------------------
-     * This methode adds all the locations and speakers to the addEvent template with the templates
-         * searchPersons and getLocation methodes from the tedxmanager class
-     * @param:$id identifiant de l'event
-     */
-=======
+
+   
 	
 	/**------------------------------------------------------------------------------------------
 	* Get the data from the persistence
 	* render a form for event with existing location
 	* If not, there is a redirect to the homepage
 	*/
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
 	public function add() {
 		global $tedx_manager;
 		
@@ -145,17 +125,6 @@ class EventView extends ViewController {
 			'someLocations' => $someLocations,
 			'someSpeakers' => $someSpeakers);
 		
-<<<<<<< HEAD
-		Template::render('addEvent.tpl',$untableau);
-	}
-        
-        /** ----------------------------------------------------------------------------------------------------
-     * If you click on submit on the event template, this  method will be executed. It takes all the parameters
-         * from the $_POST class. After, he puts the three main arrays ($argsCreateEvent,$slots,$argSlots) in 
-         * the $megaArgsAddEvent array. This array will be sent to the addEvent method from the $tedxmanagerclass
-         * 
-     */
-=======
 			Template::render('addEvent.tpl',$arraySpeakersAndLocation);
 		
 		}//if getLocations
@@ -167,14 +136,13 @@ class EventView extends ViewController {
 		
 	}//end function add()
 	
-	
-	
-	/**------------------------------------------------------------------------------------------
-	* Submit the data of an event to the persistence to create an event
-	* when it's done, redirect to the event added
-	* If not, there is a redirect to the form to add an event
-	*/
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
+        
+                /** ----------------------------------------------------------------------------------------------------
+     * If you click on submit on the event template, this  method will be executed. It takes all the parameters
+         * from the $_POST class. After, he puts the three main arrays ($argsCreateEvent,$slots,$argSlots) in 
+         * the $megaArgsAddEvent array. This array will be sent to the addEvent method from the $tedxmanagerclass
+         * 
+     */
 	public function submitEvent() {
 			global $tedx_manager;
 			
@@ -220,16 +188,6 @@ class EventView extends ViewController {
     		Template::redirect('addEvent');
     	}
     }
-<<<<<<< HEAD
-        
-        /** ----------------------------------------------------------------------------------------------------
-     * After clicking on submit on modify event this method will be executed.
-         * It takes all the $_POST parameters and sends it to the changeEvent or changeLocation method.
-         * (similar to the submitEvent method)
-         * 
-     * @param:$id identifiant de l'event
-     */
-=======
     
     
 		/**------------------------------------------------------------------------------------------
@@ -237,7 +195,6 @@ class EventView extends ViewController {
 		* when it's done, redirect to the event modified
 		* If not, there is a redirect to the form to add an event
 		*/    
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
     	public function submitModifiedEvent($id) {
 			global $tedx_manager;
 			
@@ -305,14 +262,6 @@ class EventView extends ViewController {
     }
     
     
-<<<<<<< HEAD
-        /** ----------------------------------------------------------------------------------------------------
-     * If 
-     * @param:$id identifiant de l'event
-     */
-    	public function slot($id) {
-		global $tedx_manager;
-=======
     
    		 /**------------------------------------------------------------------------------------------
 		* get information of an event from the persistence
@@ -321,7 +270,6 @@ class EventView extends ViewController {
 		*/ 
 		public function show($id) {
 			global $tedx_manager;
->>>>>>> 252085bd589416a3e69a46cbf3ee0ae45605b2c1
 		
 			//check if the user can edit event
 			$canEdit = $this->canEditEvent();
