@@ -20,8 +20,15 @@
     <div class="offset1 span5">
       <iframe width="332" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{$baseURL}/public/map.php?street={$location->getAddress()}&city={$location->getCity()}&country={$location->getCountry()}"></iframe>
        <p class="span12">{$location->getName()}<br />{$location->getAddress()}<br />{$location->getCity()}<br />{$location->getCountry()}</p>
+      <div class="row">
+			        <form action="{$event->getNo()}/registerToAnEvent" method="get">
+			        <p class="span5"><input type="Submit" name="submit" value="Participate" /></p>
+			        </form>
+	</div>
+
     </div>
 </div>
+
 <h3 class="clear subtitle row">
   <div class="span6">{$event->getStartingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1"} – {$event->getEndingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1"}</div>
 </h3>
