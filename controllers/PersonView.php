@@ -6,32 +6,50 @@ require_once SPLASHY_DIR . "/helpers/Template.php";
 class PersonView extends ViewController {
 
     /** ----------------------------------------------------------------------------------------------------
-     * Shows a profile page for any kind of person
-     * 
-     */
-    public function show($id) {
-        global $tedx_manager;
-        $personMsg = $tedx_manager->getPerson($id);
-
-        // ContrÃ´ler si qqn Ã  le droit de voir ou changer un profil
-        $canView = $this->canViewProfile($id);
-        $canEdit = $this->canEditProfile($id);
-
-        if ($canView) {
-            if ($personMsg->getStatus()) {
-                Template::render('profile.tpl', array(
-                    'person' => $personMsg->getContent(),
-                    'canEdit' => $canEdit
-                ));
-            } else {
-                Template::flash($personMsg->getMessage());
-                Template::redirect('');
-            }
-        } else {
-            Template::flash("You don't have the right to view this page.");
-            Template::redirect('');
-        }
-    }
+		* Shows a profile page for any kind of person
+		* 
+		*/
+		public function show($id) {
+				global $tedx_manager;
+				$personMsg = $tedx_manager->getPerson($id);
+				
+				// ContrÃ´ler si qqn Ã  le droit de voir ou changer un profil
+				$canView = $this->canViewProfile($id);
+				$canEdit = $this->canEditProfile($id);
+				
+				$talksMsg = $tedx_manager->getTalksBySpeaker($personMsg->getContent());
+				$rolesMsg = $tedx_manager->getRolesByOrganizer($personMsg->getContent());
+				
+				if($canView) {
+  				if($personMsg->getStatus()) {
+  				  
+  				  $argsTpl = array(
+    		 			'person' => $personMsg->getContent(),
+    		 			'canEdit' => $canEdit
+    		 		);
+    		 		
+    		 		// If it's the profile of a speaker we want to show his talks
+    		 		if($talksMsg->getStatus()) 
+    		 		     { $argsTpl['talks'] = $talksMsg->getContent(); }
+    		 		else { $argsTpl['talks'] = array(); }
+    		 		
+    		 		// If it's the profile of an organizer, we want to show his roles
+    		 		if($rolesMsg->getStatus()){
+      		 		$argsTpl['roles'] = $rolesMsg->getContent();
+      		 	} else {
+      		 		$argsTpl['roles'] = array();
+    		 		}
+    		 		
+    		 		Template::render('profile.tpl', $argsTpl);
+  		 	} else {
+  		 		Template::flash($personMsg->getMessage());
+  		 		Template::redirect('');
+  		 	}
+  		} else {
+    		Template::flash("You don't have the right to view this page.");
+    		Template::redirect('');
+  		}
+		}
 
     /** ----------------------------------------------------------------------------------------------------
      * Displays a list of all the persons
@@ -57,18 +75,20 @@ class PersonView extends ViewController {
      * but only if you're not logged in 
      */
     public function registerVisitor() {
-        global $tedx_manager;
-
-        if (!$tedx_manager->isLogged()) {
-            Template::render('participantForm.tpl', array(
-                "mode" => "new"
-                    )
-            );
-        } else {
-            Template::flash("Can't register when you already have an account");
-            Template::redirect('');
-        }
+    	global $tedx_manager;
+    	if(!$tedx_manager->isLogged()) {
+    		Template::render('participantForm.tpl', array(
+    		  "mode" => "new"
+    		  )
+    		);
+    	} else {
+    		Template::flash("Can't register when you already have an account");
+    		Template::redirect('');
+    	}
     }
+    
+    
+    
 
     /** ----------------------------------------------------------------------------------------------------
      * Adds the Person to the database.
@@ -136,6 +156,7 @@ class PersonView extends ViewController {
             Template::redirect('register');
         }
     }
+
 
     /** ----------------------------------------------------------------------------------------------------
      * */
@@ -265,9 +286,30 @@ class PersonView extends ViewController {
             Template::redirect("person/$id/edit");
         }
     }
+		
+		
+		/** -------------------------------------------------------------------------
+		**/
+		public function editProfilSubmit($id) {
+			global $tedx_manager;
+			
+			$args = $this->createPersonArray();
+			$args['no'] = $id;
+			
+			$aChangedProfil= $tedx_manager->changeProfil( $args );
 
-    /*
-     * accept the inscription of a participant to anEvent
+
+			if($aChangedProfil->getStatus()) {
+				Template::redirect("person/$id");
+			} else {
+			  Template::flash($aChangedProfil->getMessage());
+				Template::redirect("person/$id/edit");
+			}
+			
+			
+		}
+		
+    /* accept the inscription of a participant to anEvent
      * create a new acceptedRegistration and redirect on the validation page for anEvent
      * @param: 
      *          $eventId -> event's id
@@ -315,11 +357,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
 
@@ -370,11 +412,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number ' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
 
@@ -426,11 +468,11 @@ class PersonView extends ViewController {
                 }//foreach
             } else {
                 //error message: no registrations found
-                Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                Template::flash('Could not find registrations for the event number ' . $eventId);
             }//else
         } else {
             //error message: no event found
-            Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+            Template::flash('Could not find event number ' . $eventId);
         }//else
     }
 
@@ -545,13 +587,18 @@ class PersonView extends ViewController {
                     Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
                 }//else
             } else {
-                //error message: no event found
-                Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+
+                //error message: no registrations found
+                Template::flash('There is no registrations for the event number ' . $id);
             }//else
         } else {
-            Template::flash('Acces denied');
+            //error message: no event found
+            Template::flash('Could not find event number' . $id);
             Template::redirect('');
-        }
+        }//else
+    }else{
+        Template::flash('Acces denied');
+        Template::redirect('');
     }
 
 //function
@@ -627,9 +674,37 @@ class PersonView extends ViewController {
      * */
     public function createPersonArray() {
         $args = array(
-            'name' => $_POST['lastname'],
-            'firstname' => $_POST['firstname'],
-            'dateOfBirth' => $_POST['dob_year'] . "-" . $_POST['dob_month'] . '-' . $_POST['dob_day'],
+    	    'name'        => $_POST['lastname'],
+    	    'firstname'   => $_POST['firstname'],
+    	    'firstName'   => $_POST['firstname'],
+    	    'dateOfBirth' => $_POST['dob_year']."-".$_POST['dob_month'].'-'.$_POST['dob_day'],
+    	    'address'     => $_POST['address'],
+    	    'city'        => $_POST['city'],
+    	    'country'     => $_POST['country'],
+    	    'phoneNumber' => $_POST['telephone'],
+    	    'email'       => $_POST['email']
+    	   );
+    	   
+    	   if(isset($_POST['username']) && isset($_POST['password'])) {
+      	    $args['idmember'] = $_POST['username'];
+            $args['password'] = $_POST['password'];
+          }
+          
+          if(isset($_POST['description'])) {
+            $args['description'] = $_POST['description'];
+          }
+          
+    	   return $args;
+    }
+    
+    public function locations() {
+    Template::render('locations.tpl');}
+    
+    public function locationsSubmit() {
+        global $tedx_manager;
+        $args = array(
+            'name' => $_POST['Name'],
+            'direction' => $_POST['Direction'],
             'address' => $_POST['address'],
             'city' => $_POST['city'],
             'country' => $_POST['country'],
@@ -651,6 +726,7 @@ class PersonView extends ViewController {
 
     public function registerToAnEvent($eventId) {
         global $tedx_manager;
+
         if ($tedx_manager->isLogged()) {
             if ($tedx_manager->isParticipant()) {
 
@@ -666,6 +742,8 @@ class PersonView extends ViewController {
                 ));
             }
         } else {
+
+            Template::flash('You need to become member of the TEDx community before you can register for an event');
             Template::redirect('register');
         }
     }
@@ -675,10 +753,10 @@ class PersonView extends ViewController {
         global $tedx_manager;
         $currentEvent = $tedx_manager->getEvent($eventId)->getContent();
 
-        // RŽcupre le message contenant une personne loggŽe
+        // R?cup?re le message contenant une personne logg?e
         $messagePersonLogged = $tedx_manager->getLoggedPerson();
         $loggedPerson = "";
-        // Si on a bien reu une personne, on la var_dump
+        // Si on a bien re?u une personne, on la var_dump
         if ($messagePersonLogged->getStatus()) {
             $loggedPerson = $messagePersonLogged->getContent();
         }
