@@ -10,17 +10,6 @@ require_once SPLASHY_DIR."/helpers/Template.php";
 
 class EventView extends ViewController {
   
- /** ----------------------------------------------------------------------------------------------------
-     * Cette mŽthode affiche l'event ˆ partir de l'id reu.
-     * @param:$id identifiant de l'event
-     */
-	public function show($id) {
-		
-
-		Template::render('event.tpl',
-			$this->getEventData($id) 
-		);
-	}
 
 	/**------------------------------------------------------------------------------------------
 	* Show a list of all events with help from the getEvents and the getLocations from Events methodes.
