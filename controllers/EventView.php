@@ -22,6 +22,7 @@ class EventView extends ViewController {
 
 		$messageGetEvents = $tedx_manager->getEvents();
 		$numberOfEvents = 0;
+		
 		if($messageGetEvents->getStatus()){
 			$someEvents = $messageGetEvents->getContent();
 
@@ -36,23 +37,25 @@ class EventView extends ViewController {
 			          'event' => $anEvent,
 			          'location' => $LocationOfanEvent);
 					$numberOfEvents++;
-				}else{
+				}
+				else{
 					Template::flash('Could not find location of the event no ' . $anEvent->getNo());
 				}
-			}
+			}//foreach
+		
 				Template::render('listEvents.tpl', array(
 					'arrayEventsLocation' => $arrayEventsLocation,
 					'numberOfEvents' => $numberOfEvents,
 					'canEdit' => $this->canEditEvent()
 					));
 					
-		}else{
-
+		}//if getEvents
+		
+		else{
 			Template::flash('Could not find events ' . $messageGetEvents->getMessage());
 		}
 
-
-	}
+	}//end function showEvents
 
 	
 	public function modify($id){
@@ -70,19 +73,13 @@ class EventView extends ViewController {
 	public function add() {
 		global $tedx_manager;
 		
-			$messageGetLocations = $tedx_manager->getLocations();
+		$messageGetLocations = $tedx_manager->getLocations();
 						
-			//message
-			if( $messageGetLocations->getStatus()){
+		//message
+		if( $messageGetLocations->getStatus()){
 				
 				$someLocations = $messageGetLocations->getContent();
-			}
 			
-			else{
-				
-			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
-
-			}
 			
 			$searchArgs = array(
 			'personType' => 'speaker');
@@ -94,14 +91,20 @@ class EventView extends ViewController {
 			$someSpeakers = $messageSearchPersons->getContent();
 			}
 			else{
-			echo 'No Speaker matched your crit(erias';
+				echo 'No Speaker matched your criterias';
 			}
 			
 			$untableau=array(
 			'someLocations' => $someLocations,
 			'someSpeakers' => $someSpeakers);
 		
-		Template::render('addEvent.tpl',$untableau);
+			Template::render('addEvent.tpl',$untableau);
+		
+		}//if
+			
+		else{		
+			Template::flash('Could not find locations! ' . $messageGetLocations->getMessage());
+		}
 	}
 
 	public function submitEvent() {
