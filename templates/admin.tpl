@@ -11,9 +11,10 @@
 	</ul>
 	<h2 class="v-medium">Modification</h2>
 	<ul class="row">
+    <li class="span2"><a class="button" href="{$baseURL}/events">Validate Visitors</a></li>	  
     <li class="span2"><a class="button" href="{$baseURL}/events">Modify Event </a></li>
-    <li class="span2"><a class="button" href="{$baseURL}/allocateTeamRoles">Allocate Team Roles </a></li>
     <li class="span2"><a class="button" href="{$baseURL}/persons">Modify Persons </a></li>
+    <li class="span2"><a class="button" href="{$baseURL}/allocateTeamRoles">Allocate TeamRoles </a></li>
 	</ul>
 </section>
 

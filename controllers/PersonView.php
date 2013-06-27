@@ -526,25 +526,27 @@ class PersonView extends ViewController {
                     //for each registration, get the participant and his motivations related to anEvent
                     foreach ($registrations as $aRegistration) {
 
-
                         $aParticipant = $tedx_manager->getParticipant($aRegistration->getParticipantPersonNo())->getContent();
 
                         // Get the last registration for the participant to an event
                         $args = array(
                             'participant' => $aParticipant,
                             'event' => $anEvent);
-                        $messageGetLastRegistration = $tedx_manager->getLastRegistration($args);
-
+                        $messageGetLastRegistration = ASParticipant::getLastRegistration($args);
+                        
                         // Get the Registrations from Message
                         $theLastRegistration = $messageGetLastRegistration->getContent();
-                        //test the status of the registration because we want to keep only the status 'accepted', 'rejected', or 'sent'
-                        if ($theLastRegistration->getStatus() == 'Sent' || $theLastRegistration->getStatus() == 'Accepted' || $theLastRegistration->getStatus() == 'Rejected') {
+                        
+                        // test the status of the registration because we want to keep only the status 'accepted', 'rejected', or 'sent'
+                        if ($messageGetLastRegistration->getStatus() == 'Sent' || 
+                            $messageGetLastRegistration->getStatus() == 'Accepted' || 
+                            $messageGetLastRegistration->getStatus() == 'Rejected') {
                             //test if the registration is the last registration of the participant to an event
                             if ($theLastRegistration->getStatus() == $aRegistration->getStatus()) {
 
 
-                                //work on the motivations
-                                //parameters for the function getMotivationsByParticipantForEvent($args);
+                                // work on the motivations
+                                // parameters for the function getMotivationsByParticipantForEvent($args);
                                 $args = array(
                                     'participant' => $aParticipant,
                                     'event' => $anEvent
@@ -587,6 +589,10 @@ class PersonView extends ViewController {
                                 }
                             }
                         }
+                        else {
+                           Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                           Template::redirect("events");
+                        }
                     }//foreach
                     //apply of the template validateParticipant.tpl and add of the var we need to use it
                     Template::render('validateParticipant.tpl', array(
@@ -594,13 +600,17 @@ class PersonView extends ViewController {
                         'registrationsParticipantsWithMotivations' => $registrationsParticipantswithMotivations,
                         'numberOfAcceptedRegistrations' => $numberOfAcceptedRegistrations
                     ));
-                } else {
+                } 
+                else {
                     //error message: no registrations found
                     Template::flash('Could not find registrations ' . $messageGetRegistrationsByEvent->getMessage());
+                    Template::redirect("events");
                 }//else
-            } else {
+            } 
+            else {
                 //error message: no event found
                 Template::flash('Could not find event ' . $messageGetEvent->getMessage());
+                Template::redirect("events");
             }//else
         } else {
             Template::flash('Acces denied');
