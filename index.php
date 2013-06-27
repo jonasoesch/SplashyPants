@@ -1,7 +1,8 @@
 <?php
 
 /**
-*
+* This is the main entry point of the application
+* 
 **/
 
 // ---------- Setup ----------
@@ -173,7 +174,6 @@ $r->post("person/:id/edit",
         "PersonView::editProfilSubmit");
         
         
-
 $r->get("event/:id/validateParticipant",
         "PersonView::showParticipant");
 
