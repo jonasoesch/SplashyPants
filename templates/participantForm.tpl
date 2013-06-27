@@ -8,19 +8,10 @@
 		
 {include "_personForm.tpl"}
 
-{if !isset($personId)}
+
 	 <div class="row">
-		 <p class="span6">
-		 	<input type="text" name="username" placeholder="Username" />
-		 </p>
-	 	<p class="span6">
-	 		<input type="password" name="password" placeholder="Password" />
-	 	</p>
-	 </div>
-{/if}
-	 <div class="row">
-	 		<p class="span6 offset6">
-	 			<input type="submit" name="validate"value="validate" />
+	 		<p class="span3 offset9">
+	 			<input type="submit" name="validate" />
 	 		</p>
 	 </div>
 

@@ -19,6 +19,7 @@ class PersonView extends ViewController {
 				$canEdit = $this->canEditProfile($id);
 				
 				$talksMsg = $tedx_manager->getTalksBySpeaker($personMsg->getContent());
+				$rolesMsg = $tedx_manager->getRolesByOrganizer($personMsg->getContent());
 				
 				if($canView) {
   				if($personMsg->getStatus()) {
@@ -32,6 +33,13 @@ class PersonView extends ViewController {
     		 		if($talksMsg->getStatus()) 
     		 		     { $argsTpl['talks'] = $talksMsg->getContent(); }
     		 		else { $argsTpl['talks'] = array(); }
+    		 		
+    		 		// If it's the profile of an organizer, we want to show his roles
+    		 		if($rolesMsg->getStatus()){
+      		 		$argsTpl['roles'] = $rolesMsg->getContent();
+      		 	} else {
+      		 		$argsTpl['roles'] = array();
+    		 		}
     		 		
     		 		Template::render('profile.tpl', $argsTpl);
   		 	} else {
