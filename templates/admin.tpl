@@ -8,7 +8,7 @@
 	                <li class="span2"><a class="button" href="{$baseURL}/register/speaker">Create Speaker </a></li>
 	                <li class="span2"><a class="button" href="{$baseURL}/register/organizer">Create Organizer </a></li>
 	                <li class="span2"><a class="button" href="{$baseURL}/teamRoles">Team Roles </a></li>
-	                <li class="span2"><a class="button" href="{$baseURL}/teamRoles">Team Roles </a></li>	                
+	                <li class="span2"><a class="button" href="{$baseURL}/allocateTeamRoles">Allocate Team Roles </a></li>	                
 	</ul>
 </section>
 
