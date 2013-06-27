@@ -22,4 +22,7 @@
        <p class="span12">{$location->getName()}<br />{$location->getAddress()}<br />{$location->getCity()}<br />{$location->getCountry()}</p>
     </div>
 </div>
+<h3 class="clear subtitle row">
+  <div class="span6">{$event->getStartingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1"} – {$event->getEndingTime()|regex_replace:"/(\d\d:\d\d):\d\d/":"$1"}</div>
+</h3>
 

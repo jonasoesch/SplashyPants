@@ -6,7 +6,7 @@
 
 {if $canEdit}
 <div class="row">
-<p><a href="{$baseURL}/event/{$event->getNo()}/addSlot">add a Slot</a></p>
+<p class="span3"><a href="{$baseURL}/event/{$event->getNo()}/addSlot">Add a Slot</a></p>
 </div>
 {/if}
 
