@@ -20,6 +20,7 @@ class HomeView extends ViewController {
     $someTalks=$tedx_manager->getTalks()->getContent();
 
     $arraySpeakerTalks = array();
+    if(!isset($someTalks)) {$someTalks;}
 
     foreach ($someTalks as $aTalk) {
       $idSpeaker = $aTalk->getSpeakerPersonNo();

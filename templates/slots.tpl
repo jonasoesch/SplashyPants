@@ -31,7 +31,7 @@
  			<figure class="span3 {if (($data@index != 1) && (($data@index - 1) % 3) == 0)}offset3{/if}">
 				<img class="profil portrait-small" src="{$baseURL}/public/images/speaker/{rand(1,3)}.jpg" />
 				<p>
-				  <a href="{$baseURL}/{$data->getNo()}" >{$data->getFirstName()} {$data->getName()}</a>
+				  <a href="{$baseURL}/person/{$data->getNo()}" >{$data->getFirstName()} {$data->getName()}</a>
 				</p>
 			</figure>
     {if ($data@index % 3) == 0}</div>{/if}

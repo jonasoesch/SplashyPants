@@ -7,7 +7,7 @@
         {if isset($title)}
           {$title}
         {else}
-          TEDx
+          TEDxLausanne
         {/if}
       </title>
       <link href="{$baseURL}/public/css/grid.css" rel="stylesheet" />

@@ -8,7 +8,7 @@
 	                <a href="newsletter"><img src="{$baseURL}/public/images/newsletter.png" /></a>
                 </p>
                 <p class="textFooter span12">
-                  TEDxZurich is a non-profit initiative (Swiss Verein). All content licensed under a CC BY-NC-SA 3.0 license. This independent TEDx event is operated under license from TED.
+                  TEDxLausanne is a non-profit initiative (Swiss Verein). All content licensed under a CC BY-NC-SA 3.0 license. This independent TEDx event is operated under license from TED.
                 </p>
             </div>
 

@@ -114,6 +114,9 @@ class PersonView extends ViewController {
         Template::flash($aRegisteredVisitor->getMessage());
 
         if ($aRegisteredVisitor->getStatus()) {
+            if (isset($_POST['username']) && isset($_POST['password'])) {
+              $tedx_manager->login( $_POST['username'], $_POST['password'] );
+            }
             Template::redirect("persons");
         } else {
             $args['no'] = 0;
